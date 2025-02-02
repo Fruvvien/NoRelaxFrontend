@@ -3,7 +3,16 @@ import './input.css';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-function Input(props: {labelName: string, type: string, style: React.CSSProperties | undefined }) {
+type Input = {
+    labelText: string; 
+    type: string; 
+    style?: React.CSSProperties;
+    name: string; 
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const Input: React.FC<Input> = ({labelText, type, style, name, onChange}) =>{
+    
     return (
         <Box
         component="form"
@@ -11,7 +20,7 @@ function Input(props: {labelName: string, type: string, style: React.CSSProperti
         noValidate
         autoComplete="off"
         >
-        <TextField id="outlined-basic" label={props.labelName} variant="outlined" style={props.style}  type={props.type}/>
+        <TextField id="outlined-basic" label={labelText} variant="outlined" style={style}  type={type} name={name} onChange={onChange}/>
         </Box>
     )
 

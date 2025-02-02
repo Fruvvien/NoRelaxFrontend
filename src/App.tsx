@@ -4,16 +4,15 @@ import Login from './pages/login/login'
 import Register from './pages/register/register'
 
 function App() {
-const [isLoginPage, setIsLoginPage] = useState(true)
-const [isRegisterPage, setIsRegisterPage] = useState(false)
-    if(isLoginPage === true){
+const [loginOrRegister, setIsLoginPage] = useState(true)
+    if(loginOrRegister === true){
       return (
       <>
         <Login></Login>
       </>
       )
     }
-    if(isRegisterPage === true){
+    if(loginOrRegister === false){
       return (
       <>
         <Register></Register>
