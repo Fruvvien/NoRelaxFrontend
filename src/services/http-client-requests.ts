@@ -10,10 +10,11 @@ export class HttpClientRequests {
     }
 
     static async postData(data: object, endPoint: string) {
-       /*  const response = await fetch(enviroment.LOCAL_API_URL + endPoint, {
+        const response = await fetch(enviroment.LOCAL_API_URL + endPoint, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify(data)
         });
@@ -22,8 +23,7 @@ export class HttpClientRequests {
         }
         const result = await response.json();
         console.log("Success post!");
-        return result */
-        console.log(data, endPoint);
+        return result
         
         
      

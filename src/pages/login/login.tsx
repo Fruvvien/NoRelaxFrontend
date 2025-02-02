@@ -27,7 +27,12 @@ function Login(){
         }
 
         if(user){
-            const result = HttpClientRequests.postData(user, "login");
+            const result = await HttpClientRequests.postData(user, "auth/login");
+            console.log(result);
+            
+            if(result){
+                alert("success login")
+            }
         }
     }
 
