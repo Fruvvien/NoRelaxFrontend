@@ -9,7 +9,8 @@
 }
 
 #registerInputs{
-
+    font-size: 1.5rem;
+    font-weight: bold;
     justify-content: center;
     align-items: center;
     align-content: center;
@@ -24,4 +25,8 @@
 #emailPasswordInputs{
     display: flex;
     flex-direction: column;
+}
+
+#linkToLogin{
+    text-decoration: none;
 }

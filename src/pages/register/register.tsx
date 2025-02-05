@@ -4,6 +4,7 @@ import ButtonInput from "../../components/buttons/buttonInput";
 import "./register.css";
 import { User } from "../../models/Iuser";
 import { HttpClientRequests } from "../../services/http-client-requests";
+import {BrowserRouter as Router, Link,} from "react-router-dom";
 
 function Register(){
     const [formState, setFromState] = useState<User>({
@@ -45,6 +46,7 @@ function Register(){
         <>
             <form id="registerPage" onSubmit={handleSubmit}>
                 <div id="registerInputs">
+                    <h1>Register</h1>
                     <div id="nameInputs">
                         <Input labelText="First Name" type="text" style={{width: "100%"}} name="firstName" onChange={(event) => setValues('firstName', event)} ></Input>
                         <Input labelText="Last Name" type="text" style={{width: "100%"}} name="lastName" onChange={(event) => setValues('lastName', event)}></Input>
@@ -57,6 +59,7 @@ function Register(){
                 </div>
                 
                 <ButtonInput buttonText="Submit" type="submit"></ButtonInput>
+                <Link id="linkToLogin"to="/login" >Login</Link>
             </form>
             
         </>

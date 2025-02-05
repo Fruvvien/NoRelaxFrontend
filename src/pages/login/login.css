@@ -8,7 +8,7 @@
     width: 100%;
 }
 
-#title{
+#loginInputsAndTitle{
     font-size: 1.5rem;
     font-weight: bold;
     margin-left: 20%;
@@ -19,6 +19,6 @@
 
 }
 
-#loginInputs{
-
+#linkToRegister{
+    text-decoration: none;
 }

@@ -12,3 +12,6 @@ function ButtonInput(props: {buttonText: string, type: "button" | "submit" | "re
 }
 
 export default ButtonInput;
+
+
+
