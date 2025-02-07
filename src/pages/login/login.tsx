@@ -5,7 +5,7 @@ import './login.css';
 import { HttpClientRequests } from '../../services/http-client-requests';
 import {BrowserRouter as Router, Link,} from "react-router-dom";
 import {useForm} from 'react-hook-form';
-import {isEmail, isNotEmpty, hasMinLength } from '../../../util/validation';
+import {isEmail, isNotEmpty, hasMinLength } from '../../util/validation';
 
 function Login(){
     
@@ -62,9 +62,7 @@ function Login(){
                
             }
         }
-        /**
-         * TODO: nem működik ez a fos!
-         */
+        
        /*  setFormState({
             email: "",
             password: ""
@@ -89,9 +87,9 @@ function Login(){
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
-                    <ButtonInput buttonText="Login" type='submit'></ButtonInput>
+                    <Link id="link" to="/private"> <ButtonInput buttonText="Login" type='submit'></ButtonInput></Link>
                 </div>
-                <Link id="linkToRegister" to="/register">Register</Link>
+                <Link id="link" to="/register">Register</Link>
             </form>
         </>
     )

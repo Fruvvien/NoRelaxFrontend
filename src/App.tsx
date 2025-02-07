@@ -8,6 +8,9 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import PrivateRoute from './util/privateRoute';
+import Landing from './pages/landing/landing';
+
 function App() {
   return(
       <Router>
@@ -15,6 +18,7 @@ function App() {
                 <Route path="/" element={<Navigate to={"/login"} />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/private" element={<PrivateRoute childrenComp={<Landing />} />} />
         </Routes>
       </Router>
   )

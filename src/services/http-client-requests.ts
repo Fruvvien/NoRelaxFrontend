@@ -26,9 +26,12 @@ export class HttpClientRequests {
         }
         const result = await response.json();
         console.log("Success post!");
+        if(result.token){
+            localStorage.setItem('authToken', result.token);
+        }
         return result
-        
     }
+    
 
     /* static async checkTheToken(){
         const response = await fetch(enviroment.LOCAL_API_URL + endPoint, {

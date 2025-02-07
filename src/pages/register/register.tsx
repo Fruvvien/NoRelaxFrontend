@@ -5,7 +5,7 @@ import "./register.css";
 import { User } from "../../models/Iuser";
 import { HttpClientRequests } from "../../services/http-client-requests";
 import {BrowserRouter as Router, Link,} from "react-router-dom";
-import {isEmail, isNotEmpty, hasMinLength } from '../../../util/validation';
+import {isEmail, isNotEmpty, hasMinLength } from '../../util/validation';
 
 function Register(){
     const [formState, setFromState] = useState<User>({
