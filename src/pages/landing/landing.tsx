@@ -1,6 +1,10 @@
 import React from "react";
 
 
-function landing(){
-    
+function Landing(){
+    return(
+        <>asd</>
+    )
 }
+
+export default Landing;

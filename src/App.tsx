@@ -6,9 +6,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
-  useNavigate,
-  Outlet,
   Navigate,
 } from "react-router-dom";
 function App() {
@@ -18,7 +15,6 @@ function App() {
                 <Route path="/" element={<Navigate to={"/login"} />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                
         </Routes>
       </Router>
   )

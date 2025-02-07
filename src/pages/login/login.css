@@ -22,3 +22,8 @@
 #linkToRegister{
     text-decoration: none;
 }
+
+#errors{
+    font-size: small;
+    color: red;
+}

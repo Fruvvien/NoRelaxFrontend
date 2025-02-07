@@ -9,6 +9,8 @@ type Input = {
     style?: React.CSSProperties;
     name: string; 
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    value: string | number | "";
+    
 }
 
 const Input: React.FC<Input> = ({labelText, type, style, name, onChange}) =>{
@@ -20,7 +22,7 @@ const Input: React.FC<Input> = ({labelText, type, style, name, onChange}) =>{
         noValidate
         autoComplete="off"
         >
-        <TextField id="outlined-basic" label={labelText} variant="outlined" style={style}  type={type} name={name} onChange={onChange}/>
+        <TextField id="outlined-basic"  label={labelText} variant="outlined" style={style}  type={type} name={name} onChange={onChange}/>
         </Box>
     )
 

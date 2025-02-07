@@ -2,6 +2,7 @@ import { enviroment } from "../environments/environment";
 
 export class HttpClientRequests {
     
+    
 
     static async fetchData(): Promise<object> {
         const response = await fetch(enviroment.LOCAL_API_URL);
@@ -19,16 +20,32 @@ export class HttpClientRequests {
             body: JSON.stringify(data)
         });
         if(!response.ok){
-            throw new Error('Failed to post data');
+           
+            return false;
+           
         }
         const result = await response.json();
         console.log("Success post!");
         return result
         
-        
-     
-        
     }
+
+    /* static async checkTheToken(){
+        const response = await fetch(enviroment.LOCAL_API_URL + endPoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        if(!response.ok){
+            throw new Error('Failed to post data');
+        }
+        const result = await response.json();
+        console.log("Success post!");
+        return result
+    } */
  
 
 }
