@@ -3,13 +3,13 @@ import Input from '../../components/inputs/input';
 import ButtonInput from '../../components/buttons/buttonInput';
 import './login.css';
 import { HttpClientRequests } from '../../services/http-client-requests';
-import {BrowserRouter as Router, Link,} from "react-router-dom";
-import {useForm} from 'react-hook-form';
+import {BrowserRouter as Router, Link, } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import {isEmail, isNotEmpty, hasMinLength } from '../../util/validation';
 
 function Login(){
     
-    
+    const navigate = useNavigate();
     const [formState, setFormState] = useState({
         email: "",
         password: "",
@@ -39,6 +39,7 @@ function Login(){
            
             if(result){
                 setErrors([])
+                navigate('/')
                 alert("Success login")
               
             }
@@ -87,7 +88,7 @@ function Login(){
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
-                    <Link id="link" to="/private"> <ButtonInput buttonText="Login" type='submit'></ButtonInput></Link>
+                    <ButtonInput buttonText="Login" type='submit'></ButtonInput>
                 </div>
                 <Link id="link" to="/register">Register</Link>
             </form>
