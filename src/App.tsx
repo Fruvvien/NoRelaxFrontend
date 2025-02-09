@@ -18,6 +18,7 @@ function App() {
                 <Route path="/" element={<PrivateRoute childrenComp={<Landing />}/>} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="*" element={<PrivateRoute childrenComp={<Landing />}/>} />
         </Routes>
       </Router>
   )

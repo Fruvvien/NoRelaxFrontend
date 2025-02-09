@@ -6,9 +6,10 @@ import { HttpClientRequests } from '../../services/http-client-requests';
 import {BrowserRouter as Router, Link, } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import {isEmail, isNotEmpty, hasMinLength } from '../../util/validation';
+import { useTranslation } from 'react-i18next';
 
 function Login(){
-    
+    const {t} = useTranslation();
     const navigate = useNavigate();
     const [formState, setFormState] = useState({
         email: "",
@@ -71,26 +72,23 @@ function Login(){
      
     }
     
-
-   
-
     return(
         <>
             <form id="loginPage" onSubmit={handleSubmit}>
                 <div id='loginInputsAndTitle'>
-                    <h1>Login</h1>
+                    <h1>{t("login.title")}</h1>
                     <div id='loginInputs'>
-                        <Input labelText="Email" type="email" style={undefined} name='email' value={formState.email} onChange={(event)=> setValues("email", event)}></Input>
-                        <Input labelText="Password" type="password" style={undefined} name='password' value={formState.password}  onChange={(event)=> setValues("password", event)}></Input>
+                        <Input labelText={t("login.inputEmail")} type="email" style={undefined} name='email' value={formState.email} onChange={(event)=> setValues("email", event)}></Input>
+                        <Input labelText={t("login.inputPassword")} type="password" style={undefined} name='password' value={formState.password}  onChange={(event)=> setValues("password", event)}></Input>
                     </div>
                     <ul id='errors'>
                         {errors.map((error) => (
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
-                    <ButtonInput buttonText="Login" type='submit'></ButtonInput>
+                    <ButtonInput buttonText={t("login.button")} type='submit'></ButtonInput>
                 </div>
-                <Link id="link" to="/register">Register</Link>
+                <span>{t("login.textNextToRegisterLink")}<Link id="link" to="/register"> {t("login.linkToRegister")}</Link></span>
             </form>
         </>
     )

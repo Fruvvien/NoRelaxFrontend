@@ -6,8 +6,10 @@ import { User } from "../../models/Iuser";
 import { HttpClientRequests } from "../../services/http-client-requests";
 import {BrowserRouter as Router, Link,} from "react-router-dom";
 import {isEmail, isNotEmpty, hasMinLength } from '../../util/validation';
+import { useTranslation } from 'react-i18next';
 
 function Register(){
+    const {t} = useTranslation();
     const [formState, setFromState] = useState<User>({
         firstName: '',
         lastName: '',
@@ -69,15 +71,15 @@ function Register(){
         <>
             <form id="registerPage" onSubmit={handleSubmit}>
                 <div id="registerInputs">
-                    <h1>Register</h1>
+                    <h1>{t("register.title")}</h1>
                     <div id="nameInputs">
-                        <Input labelText="First Name" type="text" value={formState.firstName} style={{width: "100%"}} name="firstName" onChange={(event) => setValues('firstName', event)} ></Input>
-                        <Input labelText="Last Name" type="text" value={formState.lastName} style={{width: "100%"}} name="lastName" onChange={(event) => setValues('lastName', event)}></Input>
+                        <Input labelText={t("register.inputFirstName")} type="text" value={formState.firstName} style={{width: "100%"}} name="firstName" onChange={(event) => setValues('firstName', event)} ></Input>
+                        <Input labelText={t("register.inputLastName")} type="text" value={formState.lastName} style={{width: "100%"}} name="lastName" onChange={(event) => setValues('lastName', event)}></Input>
                     </div>
                 
                     <div id="emailPasswordInputs">
-                        <Input labelText="Email" type="email" value={formState.email} style={{width: "100%"}} name="email" onChange={(event) => setValues('email', event)}></Input>
-                        <Input labelText="Password" type="password" value={formState.password} style={{width: "100%"}} name="password" onChange={(event) => setValues('password', event)}></Input>
+                        <Input labelText={t("register.inputEmail")} type="email" value={formState.email} style={{width: "100%"}} name="email" onChange={(event) => setValues('email', event)}></Input>
+                        <Input labelText={t("register.inputPassword")} type="password" value={formState.password} style={{width: "100%"}} name="password" onChange={(event) => setValues('password', event)}></Input>
                     </div>
                 </div>
                 <ul id='errors'>
@@ -85,8 +87,8 @@ function Register(){
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
-                <ButtonInput buttonText="Submit" type="submit"></ButtonInput>
-                <Link id="linkToLogin"to="/login" >Login</Link>
+                <ButtonInput buttonText={t("register.button")} type="submit"></ButtonInput>
+                <span>{t("register.textNextToLoginLink")}<Link id="linkToLogin"to="/login" > {t("register.linkToLogin")}</Link></span>
             </form>
             
         </>
