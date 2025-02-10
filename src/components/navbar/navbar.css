@@ -1,0 +1,32 @@
+#toolbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 8vh;
+
+}
+
+#languageButtons{
+    display: flex;
+    gap: 10px;
+}
+
+
+@media (max-width: 1200px) {
+    #toolbar {
+        height: 10vh;
+    }
+}
+
+@media (max-width: 768px) {
+    #toolbar {
+        height: 11vh;
+    }
+}
+
+@media (max-width: 480px) {
+    #toolbar {
+        height: 11vh;
+    }
+}

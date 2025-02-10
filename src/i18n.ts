@@ -29,6 +29,13 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 button: "Submit",
                 textNextToLoginLink : "Already have an account?",
                 linkToLogin: "Login",
+            },
+            error:{
+                invalidEmail: "Invalid email address.",
+                invalidPassword: "You must provide a password with at least six characters",
+                invalidLastAndFirstName: "Please provide both your first and last name",
+                invalidEmptyField: "Cannot be an empty field",
+                emailIsExist: "This email address already exists",
             }
         },
 
@@ -53,6 +60,13 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             button: "Regisztráció",
             textNextToLoginLink : "Van már fiókod?",
             linkToLogin: "Jelentkezz be",
+          },
+          error:{
+            invalidEmail: "Hibás email cím.",
+            invalidPassword: "Legalább hat karakterből álló jelszót kell megadnod",
+            invalidLastAndFirstName: "Kérlek add meg mindkét neved",
+            invalidEmptyField: "Nem lehet üres mező",
+            emailIsExist: "Ez az email cím már létezik",
           }
         },
       }

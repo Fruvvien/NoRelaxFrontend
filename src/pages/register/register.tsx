@@ -5,7 +5,7 @@ import "./register.css";
 import { User } from "../../models/Iuser";
 import { HttpClientRequests } from "../../services/http-client-requests";
 import {BrowserRouter as Router, Link,} from "react-router-dom";
-import {isEmail, isNotEmpty, hasMinLength } from '../../util/validation';
+import {isEmail, isNotEmpty, hasMinLength, allIsNotEmpty } from '../../util/validation';
 import { useTranslation } from 'react-i18next';
 
 function Register(){
@@ -43,17 +43,20 @@ function Register(){
             else{
                  const newErrors: string[] = [];
                 
-                if(!isEmail(formState.email)){
-                    newErrors.push('Invalid email address.');
+                if(!isEmail(formState.email) && isNotEmpty(formState.email)){
+                    newErrors.push(t("error.invalidEmail"));
                 }
                 if(!isNotEmpty(formState.password) || !hasMinLength(formState.password, 5)){
-                    newErrors.push('You must provide a password with at least six characters');
+                    newErrors.push(t("error.invalidPassword"));
                 }
                 if(!isNotEmpty(formState.firstName) || !isNotEmpty(formState.lastName)){
-                    newErrors.push('Please provide both your first and last name');
+                    newErrors.push(t("error.invalidLastAndFirstName"));
+                }
+                if(!allIsNotEmpty(formState.firstName, formState.lastName, formState.email, formState.password)){
+                    newErrors.push(t("error.invalidEmptyField"));
                 }
                 if(!result){
-                    newErrors.push('This email address already exists');
+                    newErrors.push(t("error.emailIsExist"));
                 }
                 
                 setErrors(newErrors);
@@ -81,12 +84,12 @@ function Register(){
                         <Input labelText={t("register.inputEmail")} type="email" value={formState.email} style={{width: "100%"}} name="email" onChange={(event) => setValues('email', event)}></Input>
                         <Input labelText={t("register.inputPassword")} type="password" value={formState.password} style={{width: "100%"}} name="password" onChange={(event) => setValues('password', event)}></Input>
                     </div>
-                </div>
-                <ul id='errors'>
+                    <ul id='errors'>
                         {errors.map((error) => (
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
+                </div> 
                 <ButtonInput buttonText={t("register.button")} type="submit"></ButtonInput>
                 <span>{t("register.textNextToLoginLink")}<Link id="linkToLogin"to="/login" > {t("register.linkToLogin")}</Link></span>
             </form>

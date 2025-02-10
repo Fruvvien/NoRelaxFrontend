@@ -30,3 +30,8 @@
 #linkToLogin{
     text-decoration: none;
 }
+#errors{
+    width: 100%;
+    font-size: small;
+    color: red;
+}

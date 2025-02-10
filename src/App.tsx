@@ -10,10 +10,12 @@ import {
 } from "react-router-dom";
 import PrivateRoute from './util/privateRoute';
 import Landing from './pages/landing/landing';
+import Navbar from './components/navbar/navbar';
 
 function App() {
   return(
       <Router>
+        <Navbar />
         <Routes>
                 <Route path="/" element={<PrivateRoute childrenComp={<Landing />}/>} />
                 <Route path="/login" element={<Login />} />

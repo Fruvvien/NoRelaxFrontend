@@ -24,8 +24,6 @@ function Login(){
         }))
        
     }
-    
-    
 
     async function handleSubmit(e: React.FormEvent<HTMLElement>) {
         e.preventDefault();
@@ -33,43 +31,33 @@ function Login(){
             email: formState.email as string,
             password: formState.password as string,
         }
-
-        if(user){
-            const result = await HttpClientRequests.postData(user, "auth/login");
-            console.log(result);
-           
-            if(result){
-                setErrors([])
-                navigate('/')
-                alert("Success login")
-              
-            }
-            else{
-                const newErrors: string[] = [];
-
-                if(!isEmail(formState.email)){
-                    newErrors.push('Invalid email address.');
-                }
-                if(!isNotEmpty(formState.password) || !hasMinLength(formState.password, 5)){
-                    newErrors.push('You must provide a password with at least six characters');
-                }
-                
-                setErrors(newErrors);
-                if(errors.length > 0){
-                    return {errors};
-                }
-               
-                return {errors: null}
-
-               
-            }
-        }
+        const result = await HttpClientRequests.postData(user, "auth/login");
+        console.log(result);
         
-       /*  setFormState({
-            email: "",
-            password: ""
-        }); */
-     
+        if(result){
+            setErrors([])
+            navigate('/')
+            alert("Success login")
+            
+        }
+        else{
+            const newErrors: string[] = [];
+            if(!isEmail(formState.email) && isNotEmpty(formState.email)){
+                newErrors.push(t("error.invalidEmail"));
+            }
+            if(!isNotEmpty(formState.password) || !hasMinLength(formState.password, 5)){
+                newErrors.push(t("error.invalidPassword"));
+            }
+            if(!isNotEmpty(formState.email) || !isNotEmpty(formState.password)){
+                newErrors.push(t("error.invalidEmptyField"));
+            }
+            setErrors(newErrors);
+            if(errors.length > 0){
+                return {errors};
+            }
+            
+            return {errors: null}
+        }
     }
     
     return(
