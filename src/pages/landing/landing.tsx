@@ -13,8 +13,11 @@ function Landing(){
     }
     return(
         <>
-        <p>asd</p>
-        <ButtonInput buttonText="Logout" type="button" onClick={deleteFromLocalStorage}></ButtonInput>
+        <div id="landing">
+            <p>asd</p>
+            <ButtonInput buttonText="Logout" type="button" onClick={deleteFromLocalStorage}></ButtonInput>
+        </div>
+      
         </>
 
     )

@@ -15,13 +15,14 @@ import Navbar from './components/navbar/navbar';
 function App() {
   return(
       <Router>
-        <Navbar />
-        <Routes>
-                <Route path="/" element={<PrivateRoute childrenComp={<Landing />}/>} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="*" element={<PrivateRoute childrenComp={<Landing />}/>} />
-        </Routes>
+        <div style={{ marginTop: '10vh' }}>
+          <Routes>
+            <Route path="/" element={<PrivateRoute childrenComp={<Landing />} />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="*" element={<PrivateRoute childrenComp={<Landing />} />} />
+          </Routes>
+      </div>
       </Router>
   )
 }

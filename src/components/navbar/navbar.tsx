@@ -20,13 +20,14 @@ function Navbar() {
       };
     const [t, i18n] = useTranslation();
   return (
+    <div >
       <ThemeProvider theme={theme}>
-          <Box sx={{ flexGrow: 1 }}>
+          <Box id="navbar" sx={{ flexGrow: 1 }}>
               <AppBar>
                 <div id="toolbar">
-                  <div>
+                 {/*  <div>
                     <Variants></Variants>
-                  </div>
+                  </div> */}
                   <div id="languageButtons">
                     {Object.keys(lngs).map((lng) => (
                     <ButtonInput key={lng} buttonText={lngs[lng].nativeName}  type="submit" onClick={() => {i18n.changeLanguage(lng);  }}>
@@ -38,6 +39,7 @@ function Navbar() {
               </AppBar>
           </Box>
       </ThemeProvider>
+      </div>
   );
 }
 

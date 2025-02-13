@@ -7,26 +7,16 @@
 
 }
 
+.css-h5kect-MuiPaper-root-MuiAppBar-root {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+}
 #languageButtons{
     display: flex;
     gap: 10px;
 }
 
 
-@media (max-width: 1200px) {
-    #toolbar {
-        height: 10vh;
-    }
-}
-
-@media (max-width: 768px) {
-    #toolbar {
-        height: 11vh;
-    }
-}
-
-@media (max-width: 480px) {
-    #toolbar {
-        height: 11vh;
-    }
-}
