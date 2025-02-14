@@ -5,13 +5,14 @@ const itemVariants = {
     open: {
         y: 0,
         opacity: 1,
+        
         transition: {
             y: { stiffness: 1000, velocity: -100 },
         },
     },
     closed: {
         y: 50,
-        opacity: 0,
+        opacity: 0, 
         transition: {
             y: { stiffness: 1000 },
         },
@@ -22,6 +23,7 @@ const listItem: React.CSSProperties = {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start",
+    zIndex: 1000,
     padding: 0,
     margin: 0,
     listStyle: "none",

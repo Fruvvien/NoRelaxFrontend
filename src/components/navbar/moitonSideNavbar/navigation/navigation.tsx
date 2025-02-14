@@ -13,6 +13,7 @@ const list: React.CSSProperties = {
     listStyle: "none",
     padding: 25,
     margin: 0,
+    zIndex: 999,
     position: "absolute",
     top: 80,
     width: 230,

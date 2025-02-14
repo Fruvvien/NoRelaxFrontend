@@ -103,8 +103,8 @@ const MenuToggle = ({ toggle }: { toggle: () => void }) => (
 const container: React.CSSProperties = {
     display: "flex",
     position: "fixed",
-    top: 0,
-    left: 0,
+    top: -15,
+    left: -15,
     justifyContent: "start",
     alignItems: "stretch",
     flex: 1,
