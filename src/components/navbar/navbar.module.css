@@ -1,12 +1,26 @@
-#toolbar{
+.toolbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    height: 8vh;
+    height: 6vh;
 
 }
-#languageButtons{
+
+
+.toolbar-start{
+
+}
+
+.toolbar-middle{
+
+}
+
+.toolbar-end{
+
+}
+
+.language-buttons{
     display: flex;
     gap: 10px;
 }

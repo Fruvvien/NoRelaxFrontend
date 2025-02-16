@@ -1,26 +1,20 @@
 import { motion } from "framer-motion"
 import { MenuItem } from "../menuitems/menuitem"
+import classes from "./navigation.module.css"
 
 const navVariants = {
     open: {
+        display:"block",
         transition: { staggerChildren: 0.07, delayChildren: 0.2 },
     },
     closed: {
+        display:"none",
         transition: { staggerChildren: 0.05, staggerDirection: -1 },
     },
 }
-const list: React.CSSProperties = {
-    listStyle: "none",
-    padding: 25,
-    margin: 0,
-    zIndex: 999,
-    position: "absolute",
-    top: 80,
-    width: 230,
-  }
 
 export const Navigation = () => (
-    <motion.ul style={list} variants={navVariants}>
+    <motion.ul className={classes.list} variants={navVariants}>
         {[0, 1, 2, 3, 4].map((i) => (
             <MenuItem i={i} key={i} />
         ))}

@@ -4,13 +4,13 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 i18n.use(LanguageDetector).use(initReactI18next).init({
     debug: true,
-    fallbackLng: 'hu',
+    fallbackLng: 'HU',
     interpolation: {
       escapeValue: false, 
     },
     returnObjects: true,
     resources: {
-      en: {
+      EN: {
         translation: {
             login:  {
                 title: "Login",
@@ -41,7 +41,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
 
 
       },
-      hu: {
+      HU: {
         translation: {
           login: {
             title: "Bejelentkezés",

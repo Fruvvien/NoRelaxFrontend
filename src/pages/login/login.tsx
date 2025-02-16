@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Input from '../../components/inputs/input';
 import ButtonInput from '../../components/buttons/buttonInput';
-import './login.css';
+import  classes from './login.module.css';
 import { HttpClientRequests } from '../../services/http-client-requests';
 import {BrowserRouter as Router, Link, } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
@@ -62,21 +62,21 @@ function Login(){
     
     return(
         <>
-            <form id="loginPage" onSubmit={handleSubmit}>
-                <div id='loginInputsAndTitle'>
+            <form  className={classes["login-page"]} onSubmit={handleSubmit}>
+                <div className={classes["login-inputs-and-title"]} >
                     <h1>{t("login.title")}</h1>
                     <div id='loginInputs'>
                         <Input labelText={t("login.inputEmail")} type="email" style={undefined} name='email' value={formState.email} onChange={(event)=> setValues("email", event)}></Input>
                         <Input labelText={t("login.inputPassword")} type="password" style={undefined} name='password' value={formState.password}  onChange={(event)=> setValues("password", event)}></Input>
                     </div>
-                    <ul id='errors'>
+                    <ul className={classes.error}>
                         {errors.map((error) => (
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
                     <ButtonInput buttonText={t("login.button")} type='submit'></ButtonInput>
                 </div>
-                <span>{t("login.textNextToRegisterLink")}<Link id="link" to="/register"> {t("login.linkToRegister")}</Link></span>
+                <span>{t("login.textNextToRegisterLink")}<Link className={classes.link} to="/register"> {t("login.linkToRegister")}</Link></span>
             </form>
         </>
     )

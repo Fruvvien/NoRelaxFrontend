@@ -1,4 +1,4 @@
-#loginPage{
+.login-page{
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -8,7 +8,7 @@
     width: 100%;
 }
 
-#loginInputsAndTitle{
+.login-inputs-and-title{
     font-size: 1.5rem;
     font-weight: bold;
     margin-left: 20%;
@@ -19,11 +19,11 @@
 
 }
 
-#link{
+.link{
     text-decoration: none;
 }
 
-#errors{
+.errors{
     width: 100%;
     font-size: small;
     color: red;

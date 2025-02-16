@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Input from "../../components/inputs/input";
 import ButtonInput from "../../components/buttons/buttonInput";
-import "./register.css";
+import classes from "./register.module.css";
 import { User } from "../../models/Iuser";
 import { HttpClientRequests } from "../../services/http-client-requests";
 import {BrowserRouter as Router, Link,} from "react-router-dom";
@@ -72,26 +72,26 @@ function Register(){
 
     return (
         <>
-            <form id="registerPage" onSubmit={handleSubmit}>
-                <div id="registerInputs">
+            <form className={classes["register-page"]} onSubmit={handleSubmit}>
+                <div className={classes["register-inputs"]}>
                     <h1>{t("register.title")}</h1>
-                    <div id="nameInputs">
+                    <div className={classes["name-inputs"]}>
                         <Input labelText={t("register.inputFirstName")} type="text" value={formState.firstName} style={{width: "100%"}} name="firstName" onChange={(event) => setValues('firstName', event)} ></Input>
                         <Input labelText={t("register.inputLastName")} type="text" value={formState.lastName} style={{width: "100%"}} name="lastName" onChange={(event) => setValues('lastName', event)}></Input>
                     </div>
                 
-                    <div id="emailPasswordInputs">
+                    <div className={classes["email-password-inputs"]}>
                         <Input labelText={t("register.inputEmail")} type="email" value={formState.email} style={{width: "100%"}} name="email" onChange={(event) => setValues('email', event)}></Input>
                         <Input labelText={t("register.inputPassword")} type="password" value={formState.password} style={{width: "100%"}} name="password" onChange={(event) => setValues('password', event)}></Input>
                     </div>
-                    <ul id='errors'>
+                    <ul className={classes.errors}>
                         {errors.map((error) => (
                             <li key={error}>{error}</li>
                         ))}
                     </ul>
                 </div> 
                 <ButtonInput buttonText={t("register.button")} type="submit"></ButtonInput>
-                <span>{t("register.textNextToLoginLink")}<Link id="linkToLogin"to="/login" > {t("register.linkToLogin")}</Link></span>
+                <span>{t("register.textNextToLoginLink")}<Link className={classes["link-to-login"]} to="/login" > {t("register.linkToLogin")}</Link></span>
             </form>
             
         </>
