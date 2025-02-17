@@ -6,6 +6,7 @@ import { ThemeProvider } from "@emotion/react";
 import {theme} from "../../util/colorTheme";
 import classes from "./navbar.module.css";
 import Selector from "../selector/selector";
+import NoRelaxLogo from "../../assets/NoRelaxLogo.png";
 
 function Navbar() {
     const text = ["HU", "EN"];
@@ -21,11 +22,7 @@ function Navbar() {
                       </div>
                   </div>
                   <div className={classes["toolbar-middle"]}>
-                      <div>
-                        <p>
-                          middle
-                        </p>
-                      </div>
+                      <img className={classes.logo} alt="" src={NoRelaxLogo} />
                   </div>
                   <div className={classes["toolbar-end"]}>
                       <Selector number={2} text={text} value={text} />

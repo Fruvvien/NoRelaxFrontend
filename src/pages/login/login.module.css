@@ -5,7 +5,9 @@
     align-items: center;
     align-content: center;
     height: 100vh;
-    width: 100%;
+    width: 100%;    
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 5%, rgba(0,0,0,1) 77%);
 }
 
 .login-inputs-and-title{
@@ -16,15 +18,32 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-
 }
 
+
+
 .link{
+    color: white;
     text-decoration: none;
+}
+.link:hover{
+    color: lightgray
 }
 
 .errors{
     width: 100%;
     font-size: small;
     color: red;
+}
+.background{
+    padding: 3%;
+    padding-top: 2px;
+    border-radius: 30px ;
+    padding-left: 13%;
+    padding-right: 13%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
 }

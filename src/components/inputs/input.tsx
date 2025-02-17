@@ -1,5 +1,5 @@
 import React from 'react';
-import './input.css';
+import classes from './input.module.css';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
@@ -18,11 +18,21 @@ const Input: React.FC<Input> = ({labelText, type, style, name, onChange}) =>{
     return (
         <Box
         component="form"
-        sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
+        sx={{ '& > :not(style)': { m: 1, width: '30ch', color:"white" } }}
         noValidate
-        autoComplete="off"
+        autoComplete="on"
+        className={classes.container}
         >
-        <TextField id="outlined-basic"  label={labelText} variant="outlined" style={style}  type={type} name={name} onChange={onChange}/>
+            <TextField   
+                className={classes.inputBackground} 
+                id="outlined-basic"  
+                label={labelText} 
+                variant="filled" 
+                style={style}  
+                type={type} 
+                name={name} 
+                onChange={onChange}
+                />
         </Box>
     )
 
