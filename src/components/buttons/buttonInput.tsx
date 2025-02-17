@@ -17,15 +17,14 @@ function ButtonInput(props: {hoverColor?:string, buttonText: string, style?: "st
 
     const inputStyle = {
         backgroundColor: isHovered ? props.hoverColor : 'white', 
-    
+        color:"black"
     };
 
 
     return (
-        <Stack spacing={2} direction="row">
+        <Stack spacing={2} direction="row"   className={classes["background-color"]} >
             <Button 
                 style={inputStyle}
-                className={classes["background-color"]} 
                 variant="contained" 
                 onClick={props.onClick} 
                 onMouseEnter={handleMouseEnter} 
