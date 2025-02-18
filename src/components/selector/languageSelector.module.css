@@ -1,0 +1,16 @@
+.custom-select {
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    cursor: pointer; /* Add cursor pointer to indicate clickable elements */
+}
+
+.selected-option{
+    background-color: white;
+    border-radius: 30px;
+}

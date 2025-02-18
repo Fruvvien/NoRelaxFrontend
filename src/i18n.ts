@@ -36,6 +36,13 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 invalidLastAndFirstName: "Please provide both your first and last name",
                 invalidEmptyField: "Cannot be an empty field",
                 emailIsExist: "This email address already exists",
+            },
+            leftSideBar:{
+              home: "Home",
+              reserve: "Reservetion",
+              openingHours: "Opening Hours",
+              download: "Download",
+              aboutUs: "About Us",
             }
         },
 

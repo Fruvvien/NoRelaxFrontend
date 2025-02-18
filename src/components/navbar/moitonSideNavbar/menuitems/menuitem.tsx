@@ -8,9 +8,11 @@ import img5 from "../../../../assets/navbarImages/multipleUsersIcon.png";
 import { useTranslation } from "react-i18next";
 
 
+
+
 const colors = ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"]
 const img = [img1, img2, img3, img4, img5]
-const text = ["Kezdőlap", "Asztalfoglalás", "Reservations", "Downloads", "Users"]
+
 const itemVariants = {
     open: {
         y: 0,
@@ -48,6 +50,14 @@ const textPlaceholder: React.CSSProperties = {
 }
 
 export const MenuItem = ({ i }: { i: number }) => {
+    const {t} = useTranslation();
+    const text = [
+        t("leftSideBar.home"), 
+        t("leftSideBar.reserve"), 
+        t("leftSideBar.openingHours"), 
+        t("leftSideBar.download"), 
+        t("leftSideBar.aboutUs")
+    ]
     const border = `2px solid ${colors[i]}`
     return (
         <motion.li
