@@ -1,6 +1,5 @@
 import React from "react"
 
-
 function Option(props: {img?: string, text?: string, value: string | undefined}){
     
    
@@ -8,7 +7,7 @@ function Option(props: {img?: string, text?: string, value: string | undefined})
     return(
         <>
             <option value={props.value}>
-                {props.text}
+               <img src={props.img} alt=""/> 
             </option>
         </>
     )

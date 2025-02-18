@@ -6,10 +6,13 @@ import { ThemeProvider } from "@emotion/react";
 import {theme} from "../../util/colorTheme";
 import classes from "./navbar.module.css";
 import Selector from "../selector/selector";
-import NoRelaxLogo from "../../assets/NoRelaxLogo.png";
+import NoRelaxLogo from "../../assets/NoRelaxLogo.png"; 
+import HunFlag from "../../assets/navbarImages/hunFlag.png";
+import UkFlag from "../../assets/navbarImages/ukFlag.png";
 
 function Navbar() {
     const text = ["HU", "EN"];
+    const image = [HunFlag, UkFlag];
   return (
     <div >
       <ThemeProvider theme={theme}>
@@ -25,7 +28,7 @@ function Navbar() {
                       <img className={classes.logo} alt="" src={NoRelaxLogo} />
                   </div>
                   <div className={classes["toolbar-end"]}>
-                      <Selector number={2} text={text} value={text} />
+                      <Selector number={2} text={text} value={text} img={image}/>
                     <div className={classes["language-buttons"]} >
                     </div>
                   </div>
