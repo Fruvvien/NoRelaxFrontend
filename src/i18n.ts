@@ -67,7 +67,16 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             invalidLastAndFirstName: "Kérlek add meg mindkét neved",
             invalidEmptyField: "Nem lehet üres mező",
             emailIsExist: "Ez az email cím már létezik",
-          }
+          },
+          leftSideBar: {
+            home: "Főoldal",
+            reserve: "Foglalás",
+            openingHours: "Nyitvatartás",
+            download: "Letöltés",
+            aboutUs: "Rólunk",
+            
+          },
+
         },
       }
     }
