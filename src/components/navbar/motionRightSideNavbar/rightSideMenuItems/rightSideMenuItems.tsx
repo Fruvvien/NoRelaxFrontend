@@ -5,6 +5,8 @@ import img2 from "../../../../assets/navbarImages/tableIcon.png";
 import img3 from "../../../../assets/navbarImages/clockIcon.png";
 import img4 from "../../../../assets/navbarImages/downloadIcon.png";
 import img5 from "../../../../assets/navbarImages/multipleUsersIcon.png";
+import img6 from "../../../../assets/navbarImages/multipleUsersIcon.png";
+
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "../../../../hooks/app.hooks";
 import { IUsersTokenData } from "../../../../models/stateTypeUser";
@@ -46,16 +48,15 @@ const textPlaceholder: React.CSSProperties = {
     height: 20,
     flex: 1,
 }
-function menuItemsEvents(name: string): void {
-
+function menuItemsEvents(name: string, t: (key: string) => string): void {
+    
+    
     switch(name){
-      case name = "logout": 
+      case name = t("leftSideBar.logout"):
         localStorage.removeItem("authToken");
         window.location.reload();
-        break;
+      break  
     }
-   
-    // navigate("/");
 }
 
 export const MenuItem = () => {
@@ -75,7 +76,7 @@ export const MenuItem = () => {
     }
     if(getAuthToken){
         
-        img.push (img1, img2, img3, img4, img5);
+        img.push (img1, img2, img3, img4, img5, img6 );
         text.push (
             t("leftSideBar.home"), 
             t("leftSideBar.reserve"), 
@@ -100,7 +101,7 @@ export const MenuItem = () => {
                         <img src={image} style={{ width: "100%", height: "100%" }} />
                     </div>
                     <div style={{ ...textPlaceholder, color: "white", fontSize: "24px" }}>
-                        <a  onClick={() => menuItemsEvents(text[i])} >{text[i]}</a>
+                        <a  onClick={() => menuItemsEvents(text[i],t)} >{text[i]}</a>
                     </div>
                   
                 </motion.li>

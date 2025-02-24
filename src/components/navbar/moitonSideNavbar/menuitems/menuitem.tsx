@@ -48,14 +48,10 @@ const textPlaceholder: React.CSSProperties = {
 }
 function menuItemsEvents(name: string): void {
 
-    switch(name){
-      case name = "logout": 
-        localStorage.removeItem("authToken");
-        window.location.reload();
-        break;
-    }
+   /*  switch(name){
+      case
+    } */
    
-    // navigate("/");
 }
 
 export const MenuItem = () => {
@@ -82,7 +78,6 @@ export const MenuItem = () => {
             t("leftSideBar.openingHours"), 
             t("leftSideBar.download"), 
             t("leftSideBar.aboutUs"),
-            t("leftSideBar.logout")
            
         )
     }
