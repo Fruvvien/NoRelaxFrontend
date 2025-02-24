@@ -43,6 +43,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               openingHours: "Opening Hours",
               download: "Download",
               aboutUs: "About Us",
+              logout: "Logout"
             }
         },
 
@@ -81,6 +82,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             openingHours: "Nyitvatartás",
             download: "Letöltés",
             aboutUs: "Rólunk",
+            logout: "Kijelentkezés"
             
           },
 

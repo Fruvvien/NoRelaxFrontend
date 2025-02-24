@@ -14,7 +14,7 @@ import { useAppDispatch } from './hooks/app.hooks';
 import { getToken } from './redux/store/userReduxState/userSlice';
 
 function App() {
-  const dispatch = useAppDispatch();
+ const dispatch = useAppDispatch();
   dispatch(getToken());
   return(
       <Router>

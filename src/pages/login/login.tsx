@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import {isEmail, isNotEmpty, hasMinLength } from '../../util/validation';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../hooks/app.hooks';
-import {  getUserId } from '../../redux/store/userReduxState/userSlice';
+import {  getToken, getUserId } from '../../redux/store/userReduxState/userSlice';
 import { IUsersTokenData } from '../../models/stateTypeUser';
 
 
@@ -41,7 +41,8 @@ function Login(){
         console.log(result);
         
         if(result){
-          
+            
+            dispatch(getToken());
             dispatch(getUserId(result.userId))
             setErrors([])
             navigate('/')

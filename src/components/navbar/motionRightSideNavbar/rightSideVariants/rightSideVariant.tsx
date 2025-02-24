@@ -1,10 +1,10 @@
 import type { Variants } from "framer-motion"
 import { color, motion } from "framer-motion"
 import { useEffect, useRef, useState } from "react"
-import { Navigation } from "../navigation/navigation"
+import { Navigation } from "../rightSideNavigation/rightSideNavigation"
 import { ThemeProvider } from "@emotion/react"
 import { theme } from "../../../../util/colorTheme"
-import classes from "./variant.module.css"
+import classes from "./rightSideVariant.module.css"
 
 export default function Variants() {
     const [isOpen, setIsOpen] = useState(false)
@@ -30,7 +30,7 @@ export default function Variants() {
     
     const sidebarVariants = {
         open: (height = 1000) => ({
-            clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+            clipPath: `circle(${height * 2 + 200}px at calc(100% - 40px) 40px)`,
             display: "block",
             transition: {
                 type: "spring",
@@ -39,7 +39,7 @@ export default function Variants() {
             },
         }),
         closed: {
-            clipPath: "circle(30px at 20px 20px)",
+            clipPath: "circle(30px at calc(100% - 20px) 20px)",
             display: "none",
             transition: {
                 delay: 0.2,

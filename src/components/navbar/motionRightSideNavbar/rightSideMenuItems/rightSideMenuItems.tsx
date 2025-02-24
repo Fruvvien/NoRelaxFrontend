@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import classes from "./menuitem.module.css"
+import classes from "./rightSideMenuItems.module.css"
 import img1 from "../../../../assets/navbarImages/houseIcon.png";
 import img2 from "../../../../assets/navbarImages/tableIcon.png";
 import img3 from "../../../../assets/navbarImages/clockIcon.png";

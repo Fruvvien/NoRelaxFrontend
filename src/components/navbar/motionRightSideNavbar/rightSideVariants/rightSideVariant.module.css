@@ -1,0 +1,28 @@
+.background{
+    background-color: black;
+    position: absolute;
+    top: 0px;
+    left: calc(100% - 300px);
+    bottom: 0px;
+    width: 300px;
+    z-index: 1101;
+}
+
+.toggle-container{
+  position: absolute;
+  top: 5px;
+  left: calc(100% - 50px);
+  outline: none;
+  border: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: transparent;
+  z-index: 1103;
+}
+.nav{
+  width: 300px;
+}

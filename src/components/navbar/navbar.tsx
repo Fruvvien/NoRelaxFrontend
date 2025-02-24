@@ -11,6 +11,7 @@ import HunFlag from "../../assets/navbarImages/hunFlag.png";
 import UkFlag from "../../assets/navbarImages/ukFlag.png";
 
 function Navbar() {
+ 
     const text = ["HU", "EN"];
     const image = [HunFlag, UkFlag];
   return (
