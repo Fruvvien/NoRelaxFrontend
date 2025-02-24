@@ -10,8 +10,12 @@ import {
 } from "react-router-dom";
 import PrivateRoute from './util/privateRoute';
 import Landing from './pages/landing/landing';
+import { useAppDispatch } from './hooks/app.hooks';
+import { getToken } from './redux/store/userReduxState/userSlice';
 
 function App() {
+  const dispatch = useAppDispatch();
+  dispatch(getToken());
   return(
       <Router>
           <Routes>

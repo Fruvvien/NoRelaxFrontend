@@ -1,5 +1,14 @@
 import { enviroment } from "../environments/environment";
 
+
+interface IauthDatas{
+    id: number
+    userId:number,
+    token:string,
+    createdAt: string,
+   
+}
+
 export class HttpClientRequests {
     
     
@@ -24,10 +33,11 @@ export class HttpClientRequests {
             return false;
            
         }
-        const result = await response.json();
+        const result: IauthDatas = await response.json();
         console.log("Success post!");
         if(result.token){
             localStorage.setItem('authToken', result.token);
+
         }
         return result
     }

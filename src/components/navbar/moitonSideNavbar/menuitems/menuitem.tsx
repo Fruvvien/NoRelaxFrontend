@@ -6,12 +6,10 @@ import img3 from "../../../../assets/navbarImages/clockIcon.png";
 import img4 from "../../../../assets/navbarImages/downloadIcon.png";
 import img5 from "../../../../assets/navbarImages/multipleUsersIcon.png";
 import { useTranslation } from "react-i18next";
+import { useAppSelector } from "../../../../hooks/app.hooks";
+import { IUsersTokenData } from "../../../../models/stateTypeUser";
 
 
-
-
-const colors = ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"]
-const img = [img1, img2, img3, img4, img5]
 
 const itemVariants = {
     open: {
@@ -49,31 +47,51 @@ const textPlaceholder: React.CSSProperties = {
     flex: 1,
 }
 
-export const MenuItem = ({ i }: { i: number }) => {
+export const MenuItem = () => {
     const {t} = useTranslation();
-    const text = [
-        t("leftSideBar.home"), 
-        t("leftSideBar.reserve"), 
-        t("leftSideBar.openingHours"), 
-        t("leftSideBar.download"), 
-        t("leftSideBar.aboutUs")
-    ]
-    const border = `2px solid ${colors[i]}`
-    return (
-        <motion.li
-            className={classes["list-item"]}
-            variants={itemVariants}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-        >
-            <div style={{ ...iconPlaceholder}} >
-            <img src={img[i]} alt={`icon-${i}`} style={{ width: "100%", height: "100%" }} />
-            </div>
-            
-
-            <div style={{ ...textPlaceholder,  color: "white", fontSize: "24px"}} >
-                {text[i]}
-            </div>
-        </motion.li>
+    const text: string[] = [];
+    const img: string[] = [];
+    const getAuthToken = useAppSelector((state: {auth: IUsersTokenData}) => state.auth.token);
+    
+    if(!getAuthToken){
+        
+        img.push(img3, img4, img5);
+        text.push (
+            t("leftSideBar.openingHours"), 
+            t("leftSideBar.download"), 
+            t("leftSideBar.aboutUs")
+        )
+    }
+    if(getAuthToken){
+        
+        img.push (img1, img2, img3, img4, img5);
+        text.push (
+            t("leftSideBar.home"), 
+            t("leftSideBar.reserve"), 
+            t("leftSideBar.openingHours"), 
+            t("leftSideBar.download"), 
+            t("leftSideBar.aboutUs")
+        )
+    }
+    return(
+        <>
+            {img.map((image, i) => (
+                <motion.li
+                    key={i}
+                    className={classes["list-item"]}
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                >
+                    <div style={{ ...iconPlaceholder }}>
+                        <img src={image} style={{ width: "100%", height: "100%" }} />
+                    </div>
+                    <div style={{ ...textPlaceholder, color: "white", fontSize: "24px" }}>
+                        {text[i]}
+                    </div>
+                </motion.li>
+            ))}
+        </>
     )
+   
 }

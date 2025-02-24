@@ -4,12 +4,13 @@ import ButtonInput from "../../components/buttons/buttonInput";
 import classes from "./register.module.css";
 import { User } from "../../models/Iuser";
 import { HttpClientRequests } from "../../services/http-client-requests";
-import {BrowserRouter as Router, Link,} from "react-router-dom";
+import {BrowserRouter as Router, Link, useNavigate,} from "react-router-dom";
 import {isEmail, isNotEmpty, hasMinLength, allIsNotEmpty } from '../../util/validation';
 import { useTranslation } from 'react-i18next';
 
 
 function Register(){
+     const navigate = useNavigate();
     const {t} = useTranslation();
     const [formState, setFromState] = useState<User>({
         firstName: '',
@@ -40,6 +41,7 @@ function Register(){
             if(result){
                 setErrors([]);
                 alert("Success create!");
+                navigate("/login")
             }
             else{
                  const newErrors: string[] = [];
