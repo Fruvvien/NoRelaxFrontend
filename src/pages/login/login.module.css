@@ -23,11 +23,11 @@
 
 
 .link{
-    color: white;
+    color: #6A99D7;
     text-decoration: none;
 }
 .link:hover{
-    color: lightgray
+    color: #0E6BE3;
 }
 
 .errors{
@@ -41,9 +41,14 @@
     border-radius: 30px ;
     padding-left: 13%;
     padding-right: 13%;
-    background-color: black;
+    background-image: url("../.././assets/loginImages/LoginPage.png");
     display: flex;
     align-items: center;
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
     flex-direction: column;
     color: white;
 }
+
+

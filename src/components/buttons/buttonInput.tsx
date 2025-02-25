@@ -17,7 +17,11 @@ function ButtonInput(props: {hoverColor?:string, buttonText: string, style?: "st
 
     const inputStyle = {
         backgroundColor: isHovered ? props.hoverColor : 'white', 
-        color:"black"
+        color:"black",
+        fontFamily: "Pirata One,serif",
+        fontWeight: 400,
+        fontStyle: "normal",
+        
     };
 
 
