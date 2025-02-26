@@ -46,7 +46,7 @@ function Login(){
             dispatch(getUserId(result.userId))
             setErrors([])
             navigate('/')
-            alert("Success login")
+            alert("Login successful!")
             
         }
         else{
