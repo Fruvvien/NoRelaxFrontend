@@ -10,7 +10,8 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../hooks/app.hooks';
 import {  getToken, getUserId } from '../../redux/store/userReduxState/userSlice';
 import { IUsersTokenData } from '../../models/stateTypeUser';
-
+import img from "../../assets/loginImages/loginKeyIcon.png"
+import cornerImg from "../../assets/pageImages/cornerDecorator.png"
 
 function Login(){
 
@@ -73,8 +74,17 @@ function Login(){
        
             <form  className={classes["login-page"]} onSubmit={handleSubmit}>
                 <div className={classes.background}>
-                                <Input labelText={t("login.inputEmail")} type="email" style={undefined} name='email' value={formState.email} onChange={(event)=> setValues("email", event)}></Input>
-                                <Input labelText={t("login.inputPassword")} type="password" style={undefined} name='password' value={formState.password}  onChange={(event)=> setValues("password", event)}></Input>
+                            <span><img className={classes["corner_img1"]} src={cornerImg} alt="" /></span>
+                            <span><img className={classes["corner_img2"]} src={cornerImg} alt="" /></span>
+                            <span><img className={classes["corner_img3"]} src={cornerImg} alt="" /></span>
+                            <span><img className={classes["corner_img4"]} src={cornerImg} alt="" /></span>
+
+                            <div className={classes["login-img-div"]}>
+                                <img className={classes["login-img"]} src={img} alt="" />
+                            </div>
+                            
+                            <Input labelText={t("login.inputEmail")} type="email" style={undefined} name='email' value={formState.email} onChange={(event)=> setValues("email", event)}></Input>
+                            <Input labelText={t("login.inputPassword")} type="password" style={undefined} name='password' value={formState.password}  onChange={(event)=> setValues("password", event)}></Input>
                             
                             <ul className={classes.error}>
                                 {errors.map((error) => (

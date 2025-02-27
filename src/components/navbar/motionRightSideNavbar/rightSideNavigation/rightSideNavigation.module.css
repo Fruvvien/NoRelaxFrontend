@@ -10,13 +10,20 @@
 }
 
 
-@media screen and (min-width: 768px ) { 
+@media (min-width: 320px)  { 
     .list{
-      left: calc(100% - 290px);
+      right: calc(100% - 25px);
     }
 }
-@media screen and (max-width:375px) {
-    .list{
-        left: calc(100% - 120px);
-      }
+@media screen and (min-width:375px) {
+  .list{
+    right: calc(100% - 84px);
+  }
+}
+
+@media screen and (min-width: 1440px) 
+{
+  .list{
+    right: calc(100% - 310px);
+  }
 }

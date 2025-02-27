@@ -11,6 +11,8 @@
 }
 
 .selected-option{
+    width: 20px;
+    padding: 3px;
     background-color: white;
     border-radius: 30px;
 }

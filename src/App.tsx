@@ -12,6 +12,7 @@ import PrivateRoute from './util/privateRoute';
 import Landing from './pages/landing/landing';
 import { useAppDispatch } from './hooks/app.hooks';
 import { getToken } from './redux/store/userReduxState/userSlice';
+import RightSideBar from './components/navbar/motionRightSideNavbar/rightSideBar/rightSideBar';
 
 function App() {
  const dispatch = useAppDispatch();
@@ -19,10 +20,10 @@ function App() {
   return(
       <Router>
           <Routes>
-            <Route path="/" element={<PrivateRoute childrenComp={<Landing />} />} />
+            <Route path="/" element={<PrivateRoute childrenComp={<><Landing /><RightSideBar /></>} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="*" element={<PrivateRoute childrenComp={<Landing />} />} />
+            <Route path="*" element={<PrivateRoute childrenComp={<><Landing/><RightSideBar /></>} />} />
           </Routes>
       </Router>
   )

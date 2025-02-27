@@ -9,13 +9,14 @@ import './i18n.ts'
 import Variants from './components/navbar/moitonSideNavbar/variants/variant.tsx'
 import store from './redux/store/store.ts'
 import RightSideBar from './components/navbar/motionRightSideNavbar/rightSideBar/rightSideBar.tsx'
- 
+
+
 createRoot(document.getElementById('root')!).render(
   
   <Provider store={store}>
     <Navbar />
     <Variants></Variants>
-    <RightSideBar></RightSideBar>
+    
     <App />
   </Provider>,
 )
