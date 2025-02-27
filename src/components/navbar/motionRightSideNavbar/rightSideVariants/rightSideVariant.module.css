@@ -26,3 +26,21 @@
 .nav{
   width: 300px;
 }
+
+@media screen and (min-width: 320px ) {
+  .toggle-container{
+    left: calc(100% - 50px);
+  }
+  .background{
+    left: calc(100% - 285px);
+  }
+}
+
+@media screen and (max-width: 375px ) {
+  .toggle-container{
+    left: calc(100% - 0px);
+  }
+  .background{
+    left: calc(100% - 120px);
+  }
+}

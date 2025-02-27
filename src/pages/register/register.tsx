@@ -78,7 +78,6 @@ function Register(){
             <form className={classes["register-page"]} onSubmit={handleSubmit}>
                 <div className={classes.background}>
                     <div className={classes["register-inputs"]}>
-                        <h1>{t("register.title")}</h1>
                         <div className={classes["name-inputs"]}>
                             <Input labelText={t("register.inputFirstName")} type="text" value={formState.firstName} style={{width: "100%"}} name="firstName" onChange={(event) => setValues('firstName', event)} ></Input>
                             <Input labelText={t("register.inputLastName")} type="text" value={formState.lastName} style={{width: "100%"}} name="lastName" onChange={(event) => setValues('lastName', event)}></Input>

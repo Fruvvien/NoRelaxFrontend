@@ -3,20 +3,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    align-content: center;
-    height: 100vh;
-    width: 100%;
-    background: rgb(255,255,255);
+    min-height: 100vh;
+    min-width: fit-content;
     background: radial-gradient(circle, rgba(255,255,255,1) 5%, rgba(0,0,0,1) 77%);
-}
-
-.register-inputs{
-    font-size: 1.5rem;
-    font-weight: bold;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    
+    background-repeat: no-repeat;
 }
 
 .name-inputs{
@@ -28,6 +18,7 @@
 .email-password-inputs{
     display: flex;
     flex-direction: column;
+    width: 93.5%;
     
 }
 
@@ -46,17 +37,27 @@
 }
 
 .background{
-    padding: 3%;
-    padding-top: 2px;
-    border-radius: 30px ;
-    padding-left: 13%;
-    padding-right: 13%;
-    background-image: url("../.././assets/loginImages/RegisterPage (1).png");
+    border-radius: 30px;
+    height: 400px;
+    width: 600px;
+    background-color: black;
     display: flex;
-    background-size:contain;
-    background-repeat: no-repeat;
-    background-position: center;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     color: white;
 }
+
+/* @media (max-width: 320px) {
+    .background{
+        border-radius: 30px;
+        height: 300px;
+        width: 450px;
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: white;
+    }
+} */

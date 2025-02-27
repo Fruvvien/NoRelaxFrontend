@@ -16,7 +16,13 @@ type Input = {
 const Input: React.FC<Input> = ({labelText, type, style, name, onChange}) =>{
     
     return (
-        <Box
+        <input  className={classes.container}  type={type} placeholder={labelText} style={style} name={name} onChange={onChange} />
+
+    )
+
+}
+
+ {/* <Box
         component="form"
         sx={{ '& > :not(style)': { m: 1, width: '30ch', color:"white" } }}
         noValidate
@@ -33,9 +39,6 @@ const Input: React.FC<Input> = ({labelText, type, style, name, onChange}) =>{
                 name={name} 
                 onChange={onChange}
                 />
-        </Box>
-    )
-
-}
+        </Box> */}
 
 export default Input;
