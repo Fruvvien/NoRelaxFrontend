@@ -12,6 +12,7 @@ import {  getToken, getUserId } from '../../redux/store/userReduxState/userSlice
 import { IUsersTokenData } from '../../models/stateTypeUser';
 import img from "../../assets/loginImages/loginKeyIcon.png"
 import cornerImg from "../../assets/pageImages/CornerCut.png"
+import cornerImgLeftBottom from "../../assets/pageImages/DownLeftCorner.png";
 
 function Login(){
 
@@ -74,7 +75,7 @@ function Login(){
        
             <form  className={classes["login-page"]} onSubmit={handleSubmit}>
                 <div className={classes.background}>
-                            <span><img className={classes["corner_img1"]} src={cornerImg} alt="" /></span>
+                            <span><img className={classes["corner_img1"]} src={cornerImgLeftBottom} alt="" /></span>
                             <span><img className={classes["corner_img2"]} src={cornerImg} alt="" /></span>
                             <span><img className={classes["corner_img3"]} src={cornerImg} alt="" /></span>
                             <span><img className={classes["corner_img4"]} src={cornerImg} alt="" /></span>

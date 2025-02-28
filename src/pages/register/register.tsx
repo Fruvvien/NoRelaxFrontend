@@ -9,6 +9,7 @@ import {isEmail, isNotEmpty, hasMinLength, allIsNotEmpty } from '../../util/vali
 import { useTranslation } from 'react-i18next';
 import img from "../../assets/loginImages/lockIcon.png"
 import cornerImg from "../../assets/pageImages/CornerCut.png"
+import cornerImgLeftBottom from "../../assets/pageImages/DownLeftCorner.png";
 
 function Register(){
      const navigate = useNavigate();
@@ -78,7 +79,7 @@ function Register(){
         <>
             <form className={classes["register-page"]} onSubmit={handleSubmit}>
                 <div className={classes.background}>
-                    <span><img className={classes["corner_img1"]} src={cornerImg} alt="" /></span>
+                    <span><img className={classes["corner_img1"]} src={cornerImgLeftBottom} alt="" /></span>
                     <span><img className={classes["corner_img2"]} src={cornerImg} alt="" /></span>
                     <span><img className={classes["corner_img3"]} src={cornerImg} alt="" /></span>
                     <span><img className={classes["corner_img4"]} src={cornerImg} alt="" /></span>
