@@ -8,7 +8,7 @@ import {BrowserRouter as Router, Link, useNavigate,} from "react-router-dom";
 import {isEmail, isNotEmpty, hasMinLength, allIsNotEmpty } from '../../util/validation';
 import { useTranslation } from 'react-i18next';
 import img from "../../assets/loginImages/lockIcon.png"
-import cornerImg from "../../assets/pageImages/cornerDecorator.png"
+import cornerImg from "../../assets/pageImages/CornerCut.png"
 
 function Register(){
      const navigate = useNavigate();

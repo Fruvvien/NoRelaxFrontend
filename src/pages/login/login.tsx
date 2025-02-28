@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/app.hooks';
 import {  getToken, getUserId } from '../../redux/store/userReduxState/userSlice';
 import { IUsersTokenData } from '../../models/stateTypeUser';
 import img from "../../assets/loginImages/loginKeyIcon.png"
-import cornerImg from "../../assets/pageImages/cornerDecorator.png"
+import cornerImg from "../../assets/pageImages/CornerCut.png"
 
 function Login(){
 
