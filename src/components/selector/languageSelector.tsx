@@ -19,10 +19,8 @@ function LanguageSelector(props: {text?: string[], img?:string[]}){
     }
 
     return(
-
         <>
-        <div>
-            <div className="custom-select">
+            <div>
                 {props.img?.map((imgSrc, index) => (
                     <div 
                     onClick={() => handleChange(props.text?.[index] ?? '')} 
@@ -32,7 +30,6 @@ function LanguageSelector(props: {text?: string[], img?:string[]}){
                     </div>
                 ))}
             </div>
-        </div>
         </>
     )
 }

@@ -41,9 +41,12 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               home: "Home",
               reserve: "Reservetion",
               openingHours: "Opening Hours",
-              download: "Download",
+              menu: "Menu",
               aboutUs: "About Us",
               logout: "Logout"
+            },
+            menuOrder:{
+              addToCart: "Add to Cart"
             }
         },
 
@@ -80,11 +83,14 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             home: "Főoldal",
             reserve: "Foglalás",
             openingHours: "Nyitvatartás",
-            download: "Letöltés",
+            menu: "Menü",
             aboutUs: "Rólunk",
             logout: "Kijelentkezés"
             
           },
+          menuOrder:{
+            addToCart: "Kosárba"
+          }
 
         },
       }

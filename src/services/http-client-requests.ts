@@ -1,4 +1,6 @@
+import { error } from "console";
 import { enviroment } from "../environments/environment";
+import { Drinks } from "../models/drinks";
 
 
 interface IauthDatas{
@@ -10,15 +12,6 @@ interface IauthDatas{
 }
 
 export class HttpClientRequests {
-    
-    
-
-    static async fetchData(): Promise<object> {
-        const response = await fetch(enviroment.LOCAL_API_URL);
-        const result = await response.json();
-        return result;
-    }
-
     static async postData(data: object, endPoint: string) {
         const response = await fetch(enviroment.LOCAL_API_URL + endPoint, {
             method: 'POST',
@@ -41,24 +34,23 @@ export class HttpClientRequests {
         }
         return result
     }
-    
 
-    /* static async checkTheToken(){
-        const response = await fetch(enviroment.LOCAL_API_URL + endPoint, {
-            method: 'POST',
+    static async getDrinks(endPoint: string){
+        const response  = await fetch(enviroment.LOCAL_API_URL + endPoint, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
-            },
-            body: JSON.stringify(data)
+            }
         });
         if(!response.ok){
-            throw new Error('Failed to post data');
+            console.log(new Error(response+""));
         }
-        const result = await response.json();
-        console.log("Success post!");
-        return result
-    } */
+        const result: Drinks[] = await response.json();
+        console.log("Succesful get request");
+        
+        return result;
+    }
  
 
 }

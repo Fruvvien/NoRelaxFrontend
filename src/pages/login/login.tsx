@@ -9,7 +9,6 @@ import {isEmail, isNotEmpty, hasMinLength } from '../../util/validation';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../hooks/app.hooks';
 import {  getToken, getUserId } from '../../redux/store/userReduxState/userSlice';
-import { IUsersTokenData } from '../../models/stateTypeUser';
 import img from "../../assets/loginImages/loginKeyIcon.png"
 import cornerImg from "../../assets/pageImages/CornerCut.png"
 import cornerImgLeftBottom from "../../assets/pageImages/DownLeftCorner.png";
@@ -87,13 +86,16 @@ function Login(){
                             <Input labelText={t("login.inputEmail")} type="email" style={undefined} name='email' value={formState.email} onChange={(event)=> setValues("email", event)}></Input>
                             <Input labelText={t("login.inputPassword")} type="password" style={undefined} name='password' value={formState.password}  onChange={(event)=> setValues("password", event)}></Input>
                             
-                            <ul className={classes.error}>
+                            <ul className={classes.errors}>
                                 {errors.map((error) => (
                                     <li key={error}>{error}</li>
                                 ))}
                             </ul>
-                    <ButtonInput hoverColor='lightgray' buttonText={t("login.button")} type='submit'></ButtonInput>
-                    <span>{t("login.textNextToRegisterLink")}<Link className={classes.link} to="/register"> {t("login.linkToRegister")}</Link></span>
+                    <div className={classes["button-and-link-to-register"]}>
+                        <ButtonInput hoverColor='lightgray' buttonText={t("login.button")} type='submit'></ButtonInput>
+                        <span style={{zIndex:501}}>{t("login.textNextToRegisterLink")}<Link  className={classes.link} to="/register"> {t("login.linkToRegister")}</Link></span>
+                    </div>
+                    
                 </div>
             </form>
        

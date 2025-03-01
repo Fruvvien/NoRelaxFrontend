@@ -104,8 +104,11 @@ function Register(){
                             ))}
                         </ul>
                     </div>  
-                    <ButtonInput hoverColor="lightgray"  buttonText={t("register.button")} type="submit"></ButtonInput>
-                    <span>{t("register.textNextToLoginLink")}<Link className={classes["link-to-login"]} to="/login" > {t("register.linkToLogin")}</Link></span>
+                    <div className={classes["button-and-link-to-login"]}>
+                        <ButtonInput hoverColor="lightgray"  buttonText={t("register.button")} type="submit"></ButtonInput>
+                        <span style={{zIndex:501}}>{t("register.textNextToLoginLink")}<Link className={classes["link-to-login"]} to="/login" > {t("register.linkToLogin")}</Link></span>
+                    </div>
+                    
                 </div>
                 
             </form>

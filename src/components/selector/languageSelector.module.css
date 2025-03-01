@@ -1,11 +1,5 @@
-.custom-select {
-    display: flex;
-    flex-direction: column;
-}
-
 .custom-option {
-    display: flex;
-    align-items: center;
+    display: inline;
     margin-bottom: 5px;
     cursor: pointer; /* Add cursor pointer to indicate clickable elements */
 }

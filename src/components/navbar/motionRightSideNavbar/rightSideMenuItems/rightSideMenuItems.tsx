@@ -48,16 +48,7 @@ const textPlaceholder: React.CSSProperties = {
     height: 20,
     flex: 1,
 }
-function menuItemsEvents(name: string, t: (key: string) => string): void {
-    
-    
-    switch(name){
-      case name = t("leftSideBar.logout"):
-        localStorage.removeItem("authToken");
-        window.location.reload();
-      break  
-    }
-}
+
 
 export const MenuItem = () => {
     const {t} = useTranslation();
@@ -81,11 +72,20 @@ export const MenuItem = () => {
             t("leftSideBar.home"), 
             t("leftSideBar.reserve"), 
             t("leftSideBar.openingHours"), 
-            t("leftSideBar.download"), 
+            t("leftSideBar.menu"), 
             t("leftSideBar.aboutUs"),
             t("leftSideBar.logout")
            
         )
+    }
+
+    function menuItemsEvents(name: string, t: (key: string) => string): void {
+        switch(name){
+          case name = t("leftSideBar.logout"):
+            localStorage.removeItem("authToken");
+            window.location.reload();
+          break  
+        }
     }
     return(
         <>

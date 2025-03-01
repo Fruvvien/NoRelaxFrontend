@@ -13,6 +13,8 @@ import Landing from './pages/landing/landing';
 import { useAppDispatch } from './hooks/app.hooks';
 import { getToken } from './redux/store/userReduxState/userSlice';
 import RightSideBar from './components/navbar/motionRightSideNavbar/rightSideBar/rightSideBar';
+import DrinksFoodsOrderList from './pages/drinksFoodsOrderList/drinksFoodsOrderList';
+import Variants from './components/navbar/moitonSideNavbar/variants/variant';
 
 function App() {
  const dispatch = useAppDispatch();
@@ -20,10 +22,11 @@ function App() {
   return(
       <Router>
           <Routes>
-            <Route path="/" element={<PrivateRoute childrenComp={<><Landing /><RightSideBar /></>} />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="*" element={<PrivateRoute childrenComp={<><Landing/><RightSideBar /></>} />} />
+            <Route path="/" element={<PrivateRoute childrenComp={<><Landing /><Variants/><RightSideBar /></>} />} />
+            <Route path="/login" element={<><Login /><Variants/></>} />
+            <Route path="/register" element={<><Register /><Variants/></>} />
+            <Route path="/orderMenu" element={<PrivateRoute childrenComp={<><DrinksFoodsOrderList/><Variants/><RightSideBar /></>} />}/>  
+            <Route path="*" element={<PrivateRoute childrenComp={<><Landing/><Variants/><RightSideBar /></>} />} />
           </Routes>
       </Router>
   )

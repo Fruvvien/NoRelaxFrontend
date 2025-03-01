@@ -1,0 +1,29 @@
+.menu_list{
+    display:flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    align-content: center;
+}
+.drink_list{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    flex-direction: column;
+    list-style: none;
+    background-color: black;
+    padding-top: 15px;
+    padding-bottom: 15px;
+   
+}
+.drink_list_elements{
+    display: flex;
+    justify-content: space-between;
+    padding: 7px;
+    align-content: center;
+    align-items: center;
+    color: white;
+}
+.drink_list_element{
+}

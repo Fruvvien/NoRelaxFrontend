@@ -2,8 +2,6 @@ import React from "react";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import { useTranslation } from 'react-i18next';
-import { ClassNames, ThemeProvider } from "@emotion/react";
-import {theme} from "../../util/colorTheme";
 import classes from "./navbar.module.css";
 import LanguageSelector from "../selector/languageSelector";
 import NoRelaxLogo from "../../assets/NoRelaxLogo.png"; 
@@ -21,8 +19,7 @@ function Navbar() {
     const text = ["HU", "EN"];
     const image = [HunFlag, UkFlag];
   return (
-    <div >
-      <ThemeProvider theme={theme}>
+    <div  >
           <Box  sx={{ flexGrow: 1 }}>
               <AppBar>
                 <div className={classes.toolbar}>
@@ -34,7 +31,7 @@ function Navbar() {
                   <div className={classes["toolbar-middle"]}>
                       <img className={classes.logo} alt="" src={NoRelaxLogo} />
                   </div>
-                  <div className={classes["toolbar-end"]} style={getAuthToken ? {paddingRight:"5%"} : {}}>
+                  <div className={classes["toolbar-end"]} style={getAuthToken ? {right:"40px", paddingRight:"0px"} : {}}>
                     <div className={classes["language-buttons"]} >
                       <LanguageSelector text={text} img={image}/>
                     </div>
@@ -42,8 +39,6 @@ function Navbar() {
                 </div>
               </AppBar>
           </Box>
-
-      </ThemeProvider>
       </div>
   );
 }
