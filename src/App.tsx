@@ -13,7 +13,7 @@ import Landing from './pages/landing/landing';
 import { useAppDispatch } from './hooks/app.hooks';
 import { getToken } from './redux/store/userReduxState/userSlice';
 import RightSideBar from './components/navbar/motionRightSideNavbar/rightSideBar/rightSideBar';
-import DrinksFoodsOrderList from './pages/drinksFoodsOrderList/drinksFoodsOrderList';
+import DrinksOrderList from './pages/drinksFoodsOrderList/drinksOrder/drinksOrderList';
 import Variants from './components/navbar/moitonSideNavbar/variants/variant';
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
             <Route path="/" element={<PrivateRoute childrenComp={<><Landing /><Variants/><RightSideBar /></>} />} />
             <Route path="/login" element={<><Login /><Variants/></>} />
             <Route path="/register" element={<><Register /><Variants/></>} />
-            <Route path="/orderMenu" element={<PrivateRoute childrenComp={<><DrinksFoodsOrderList/><Variants/><RightSideBar /></>} />}/>  
+            <Route path="/orderMenu/drinksOrderList" element={<PrivateRoute childrenComp={<><DrinksOrderList/><Variants/><RightSideBar /></>} />}/>  
             <Route path="*" element={<PrivateRoute childrenComp={<><Landing/><Variants/><RightSideBar /></>} />} />
           </Routes>
       </Router>

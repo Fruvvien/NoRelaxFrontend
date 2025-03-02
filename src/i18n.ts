@@ -45,8 +45,19 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               aboutUs: "About Us",
               logout: "Logout"
             },
-            menuOrder:{
-              addToCart: "Add to Cart"
+            rightSideBar:{
+              profile: "Profile",
+              logout: "Logout",
+            },
+            menuOrderDrink:{
+              addToCart: "Add",
+              title1:"Drinks List",
+              title2:"Foods List",
+              drinkName: "Drink Name",
+              amount:"Amount",
+              price:"Price",
+              order:"Order"
+
             }
         },
 
@@ -88,8 +99,18 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             logout: "Kijelentkezés"
             
           },
-          menuOrder:{
-            addToCart: "Kosárba"
+          rightSideBar:{
+            profile: "Profil",
+            logout: "Kijelentkezés",
+          },
+          menuOrderDrink:{
+            addToCart: "Kosárba",
+            title1:"Itallap",
+            title2:"Étlap",
+            drinkName: "Ital Neve",
+            amount: "Mennyiség",
+            price:"Ár",
+            order: "Rendelés"
           }
 
         },

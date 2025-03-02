@@ -10,7 +10,7 @@ html, body{
 }
 body{
     height: calc(100% -  79px);
-    margin-top: 79px;
+    margin-top: 120px;
 }
 /* .main-tsx-div{
     padding-top: 5vh;

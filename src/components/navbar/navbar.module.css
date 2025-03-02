@@ -1,24 +1,24 @@
 .toolbar{
     height: auto;
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
 }
 
 
 .toolbar-start{
-
+    position: relative;
+    top: 10px;
+    left: 50px;
 }
 
 .toolbar-middle{
-    position: absolute;
-    left: 49%;
+    position: relative;
+    left: -30px;
 
 }
 
 .toolbar-end{
-    bottom: 12px;
-    position: absolute;
-    right: 0;
-    padding-right: 10px;
-    top: 10px;
 }
 
 .language-buttons{
@@ -33,7 +33,7 @@
 
 @media screen and (max-width: 425px) {
     .toolbar-middle{
-        left:42%;
+        left: -30px;
     
     }
 }

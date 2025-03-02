@@ -1,11 +1,7 @@
 import { motion } from "framer-motion";
 import classes from "./rightSideMenuItems.module.css"
-import img1 from "../../../../assets/navbarImages/houseIcon.png";
-import img2 from "../../../../assets/navbarImages/tableIcon.png";
-import img3 from "../../../../assets/navbarImages/clockIcon.png";
-import img4 from "../../../../assets/navbarImages/downloadIcon.png";
-import img5 from "../../../../assets/navbarImages/multipleUsersIcon.png";
-import img6 from "../../../../assets/navbarImages/multipleUsersIcon.png";
+import img1 from "../../../../assets/navbarImages/profileIcon.png";
+import img2 from "../../../../assets/navbarImages/logoutIcon.png";
 
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "../../../../hooks/app.hooks";
@@ -56,26 +52,11 @@ export const MenuItem = () => {
     const img: string[] = [];
     const getAuthToken = useAppSelector((state: {auth: IUsersTokenData}) => state.auth.token);
     
-    if(!getAuthToken){
-        
-        img.push(img3, img4, img5);
-        text.push (
-            t("leftSideBar.openingHours"), 
-            t("leftSideBar.download"), 
-            t("leftSideBar.aboutUs")
-        )
-    }
     if(getAuthToken){
-        
-        img.push (img1, img2, img3, img4, img5, img6 );
+        img.push (img1, img2 );
         text.push (
-            t("leftSideBar.home"), 
-            t("leftSideBar.reserve"), 
-            t("leftSideBar.openingHours"), 
-            t("leftSideBar.menu"), 
-            t("leftSideBar.aboutUs"),
+            t("rightSideBar.profile"), 
             t("leftSideBar.logout")
-           
         )
     }
 

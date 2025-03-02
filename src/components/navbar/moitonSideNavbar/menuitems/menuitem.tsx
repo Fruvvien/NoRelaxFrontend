@@ -79,7 +79,7 @@ export const MenuItem = () => {
             "/",
             "/reserve",
             "/openingHours",
-            "/orderMenu",
+            "/orderMenu/drinksOrderList",
             "/aboutUs"
         )
     }

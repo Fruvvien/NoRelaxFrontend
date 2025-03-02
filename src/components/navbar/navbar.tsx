@@ -9,12 +9,12 @@ import HunFlag from "../../assets/navbarImages/hunFlag.png";
 import UkFlag from "../../assets/navbarImages/ukFlag.png";
 import { useAppDispatch, useAppSelector } from "../../hooks/app.hooks";
 import { getToken } from "../../redux/store/userReduxState/userSlice";
-import { IUsersTokenData } from "../../models/stateTypeUser";
+/* import { IUsersTokenData } from "../../models/stateTypeUser"; */
 
 function Navbar() {
    const dispatch = useAppDispatch();
    dispatch(getToken());
-   const getAuthToken = useAppSelector((state: {auth: IUsersTokenData}) => state.auth.token);
+  /*  const getAuthToken = useAppSelector((state: {auth: IUsersTokenData}) => state.auth.token); */
    
     const text = ["HU", "EN"];
     const image = [HunFlag, UkFlag];
@@ -24,17 +24,15 @@ function Navbar() {
               <AppBar>
                 <div className={classes.toolbar}>
                   <div className={classes["toolbar-start"]}>
-                      <div>
-                        
-                      </div>
+                    <div className={classes["language-buttons"]} >
+                      <LanguageSelector text={text} img={image}/>
+                    </div>
                   </div>
                   <div className={classes["toolbar-middle"]}>
                       <img className={classes.logo} alt="" src={NoRelaxLogo} />
                   </div>
-                  <div className={classes["toolbar-end"]} style={getAuthToken ? {right:"40px", paddingRight:"0px"} : {}}>
-                    <div className={classes["language-buttons"]} >
-                      <LanguageSelector text={text} img={image}/>
-                    </div>
+                  <div className={classes["toolbar-end"]} >
+                   
                   </div>
                 </div>
               </AppBar>
