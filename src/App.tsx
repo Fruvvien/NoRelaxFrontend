@@ -10,25 +10,27 @@ import {
 } from "react-router-dom";
 import PrivateRoute from './util/privateRoute';
 import Landing from './pages/landing/landing';
-import { useAppDispatch } from './hooks/app.hooks';
+import { useAppDispatch} from './hooks/app.hooks';
 import { getToken } from './redux/store/userReduxState/userSlice';
 import RightSideBar from './components/navbar/motionRightSideNavbar/rightSideBar/rightSideBar';
 import DrinksOrderList from './pages/drinksFoodsOrderList/drinksOrder/drinksOrderList';
 import Variants from './components/navbar/moitonSideNavbar/variants/variant';
 import OpeningHours from './pages/openingHours/openingHours';
+import Footer from './components/footer/footer';
 
 function App() {
- const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   dispatch(getToken());
   return(
       <Router>
           <Routes>
-            <Route path="/" element={<PrivateRoute childrenComp={<><Landing /><Variants/><RightSideBar /></>} />} />
+            <Route path="/" element={<PrivateRoute childrenComp={<><Landing /><Variants/><RightSideBar /><Footer/></>} />} />
             <Route path="/login" element={<><Login /><Variants/></>} />
             <Route path="/register" element={<><Register /><Variants/></>} />
-            <Route path="/orderMenu/drinksOrderList" element={<PrivateRoute childrenComp={<><DrinksOrderList/><Variants/><RightSideBar /></>} />}/> 
-            <Route path="/openingHours" element={<><OpeningHours/><Variants/><RightSideBar /></>} />
-            <Route path="*" element={<PrivateRoute childrenComp={<><Landing/><Variants/><RightSideBar /></>} />} />
+            <Route path="/orderMenu/drinksOrderList" element={<PrivateRoute childrenComp={<><DrinksOrderList/><Variants/><RightSideBar /> <Footer/></>} />}/> 
+            <Route path="/openingHours" element={<><OpeningHours/><Variants/></>} />
+            <Route path="/openingHoursWithAccount" element={<PrivateRoute childrenComp={<><OpeningHours/><Variants/><RightSideBar /> <Footer/></>} />}/> 
+            <Route path="*" element={<PrivateRoute childrenComp={<><Landing/><Variants/><RightSideBar /> <Footer/></>} />} />
           </Routes>
       </Router>
   )

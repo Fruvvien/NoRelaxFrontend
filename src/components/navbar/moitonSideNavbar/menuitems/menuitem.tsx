@@ -57,13 +57,18 @@ export const MenuItem = () => {
     const getAuthToken = useAppSelector((state: { auth: IUsersTokenData }) => state.auth.token);
 
     if (!getAuthToken) {
-        img.push(img3, img5);
+        img.push(img3, img3,img3, img5);
         text.push(
+            t("leftSideBar.login"),
+            t("leftSideBar.register"),
             t("leftSideBar.openingHours"),
             t("leftSideBar.aboutUs")
         );
         endPoints.push(
-
+            "/login",
+            "/register",
+            "/openingHours",
+            "/aboutUs"
         )
     }
     if (getAuthToken) {
@@ -78,7 +83,7 @@ export const MenuItem = () => {
         endPoints.push(
             "/",
             "/reserve",
-            "/openingHours",
+            "/openingHoursWithAccount",
             "/orderMenu/drinksOrderList",
             "/aboutUs"
         )

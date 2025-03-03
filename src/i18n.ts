@@ -40,6 +40,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 emailIsExist: "This email address already exists",
             },
             leftSideBar:{
+              login: "Login",
+              register: "Registration",
               home: "Home",
               reserve: "Reservetion",
               openingHours: "Opening Hours",
@@ -109,6 +111,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             emailIsExist: "Ez az email cím már létezik",
           },
           leftSideBar: {
+            login: "Bejelentkezés",
+            register: "Regisztráció",
             home: "Főoldal",
             reserve: "Foglalás",
             openingHours: "Nyitvatartás",
