@@ -1,6 +1,8 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import { title } from 'process';
+import { footer } from 'framer-motion/client';
 
 i18n.use(LanguageDetector).use(initReactI18next).init({
     debug: true,
@@ -58,7 +60,23 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               price:"Price",
               order:"Order"
 
-            }
+            },
+            openingHours:{
+              title: "Opening Hours",
+              monday: "Monday: Closed",
+              tuesday: "Tuesday: 17:00 - 23:00",
+              wednesday: "Wednesday: 17:00 - 23:00",
+              thursday: "Thursday: 17:00 - 23:00",
+              friday: "Friday: 17:00 - 03:00",
+              saturday: "Saturday: 17:00 - 03:00",
+              sunday: "Sunday: Closed",
+            },
+            footer:{
+              information: "Information",
+              socials: "Follow Us",
+              policy: "Policy"
+            },
+
         },
 
 
@@ -111,6 +129,21 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             amount: "Mennyiség",
             price:"Ár",
             order: "Rendelés"
+          },
+          openingHours:{
+            title: "Nyitvatartás",
+            monday: "Hétfő: Zárva",
+            tuesday: "Kedd: 17:00 - 23:00",
+            wednesday: "Szerda: 17:00 - 23:00",
+            thursday: "Csütörtök: 17:00 - 23:00",
+            friday: "Péntek: 17:00 - 03:00",
+            saturday: "Szombat: 17:00 - 03:00",
+            sunday: "Vasárnap: Zárva",
+          },
+          footer:{
+            information: "Információ",
+            socials: "Kövess Minket",
+            policy: "Házirend"
           }
 
         },
