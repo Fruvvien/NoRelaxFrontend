@@ -14,11 +14,16 @@
 
 .toolbar-middle{
     position: relative;
-    left: -30px;
+    left: -45px;
 
 }
 
 .toolbar-end{
+    color: white;
+    position: relative;
+    top: 15px;
+    right: 60px;
+
 }
 
 .language-buttons{
@@ -30,10 +35,17 @@
     height: 75px;
     width: 75px;
 }
+.shopping-cart-img{
+    width: 30px;
+    color: white;
+    cursor: pointer;
+}
 
-@media screen and (max-width: 425px) {
+
+
+@media screen and (max-width: 1440px) {
     .toolbar-middle{
-        left: -30px;
+        left: -22px;
     
     }
 }

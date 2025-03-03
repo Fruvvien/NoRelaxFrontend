@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import { useTranslation } from 'react-i18next';
 import classes from "./navbar.module.css";
 import LanguageSelector from "../selector/languageSelector";
 import NoRelaxLogo from "../../assets/NoRelaxLogo.png"; 
@@ -9,15 +8,20 @@ import HunFlag from "../../assets/navbarImages/hunFlag.png";
 import UkFlag from "../../assets/navbarImages/ukFlag.png";
 import { useAppDispatch, useAppSelector } from "../../hooks/app.hooks";
 import { getToken } from "../../redux/store/userReduxState/userSlice";
+import cartImg from "../../assets/navbarImages/mdi--cart.png"
+import { useNavigate } from "react-router-dom";
 /* import { IUsersTokenData } from "../../models/stateTypeUser"; */
 
 function Navbar() {
-   const dispatch = useAppDispatch();
-   dispatch(getToken());
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  dispatch(getToken());
+  const [loading, setLoading] = useState<boolean>(true);
   /*  const getAuthToken = useAppSelector((state: {auth: IUsersTokenData}) => state.auth.token); */
+  
    
-    const text = ["HU", "EN"];
-    const image = [HunFlag, UkFlag];
+  const text = ["HU", "EN"];
+  const image = [HunFlag, UkFlag];
   return (
     <div  >
           <Box  sx={{ flexGrow: 1 }}>
@@ -32,7 +36,7 @@ function Navbar() {
                       <img className={classes.logo} alt="" src={NoRelaxLogo} />
                   </div>
                   <div className={classes["toolbar-end"]} >
-                   
+                      <a onClick={() => navigate("/shoppingCart")}><img className={classes["shopping-cart-img"]} src={cartImg} alt="" /></a>
                   </div>
                 </div>
               </AppBar>
