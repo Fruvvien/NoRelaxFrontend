@@ -15,6 +15,7 @@ import { getToken } from './redux/store/userReduxState/userSlice';
 import RightSideBar from './components/navbar/motionRightSideNavbar/rightSideBar/rightSideBar';
 import DrinksOrderList from './pages/drinksFoodsOrderList/drinksOrder/drinksOrderList';
 import Variants from './components/navbar/moitonSideNavbar/variants/variant';
+import OpeningHours from './pages/openingHours/openingHours';
 
 function App() {
  const dispatch = useAppDispatch();
@@ -25,7 +26,8 @@ function App() {
             <Route path="/" element={<PrivateRoute childrenComp={<><Landing /><Variants/><RightSideBar /></>} />} />
             <Route path="/login" element={<><Login /><Variants/></>} />
             <Route path="/register" element={<><Register /><Variants/></>} />
-            <Route path="/orderMenu/drinksOrderList" element={<PrivateRoute childrenComp={<><DrinksOrderList/><Variants/><RightSideBar /></>} />}/>  
+            <Route path="/orderMenu/drinksOrderList" element={<PrivateRoute childrenComp={<><DrinksOrderList/><Variants/><RightSideBar /></>} />}/> 
+            <Route path="/openingHours" element={<><OpeningHours/><Variants/><RightSideBar /></>} />
             <Route path="*" element={<PrivateRoute childrenComp={<><Landing/><Variants/><RightSideBar /></>} />} />
           </Routes>
       </Router>
