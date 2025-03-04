@@ -1,46 +1,127 @@
 .footer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     margin-bottom: 20px;
-    font-weight: bold;
-}
-
-.footer-socials {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.icon {
+    background-color: black;
+    color: white;
+  }
+  
+  
+  .footer-social-media__icon {
     margin: 0px 4px;
     width: 25px;
     height: 25px;
-}
-
-.footer-separator {
-    flex-grow: 1;
-    border: none;
-    height: 50px;
-    background-color: black;
-    width: 100%;
-}
-
-.footer-information {
+  }
+  
+  .footer-info  {
     display: flex;
     justify-content: center;
-}
-
-.footer-information-address {
-    margin: 0px 20px;
-    text-align: center;
-}
-
-.footer-information-left, .footer-socials-right {
-    font-size: x-small;
+  }
+  
+  .footer-info-left, .footer-info-center, .footer-info-right {
+    font-size: large;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
     width: 30%;
+  }
+
+  .footer-info-center {
+    align-items: center;
+    display: flex;
+  }
+
+  .footer-info-left {
+    align-items: end;
+    display: flex;
+  }
+
+  .footer-info__information {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer-info__name, .footer-info__email, .footer-info__number {
+    margin-bottom: 10px;
+  }
+  
+  .footer-info__name, .footer-info__returns {
+    text-align: start;
+  }
+  
+  .footer-info__email, .footer-info__terms {
+    text-align: center;
+  }
+  
+  .footer-info__number, .footer-info__contact {
+    text-align: end;
+  }
+
+  .footer-info__icons img{
+    width: 25px;
+    height: 25px;
+  }
+
+  .footer-info-content-address {
+    display: inline-flex;
+  }
+
+  .footer-info-content-phone {
+    display: inline-flex;
+  }
+
+  .footer-info-content-email {
+    display: inline-flex;
+  }
+  
+  .footer-date {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .footer-seperator {
+    flex-grow: 1;
+    border: none;
+    height: 1px;
+    background-color: white;
+    width: 100%;
+  }
+  
+  .footer-name {
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer-logo {
+    width: 100px;
+    height: 100px;
+    
+  }
+  
+  .footer-bottom__name {
+    text-transform: uppercase;
+    font-family: RobotoBold;
+    font-size: large;
+    margin: 0px 20px;
+  }
+
+.footer-info__social-media__icons img {
+    width: 25px;
+    height: 25px;
+
+}
+
+.footer-social-content-facebook {
+    display: inline-flex;
+
+}
+
+.footer-social-content-instagram {
+    display: inline-flex;
+}
+
+.footer-social-content-tiktok {
+    display: inline-flex;
 }
