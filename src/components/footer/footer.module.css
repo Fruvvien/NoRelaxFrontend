@@ -1,7 +1,7 @@
 .footer {
     display: flex;
+    width: 100%;
     flex-direction: column;
-    margin-bottom: 20px;
     background-color: black;
     color: white;
   }
@@ -25,6 +25,7 @@
     margin-bottom: 10px;
     width: 30%;
   }
+  
 
   .footer-info-center {
     align-items: center;
@@ -37,7 +38,6 @@
   }
 
   .footer-info__information {
-    width: 40%;
     display: flex;
     justify-content: center;
   }
@@ -124,4 +124,61 @@
 
 .footer-social-content-tiktok {
     display: inline-flex;
+}
+
+
+@media screen and (min-width: 320px ) {
+  .footer-info-left {
+    position: relative;
+    font-size: 15px;
+    left: 55px;
+    top: 20px;
+    align-items: end;
+    display: flex;
+  }
+ 
+  .footer-logo {
+    width: 60px;
+    height: 60px;
+    
+  }
+  .footer-info-right {
+    position: relative;
+    font-size: 15px;
+    right: 5px;
+    top: 15px;
+    align-items: start;
+    display: flex;
+  }
+  .footer-info__information{
+    font-size: small;
+  }
+}
+
+@media screen and (max-width: 425px ) {
+  .footer-info-left {
+    position: relative;
+    font-size: 15px;
+    left: 55px;
+    top: 20px;
+    align-items: end;
+    display: flex;
+  }
+ 
+  .footer-logo {
+    width: 60px;
+    height: 60px;
+    
+  }
+  .footer-info-right {
+    position: relative;
+    font-size: 15px;
+    right: 5px;
+    top: 20px;
+    align-items: start;
+    display: flex;
+  }
+  .footer-info__information{
+    font-size: small;
+  }
 }

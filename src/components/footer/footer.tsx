@@ -20,11 +20,10 @@ const {t} = useTranslation();
         
         <section className={classes["footer-info"]}>
           <section className={classes["footer-info-left"]}>
-            <div className={classes["footer-info__information"]}>
-                <h2>{t("footer.information")}</h2>
-            </div>
-          
                 <section className={classes["footer-info__icons"]}>
+                    <div className={classes["footer-info__information"]}>
+                        <h2>{t("footer.information")}</h2>
+                    </div>
                     <div>
                         <div className={classes["footer-info-content-address"]}>
                             <img src={locationIcon} alt="location" />
@@ -55,7 +54,9 @@ const {t} = useTranslation();
           </section>
           <section className={classes["footer-info-right"]}>
             <section className={classes["footer-info__social-media"]}>
-                <h2>{t("footer.socials")}</h2>
+                <div className={classes["footer-info__information"]}>
+                    <h2>{t("footer.socials")}</h2>
+                </div>
                 <section className={classes["footer-info__social-media__icons"]}>
                     <div>
                         <div className={classes["footer-social-content-facebook"]}>
