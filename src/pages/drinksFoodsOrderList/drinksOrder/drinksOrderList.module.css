@@ -87,7 +87,6 @@
 }
 
 .drink_list_title_element{
-    
 }
 .drink_list_title_elements{
     display: flex;
@@ -101,7 +100,10 @@
 }
 
 .drink_list_titles{
+    position: relative;
     display: flex;
+    padding-bottom: 10px;
+    z-index: 501;
     gap: 100px;
 }
 .drink_list_title{

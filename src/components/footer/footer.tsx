@@ -9,14 +9,59 @@ import norelaxlogo from "../../assets/NoRelaxLogo.png";
 import locationIcon from "../../assets/footerImages/locationIcon.png";
 import phoneIcon from "../../assets/footerImages/phoneIcon.png";
 import emailIcon from "../../assets/footerImages/emailIcon.png";
-import { footer } from "framer-motion/client";
-import cornerImg from "../../assets/pageImages/OtherCorners.png";
-import cornerImgLeftBottom from "../../assets/pageImages/DownLeftCorner.png";
+/* import cornerImg from "../../assets/pageImages/OtherCorners.png";
+import cornerImgLeftBottom from "../../assets/pageImages/DownLeftCorner.png"; */
 
 function Footer () {
 const {t} = useTranslation();
 
-    return (
+
+    return(
+        <div className={classes.footer}>
+            
+            <div className={classes["footer-left-side"]}>
+                <div className={classes["footer-info-title"]}>
+                    <h3>{t("footer.information")}</h3>
+                </div>
+                <div className={classes["footer-info-content"]}>
+                    <img className={classes["footer-info__icons"]}  src={locationIcon} alt="location" />
+                    <span>1183 Balassi Bálint utca 2-10</span>
+                </div>
+                <div className={classes["footer-info-content"]}>
+                    <img className={classes["footer-info__icons"]} src={phoneIcon} alt="phoneNumber" />
+                    <span>06 70 368 1515</span>
+                </div>
+                <div className={classes["footer-info-content"]}>
+                    <img className={classes["footer-info__icons"]}  src={emailIcon} alt="email_address" />
+                    <span className={classes["footer-email-span"]}>norelaxpub@gmail.com</span>
+                </div>
+            </div>
+            <div className={classes["footer-center-side"]}>
+                <div>
+                    <img className={classes["footer-logo"]} src={norelaxlogo} alt="norelax" />
+                </div>
+            </div>
+            <div className={classes["footer-right-side"]}>
+                <div className={classes["footer-info-title"]}>
+                    <h3 >{t("footer.socials")}</h3>
+                </div>
+                <div className={classes["footer-info-content"]}>
+                    <img className={classes["footer-info__icons"]} src={imgfacebook} alt="facebook" />
+                    <span>NoRelax</span>
+                </div>
+                <div className={classes["footer-info-content"]}>
+                    <img className={classes["footer-info__icons"]} src={imginstagram} alt="instagram" />
+                    <span>norelax_pub</span>
+                </div>
+                <div className={classes["footer-info-content"]}>
+                    <img className={classes["footer-info__icons"]} src={imgtiktok} alt="tiktok" />
+                    <span>norelax_pub</span>
+                </div>
+            </div>
+        </div>
+    )
+    
+    /* return (
       <section className={classes.footer}>
          
         <hr className={classes["footer-seperator-top"]} />
@@ -90,7 +135,7 @@ const {t} = useTranslation();
         </section>
         <hr className={classes["footer-seperator-bottom"]} />
       </section>
-    )
+    ) */
   
   }
   

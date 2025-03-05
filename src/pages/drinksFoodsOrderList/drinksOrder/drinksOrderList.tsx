@@ -13,7 +13,8 @@ export default function DrinksOrderList(){
     const {t} = useTranslation();
     const [drinks, setDrinks] = useState<Drinks[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
-
+    const currentEndpoint = window.location.pathname;
+    const lastEndPoint = currentEndpoint.split("/");
     const getDrinks = async () =>{
         try{
             setTimeout( async() =>{
@@ -32,7 +33,6 @@ export default function DrinksOrderList(){
 
     useEffect(()=>{
         getDrinks();
-        
     }, [])
 
     
@@ -43,8 +43,14 @@ export default function DrinksOrderList(){
 
                         <table className={classes["drink_list_border"]}>
                             <div className={classes["drink_list_titles"]}>
-                                <h1 ><Link className={classes["drink_list_title"]} to="">{t("menuOrderDrink.title1")}</Link></h1>
-                                <h1 ><Link className={classes["drink_list_title"]} to="">{t("menuOrderDrink.title2")}</Link></h1>
+                                {
+                                    lastEndPoint[lastEndPoint.length-1] == "drinksOrderList" ?  <h1 ><Link style={{color: "rgba(211, 211, 211, 0.808)"}} 
+                                    className={classes["drink_list_title"]} to="/orderMenu/drinksOrderList">{t("menuOrderDrink.title1")}</Link></h1>
+                                    : <h1 ><Link className={classes["drink_list_title"]} to="/orderMenu/foodsOrderList">{t("menuOrderDrink.title1")}</Link></h1>
+
+                                }
+                                
+                                <h1 ><Link className={classes["drink_list_title"]} to="/orderMenu/foodsOrderList">{t("menuOrderDrink.title2")}</Link></h1>
                             </div>
                             <span><img className={classes["corner_img1"]} src={cornerImgLeftBottom} alt="" /></span>
                             <span><img className={classes["corner_img2"]} src={cornerImg} alt="" /></span>

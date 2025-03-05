@@ -14,7 +14,7 @@
 
 .toolbar-middle{
     position: relative;
-    left: -45px;
+    left: -15px;
 
 }
 
@@ -41,14 +41,6 @@
     cursor: pointer;
 }
 
-
-
-@media screen and (max-width: 1440px) {
-    .toolbar-middle{
-        left: -22px;
-    
-    }
-}
 
 
 

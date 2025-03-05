@@ -10,8 +10,9 @@ export default function ShoppingCart(){
         <>
         {!loading ?
             <div className={classes["shopping-cart-page"]}>
-
-
+                <div className={classes["shopping-cart-container"]}>
+                    
+                </div>
             </div>
             :
             <div className={classes["dots_div"]}>
