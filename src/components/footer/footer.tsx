@@ -10,15 +10,20 @@ import locationIcon from "../../assets/footerImages/locationIcon.png";
 import phoneIcon from "../../assets/footerImages/phoneIcon.png";
 import emailIcon from "../../assets/footerImages/emailIcon.png";
 import { footer } from "framer-motion/client";
+import cornerImg from "../../assets/pageImages/OtherCorners.png";
+import cornerImgLeftBottom from "../../assets/pageImages/DownLeftCorner.png";
 
 function Footer () {
 const {t} = useTranslation();
 
     return (
       <section className={classes.footer}>
-        <hr className={classes["footer-seperator"]} />
+         
+        <hr className={classes["footer-seperator-top"]} />
         
         <section className={classes["footer-info"]}>
+        <span><img className={classes["corner_img1"]} src={cornerImgLeftBottom} alt="" /></span>
+        <span><img className={classes["corner_img2"]} src={cornerImg} alt="" /></span>
           <section className={classes["footer-info-left"]}>
                 <section className={classes["footer-info__icons"]}>
                     <div className={classes["footer-info__information"]}>
@@ -83,7 +88,7 @@ const {t} = useTranslation();
             </section>
           </section>
         </section>
-        <hr className={classes["footer-seperator"]} />
+        <hr className={classes["footer-seperator-bottom"]} />
       </section>
     )
   
