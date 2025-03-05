@@ -73,6 +73,10 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               saturday: "Saturday: 17:00 - 03:00",
               sunday: "Sunday: Closed",
             },
+            aboutUs:{
+              title: "About Us",
+              text: "Mother"
+            },
             footer:{
               information: "Information",
               socials: "Follow Us",
@@ -143,6 +147,11 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             friday: "Péntek: 17:00 - 03:00",
             saturday: "Szombat: 17:00 - 03:00",
             sunday: "Vasárnap: Zárva",
+          },
+          aboutUs:{
+            title: "Rólunk",
+            text: "A NoRelax bár 2010 március 25-én nyitotta meg kapuit a nagyközönség részére. A XVIII. kerület szívében, a Szarvas Csárda téren a csarnok területén helyezkedik el, ígyhát a hosszú piacozás és bevásárlás után is ideális hely egy kis kikapcsolódásra. A bár különlegessége hogy minden héten más-más fergeteges programmal várják a vendégeket, legyen szó karaoke estről, billiárd darts vagy csocsómérkőzésekről, közös meccsnézésről vagy csak egy jó sör melletti beszélgetős estéről, egyet megígérhetünk: jókedvből nem lesz hiány! Fiatalos környezet, olcsó italok, jó társaság, kedves kiszolgálás, mi kell még? Gyere és igyál velünk te is!"
+
           },
           footer:{
             information: "Információ",

@@ -16,6 +16,7 @@ import DrinksOrderList from './pages/drinksFoodsOrderList/drinksOrder/drinksOrde
 import Variants from './components/navbar/moitonSideNavbar/variants/variant';
 import OpeningHours from './pages/openingHours/openingHours';
 import ShoppingCart from './components/shoppingCart/shoppingCart';
+import AboutUs from './pages/aboutUs/aboutUs';
 import { MainLayout } from './util/mainLayout';
 import Navbar from './components/navbar/navbar';
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="/openingHours" element={<><OpeningHours/><Variants/><Navbar/></>} />
             <Route path="/openingHoursWithAccount" element={<PrivateRoute childrenComp={<MainLayout><OpeningHours/></MainLayout>} />}/> 
             <Route path="/shoppingCart" element={<PrivateRoute childrenComp ={<MainLayout><ShoppingCart/></MainLayout>}></PrivateRoute>} />
+            <Route path="/aboutUs" element={<PrivateRoute childrenComp={<MainLayout><AboutUs/></MainLayout>} />}/> 
             <Route path="*" element={<PrivateRoute childrenComp={<MainLayout><Landing/></MainLayout>} />} />
           </Routes>
       </Router>
