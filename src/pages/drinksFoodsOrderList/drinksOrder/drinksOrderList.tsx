@@ -8,8 +8,11 @@ import { useTranslation } from 'react-i18next';
 import cornerImg from "../../../assets/pageImages/CornerCut.png"
 import cornerImgLeftBottom from "../../../assets/pageImages/DownLeftCorner.png";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../../hooks/app.hooks";
+import { addProduct } from "../../../redux/store/cartReduxState/cartSlice";
 
 export default function DrinksOrderList(){
+    const dispatch = useAppDispatch();
     const {t} = useTranslation();
     const [drinks, setDrinks] = useState<Drinks[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
@@ -34,6 +37,11 @@ export default function DrinksOrderList(){
     useEffect(()=>{
         getDrinks();
     }, [])
+
+    function addItem(productName: string, unit: string, price:number){
+            const datas = {id: Math.random(), productName, unit, price, quantity: 1 };
+            dispatch(addProduct(datas))
+        }
 
     
     return(
@@ -75,7 +83,7 @@ export default function DrinksOrderList(){
                                         {drink.price+ " Ft"}
                                     </div>
                                     <div className={classes["drink_list_element"]}>
-                                        <ButtonInput hoverColor='lightgray' buttonText={t("menuOrderDrink.addToCart")} type="button" ></ButtonInput>
+                                        <ButtonInput hoverColor='lightgray' onClick={() => addItem(drink.drinkName, drink.unit, drink.price)} buttonText={t("menuOrderDrink.addToCart")} type="button" ></ButtonInput>
                                     </div>
                                 </td> 
                                 

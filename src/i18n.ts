@@ -82,6 +82,15 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               socials: "Follow Us",
               policy: "Policy"
             },
+            cart:{
+              title: "Cart",
+              product: "Product",
+              unit: "Unit",
+              price: "Price",
+              removeFromCart: "Remove from cart",
+              cartIsEmpty: "Cart is empty"
+            }
+            
 
         },
 
@@ -157,6 +166,14 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             information: "Információ",
             socials: "Kövess Minket",
             policy: "Házirend"
+          },
+          cart:{
+            title: "Kosár",
+            product: "Termék",
+            unit: "Mennyiség",
+            price: "Ár",
+            removeFromCart: "Eltávolítás a kosárból",
+            cartIsEmpty : "A kosár üres"
           }
 
         },
