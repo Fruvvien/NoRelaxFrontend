@@ -6,8 +6,8 @@ import img2 from "../../../../assets/navbarImages/tableIcon.png";
 import img3 from "../../../../assets/navbarImages/clockIcon.png";
 import img4 from "../../../../assets/navbarImages/menu-book-icon-md.png";
 import img5 from "../../../../assets/navbarImages/multipleUsersIcon.png";
-import imgRegistrationLock from '@mui/icons-material/LockOpenOutlined';
-import imgLoginKey from '@mui/icons-material/KeyOutlined';
+import registerLock from "../../../../assets/navbarImages/registerLock.png";
+import loginKeyIcon from "../../../../assets/navbarImages/keyIconGood.png";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "../../../../hooks/app.hooks";
 import { IUsersTokenData } from "../../../../models/stateTypeUser";
@@ -59,7 +59,7 @@ export const MenuItem = () => {
     const getAuthToken = useAppSelector((state: { auth: IUsersTokenData }) => state.auth.token);
 
     if (!getAuthToken) {
-        img.push(img3, img3,img3, img5);
+        img.push(loginKeyIcon, registerLock,img3, img5);
         text.push(
             t("leftSideBar.login"),
             t("leftSideBar.register"),

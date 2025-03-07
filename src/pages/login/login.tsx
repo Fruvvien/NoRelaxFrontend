@@ -12,12 +12,17 @@ import {  getToken, getUserId } from '../../redux/store/userReduxState/userSlice
 import img from "../../assets/loginImages/loginKeyIcon.png"
 import cornerImg from "../../assets/pageImages/CornerCut.png"
 import cornerImgLeftBottom from "../../assets/pageImages/DownLeftCorner2.png";
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import { DialogContent, DialogContentText } from '@mui/material';
+import cheersImg from "../../assets/loginImages/cheersIcon.png";
 
 function Login(){
 
     const dispatch = useAppDispatch()
     const {t} = useTranslation();
     const navigate = useNavigate();
+    const [success, setSuccess] = useState(false);
     const [formState, setFormState] = useState({
         email: "",
         password: "",
@@ -46,8 +51,14 @@ function Login(){
             dispatch(getToken());
             dispatch(getUserId(result.userId))
             setErrors([])
-            navigate('/')
-            alert("Login successful!")
+            setTimeout(() => {
+                setSuccess(true);
+                navigate("/home");
+            }, 1000)
+            
+            
+                
+           
             
         }
         else{
@@ -71,8 +82,9 @@ function Login(){
     }
     return(
         <>
-       
-            <form  className={classes["login-page"]} onSubmit={handleSubmit}>
+            
+                
+                <form  className={classes["login-page"]} onSubmit={handleSubmit}>
                 <div className={classes.background}>
                             <span><img className={classes["corner_img1"]} src={cornerImgLeftBottom} alt="" /></span>
                             <span><img className={classes["corner_img2"]} src={cornerImg} alt="" /></span>
@@ -95,9 +107,21 @@ function Login(){
                         <ButtonInput hoverColor='lightgray' buttonText={t("login.button")} type='submit'></ButtonInput>
                         <span style={{zIndex:501}}>{t("login.textNextToRegisterLink")}<Link  className={classes.link} to="/register"> {t("login.linkToRegister")}</Link></span>
                     </div>
-                    
+                    <React.Fragment>
+                        <Dialog open={success} onClose={() => setSuccess(false)}>
+                            <DialogContent>
+                                <DialogContentText>
+                                    <img src={cheersImg} alt="" />
+                                    {t("login.success")}
+                                </DialogContentText>
+                            </DialogContent>
+                        </Dialog>
+                    </React.Fragment>
                 </div>
             </form>
+            
+       
+            
        
             
         </>

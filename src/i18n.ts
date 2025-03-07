@@ -21,6 +21,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 button: "Login",
                 textNextToRegisterLink : "Don't have an account yet?",
                 linkToRegister: "Register",
+                success: "Successful login!",
             },
             register: {
                 title: "Register",
@@ -105,6 +106,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             button: "Bejelentkezés",
             textNextToRegisterLink : "Nincs még fiókod?",
             linkToRegister: "Regisztrálj",
+            success: "Sikeres bejelentkezés!",
           },
           register: {
             title: "Regisztráció",
