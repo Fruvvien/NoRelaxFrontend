@@ -34,30 +34,27 @@ export default function ShoppingCart(){
                                 <h3>{t("cart.price")}</h3>
                                 <h3>{t("cart.removeFromCart")}</h3>
                             </th>
+                            <td>
                             {
-                                 cartItemId.current === 0 ?  
-                                 <tr>
-                                    <td>
-                                        <p>{t("cart.cartIsEmpty")}</p>
-                                    </td>
-                                 </tr>
-                               
+                                cartItemId.current === 0 ?  
+                                <td>
+                                    <p>{t("cart.cartIsEmpty")}</p>
+                                </td>
                                 :
                                 <>
                                   {getCartItems.map((items) =>(
-                                    <tr>
-                                        <td key={items.id}>
-                                            <div>{items.productName} {items.unit}</div>
-                                            <div>{items.quantity}</div>
-                                            <div>{items.price}</div>
-                                        </td>
-                                    </tr>
-                                        
+                                    <td key={items.id}>
+                                        <div>{items.productName} {items.unit}</div>
+                                        <div>{items.quantity}</div>
+                                        <div>{items.price}</div>
+                                    </td>
                                     ))
                                     }
                                 </>
                             
                             }
+                            </td>
+                            
                            
                         </tr>
                     </table>

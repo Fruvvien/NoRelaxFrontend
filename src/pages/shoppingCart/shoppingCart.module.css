@@ -30,7 +30,6 @@
 }
 .shopping-cart-body{
     display: flex;
-    
     width: 100%;
 }
 .shopping-cart-footer{
@@ -40,14 +39,15 @@
     width: 100%;
     height: 100%;
     display: flex;
-    border-bottom: 3px solid gray;
-    border-radius: 15px;
+    flex-direction: column;
 }
 
 .shopping-cart-title{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    border-bottom: 3px solid gray;
+    border-radius: 15px;
 }
 
 
