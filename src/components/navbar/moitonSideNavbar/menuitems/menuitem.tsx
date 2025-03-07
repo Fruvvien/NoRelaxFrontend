@@ -4,8 +4,10 @@ import classes from "./menuitem.module.css"
 import img1 from "../../../../assets/navbarImages/houseIcon.png";
 import img2 from "../../../../assets/navbarImages/tableIcon.png";
 import img3 from "../../../../assets/navbarImages/clockIcon.png";
-import img4 from "../../../../assets/navbarImages/downloadIcon.png";
+import img4 from "../../../../assets/navbarImages/menu-book-icon-md.png";
 import img5 from "../../../../assets/navbarImages/multipleUsersIcon.png";
+import imgRegistrationLock from '@mui/icons-material/LockOpenOutlined';
+import imgLoginKey from '@mui/icons-material/KeyOutlined';
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "../../../../hooks/app.hooks";
 import { IUsersTokenData } from "../../../../models/stateTypeUser";
