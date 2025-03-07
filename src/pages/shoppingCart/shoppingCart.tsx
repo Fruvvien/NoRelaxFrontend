@@ -3,6 +3,7 @@ import classes from "./shoppingCart.module.css"
 import { useTranslation } from "react-i18next";
 import { Icart } from "../../models/stateCart";
 import { useAppSelector } from "../../hooks/app.hooks";
+import ButtonInput from "../../components/buttons/buttonInput";
 
 export default function ShoppingCart(){
     const {t} = useTranslation();
@@ -12,6 +13,8 @@ export default function ShoppingCart(){
     useEffect(() =>{
         const foundItem = getCartItems.find((items) => items.id != 0);
         cartItemId.current = foundItem ? foundItem.id : 0;
+        console.log(foundItem);
+        
     }, [getCartItems])
     setTimeout( async() =>{
         setLoading(false);
@@ -34,7 +37,6 @@ export default function ShoppingCart(){
                                 <h3>{t("cart.price")}</h3>
                                 <h3>{t("cart.removeFromCart")}</h3>
                             </th>
-                            <td>
                             {
                                 cartItemId.current === 0 ?  
                                 <td>
@@ -43,19 +45,19 @@ export default function ShoppingCart(){
                                 :
                                 <>
                                   {getCartItems.map((items) =>(
-                                    <td key={items.id}>
-                                        <div>{items.productName} {items.unit}</div>
-                                        <div>{items.quantity}</div>
-                                        <div>{items.price}</div>
+                                    items.id != 0 ?
+                                    <td className={classes["shopping-cart-td"]} key={items.id}>
+                                        <div className={classes["shopping-cart-items"]}>{items.productName} {items.unit}</div>
+                                        <div className={classes["shopping-cart-items"]}>{items.quantity}</div>
+                                        <div className={classes["shopping-cart-items"]}>{items.price} Ft</div>
+                                        <div className={classes["shopping-cart-items"]}><ButtonInput buttonText={t("cart.removeButton")} type="button"></ButtonInput></div>        
                                     </td>
+                                    :
+                                    ""
                                     ))
                                     }
                                 </>
-                            
                             }
-                            </td>
-                            
-                           
                         </tr>
                     </table>
                     <div className={classes["shopping-cart-footer"]}>
