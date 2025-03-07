@@ -10,14 +10,14 @@ import { useAppDispatch, useAppSelector } from "../../hooks/app.hooks";
 import { getToken } from "../../redux/store/userReduxState/userSlice";
 import cartImg from "../../assets/navbarImages/mdi--cart.png"
 import { useNavigate } from "react-router-dom";
-/* import { IUsersTokenData } from "../../models/stateTypeUser"; */
+import { IUsersTokenData } from "../../models/stateTypeUser";
 
 function Navbar() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   dispatch(getToken());
   const [loading, setLoading] = useState<boolean>(true);
-  /*  const getAuthToken = useAppSelector((state: {auth: IUsersTokenData}) => state.auth.token); */
+  const getAuthToken = useAppSelector((state: {auth: IUsersTokenData}) => state.auth.token);
   
    
   const text = ["HU", "EN"];
@@ -36,7 +36,12 @@ function Navbar() {
                       <img className={classes.logo} alt="" src={NoRelaxLogo} />
                   </div>
                   <div className={classes["toolbar-end"]} >
-                      <a onClick={() => navigate("/shoppingCart")}><img className={classes["shopping-cart-img"]} src={cartImg} alt="" /></a>
+                    {
+                      getAuthToken ? <a onClick={() => navigate("/shoppingCart")}><img className={classes["shopping-cart-img"]} src={cartImg} alt="" /></a> 
+                      :
+                      ""
+                    }
+                      
                   </div>
                 </div>
               </AppBar>

@@ -9,7 +9,7 @@ import {isEmail, isNotEmpty, hasMinLength, allIsNotEmpty } from '../../util/vali
 import { useTranslation } from 'react-i18next';
 import img from "../../assets/loginImages/lockIcon.png"
 import cornerImg from "../../assets/pageImages/CornerCut.png"
-import cornerImgLeftBottom from "../../assets/pageImages/DownLeftCorner.png";
+import cornerImgLeftBottom from "../../assets/pageImages/DownLeftCorner2.png";
 
 function Register(){
      const navigate = useNavigate();

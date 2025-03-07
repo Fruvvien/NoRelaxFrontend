@@ -13,7 +13,7 @@
 .corner_img1{
     position: absolute;
     left: 0;
-    bottom: -26px;
+    bottom: 1px;
     width: 150px;
 }
 .corner_img2{
@@ -26,9 +26,8 @@
 .corner_img3{
     transform: rotate(270deg);
     position: absolute;
-    z-index: 500;
-    right: -12px;
-    bottom: 11px;
+    right: -13px;
+    bottom: 14px;
     width: 150px;
 }
 .corner_img4{
