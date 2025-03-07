@@ -15,15 +15,18 @@ export default function OpeningHours() {
                             <span><img className={classes["corner_img2"]} src={cornerImg} alt="" /></span>
                             <span><img className={classes["corner_img3"]} src={cornerImg} alt="" /></span>
                             <span><img className={classes["corner_img4"]} src={cornerImg} alt="" /></span>
-                            <h1>{t('openingHours.title')}</h1>
-
-                            <p>{t('openingHours.monday')}</p>
-                            <p>{t('openingHours.tuesday')}</p>
-                            <p>{t('openingHours.wednesday')}</p>
-                            <p>{t('openingHours.thursday')}</p>
-                            <p>{t('openingHours.friday')}</p>
-                            <p>{t('openingHours.saturday')}</p>
-                            <p>{t('openingHours.sunday')}</p>
+                            <div className={classes["opening-hours-title-container"]}>
+                                <h1>{t('openingHours.title')}</h1>
+                            </div>
+                            <div className={classes["opening-hours-data-container"]}>
+                                <p>{t('openingHours.monday')}</p>
+                                <p>{t('openingHours.tuesday')}</p>
+                                <p>{t('openingHours.wednesday')}</p>
+                                <p>{t('openingHours.thursday')}</p>
+                                <p>{t('openingHours.friday')}</p>
+                                <p>{t('openingHours.saturday')}</p>
+                                <p>{t('openingHours.sunday')}</p>
+                            </div>
 
                 </div>
             </div>

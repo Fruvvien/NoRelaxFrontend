@@ -5,7 +5,7 @@
     align-items: center;
     align-content: center;
     height: 100%;
-    padding: 0 1rem 0 1rem;
+    padding: 80px;
 }
 
 .background {
@@ -52,6 +52,55 @@
     width: 150px;
 }
 
+.opening-hours-title-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.opening-hours-data-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px; 
+    padding-bottom: 35px;
+}
+
+h1 {
+    margin-top: 0px;
+    margin-bottom: 50px !important;
+}
+
 p {
-    margin: 10px;
+    left: 0px;
+    margin: 0px !important;
+    padding: 0px;
+
+}
+
+@media screen and (max-width: 425px) {
+    .opening-hours-page {
+        padding: 25px;
+    }
+
+    .background {
+        height: 300px;
+        
+        
+    }
+
+    p {
+        font-size: 15px !important;
+    }
+
+    h1 {
+        font-size: 25px !important;
+    }
+    
+    
 }

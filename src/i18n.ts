@@ -85,7 +85,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             cart:{
               title: "Cart",
               product: "Product",
-              unit: "Unit",
+              unit: "Amount",
               price: "Price",
               removeFromCart: "Remove from cart",
               cartIsEmpty: "Cart is empty"
