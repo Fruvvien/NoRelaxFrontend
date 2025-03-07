@@ -78,7 +78,7 @@ h1 {
 }
 
 p {
-    left: 0px;
+    left: 0px !important;
     margin: 0px !important;
     padding: 0px;
 
