@@ -38,8 +38,8 @@ export default function DrinksOrderList(){
         getDrinks();
     }, [])
 
-    function addItem(productName: string, unit: string, price:number){
-            const datas = {id: Math.random(), productName, unit, price, quantity: 1 };
+    function addItem(id:number,productName: string, unit: string, price:number){
+            const datas = {id: id, productName, unit, price, quantity: 1 };
             dispatch(addProduct(datas))
         }
 
@@ -83,7 +83,7 @@ export default function DrinksOrderList(){
                                         {drink.price+ " Ft"}
                                     </div>
                                     <div className={classes["drink_list_element"]}>
-                                        <ButtonInput hoverColor='lightgray' onClick={() => addItem(drink.drinkName, drink.unit, drink.price)} buttonText={t("menuOrderDrink.addToCart")} type="button" ></ButtonInput>
+                                        <ButtonInput hoverColor='lightgray' onClick={() => addItem(drink.id,drink.drinkName, drink.unit, drink.price)} buttonText={t("menuOrderDrink.addToCart")} type="button" ></ButtonInput>
                                     </div>
                                 </td> 
                                 

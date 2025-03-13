@@ -90,7 +90,9 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               price: "Price",
               removeFromCart: "Remove from cart",
               cartIsEmpty: "Cart is empty",
-              removeButton: "Remove"
+              removeButton: "Remove",
+              quantity: "pcs",
+              finalPrice: "Final Price"
             }
             
 
@@ -177,7 +179,9 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             price: "Ár",
             removeFromCart: "Eltávolítás a kosárból",
             cartIsEmpty : "A kosár üres",
-            removeButton: "Eltávolítás"
+            removeButton: "Eltávolítás",
+            quantity: "adag",
+            finalPrice:"Végösszeg"
           }
 
         },

@@ -4,4 +4,5 @@ export interface Icart{
     unit: string,
     price: number,
     quantity: number,
+    fullPrice: number
 }
