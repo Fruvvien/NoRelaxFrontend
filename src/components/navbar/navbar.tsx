@@ -11,13 +11,15 @@ import { getToken } from "../../redux/store/userReduxState/userSlice";
 import cartImg from "../../assets/navbarImages/mdi--cart.png"
 import { useNavigate } from "react-router-dom";
 import { IUsersTokenData } from "../../models/stateTypeUser";
+import { Icart } from "../../models/stateCart";
 
 function Navbar() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   dispatch(getToken());
   const [loading, setLoading] = useState<boolean>(true);
-  const getAuthToken = useAppSelector((state: {auth: IUsersTokenData}) => state.auth.token);
+  const getAuthToken = useAppSelector((state: {auth: IUsersTokenData, cart: Icart[]}) => state.auth.token);
+  const cartQuantity = useAppSelector((state: {cart: Icart[]}) => state.cart ? state.cart.reduce((acc, item) => acc + item.quantity, 0) : 0);
   
    
   const text = ["HU", "EN"];
@@ -37,7 +39,17 @@ function Navbar() {
                   </div>
                   <div className={classes["toolbar-end"]} >
                     {
-                      getAuthToken ? <a onClick={() => navigate("/shoppingCart")}><img className={classes["shopping-cart-img"]} src={cartImg} alt="" /></a> 
+                      getAuthToken ? 
+                      <span><a onClick={() => navigate("/shoppingCart")}><img className={classes["shopping-cart-img"]} src={cartImg} alt="" /></a>
+                      {
+                        cartQuantity > 0 ?
+                        <span className={classes["cart-quantity"]}>
+                          {cartQuantity}
+                        </span> 
+                        :
+                        ""
+                      }
+                      </span> 
                       :
                       ""
                     }

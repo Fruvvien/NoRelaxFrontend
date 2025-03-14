@@ -28,9 +28,9 @@ export class HttpClientRequests {
         }
         const result: IauthDatas = await response.json();
         console.log("Success post!");
-        if(result.token){
+        if(result.token && result.userId){
             localStorage.setItem('authToken', result.token);
-
+            localStorage.setItem('userId', result.userId.toString());
         }
         return result
     }
@@ -50,6 +50,24 @@ export class HttpClientRequests {
         console.log("Succesful get request");
         
         return result;
+    }
+
+    static async postOrder(endPoint: string,userId: string, order: object, reservationId: number){
+        const response = await fetch(enviroment.LOCAL_API_URL + endPoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+            },
+            body: JSON.stringify({ userId, order,reservationId })
+        });
+        if(!response.ok){
+            console.log(new Error(response+""));
+        }
+        const result = await response.json();
+        return "Sikeres rendelés!";
+        
     }
  
 

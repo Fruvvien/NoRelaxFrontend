@@ -24,6 +24,7 @@ export default function DrinksOrderList(){
                 const response =  await HttpClientRequests.getDrinks("auth/drinks")
                 setDrinks(response);
                 setLoading(false);
+                
             }, 1000)
             
             
@@ -35,7 +36,9 @@ export default function DrinksOrderList(){
     }
 
     useEffect(()=>{
+         
         getDrinks();
+         
     }, [])
 
     function addItem(id:number,productName: string, unit: string, price:number){

@@ -6,6 +6,7 @@ import { useAppSelector } from "../../hooks/app.hooks";
 import ButtonInput from "../../components/buttons/buttonInput";
 import { useDispatch } from "react-redux";
 import { quantityMinus, quantityPlus, removeFromCart } from "../../redux/store/cartReduxState/cartSlice";
+import { HttpClientRequests } from "../../services/http-client-requests";
 
 export default function ShoppingCart(){
     const {t} = useTranslation();
@@ -14,7 +15,8 @@ export default function ShoppingCart(){
     const cartItemId = useRef(0);
     const dispatch = useDispatch();
     const cartItemsFullPrice = useAppSelector((item) => item.cart.reduce((acc, item) => acc + item.price * item.quantity, 0));
-    
+    const userId = useAppSelector((state: {auth: {id: number}}) => state.auth.id);
+
     useEffect(() =>{
         const foundItem = getCartItems.find((items) => items.id != 0);
         cartItemId.current = foundItem ? foundItem.id : 0;
@@ -36,6 +38,19 @@ export default function ShoppingCart(){
     function removeButton(id: number){
         dispatch(removeFromCart(id))
     }
+
+    async function placeAnOrder(){
+        const cartItems = getCartItems.filter((items) => items.id != 0);
+        const userId = localStorage.getItem("userId")?.toString();
+        console.log({userId: userId, cart: cartItems});
+        
+        const response = await HttpClientRequests.postOrder("auth/orders", userId || "", {cart: cartItems}, 4);
+        if(response){
+            alert(response);
+        }
+    
+    }   
+
     return(
         <>
         {!loading ?
@@ -88,7 +103,11 @@ export default function ShoppingCart(){
                     </tbody>
                     <tfoot>
                         <div className={classes["shopping-cart-footer"]}>
-                            <span className={classes["shopping-cart-full-price"]} style={{display:"flex", alignItems:"center", justifyContent:"center"}}>{t("cart.finalPrice")} {cartItemsFullPrice} Ft</span>
+                            <span className={classes["shopping-cart-final-price-button"]} style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+                                {t("cart.finalPrice")} {cartItemsFullPrice} Ft
+                                <ButtonInput onClick={() => placeAnOrder()} buttonText={t("cart.orderButton")} type="button" hoverColor="lightgray"></ButtonInput>    
+                            </span>
+                            
                         </div>
                     </tfoot>
                 </table>

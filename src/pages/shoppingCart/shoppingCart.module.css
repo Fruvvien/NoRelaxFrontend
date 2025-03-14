@@ -111,8 +111,9 @@
     justify-content: flex-end;
 }
 
-.shopping-cart-full-price{
+.shopping-cart-final-price-button{
     display: flex;
+    gap: 10px;
     height: 100px;
     align-items: center;
     justify-content: center;
