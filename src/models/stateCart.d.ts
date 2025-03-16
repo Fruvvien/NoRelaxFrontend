@@ -1,8 +1,7 @@
 export interface Icart{
-    id: number,
+    orderId: number,
     productName: string,
     unit: string,
     price: number,
     quantity: number,
-    fullPrice: number
 }

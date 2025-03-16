@@ -42,7 +42,7 @@ export default function DrinksOrderList(){
     }, [])
 
     function addItem(id:number,productName: string, unit: string, price:number){
-            const datas = {id: id, productName, unit, price, quantity: 1 };
+            const datas = {orderId: id, productName, unit, price, quantity: 1 };
             dispatch(addProduct(datas))
         }
 

@@ -15,11 +15,10 @@ export default function ShoppingCart(){
     const cartItemId = useRef(0);
     const dispatch = useDispatch();
     const cartItemsFullPrice = useAppSelector((item) => item.cart.reduce((acc, item) => acc + item.price * item.quantity, 0));
-    const userId = useAppSelector((state: {auth: {id: number}}) => state.auth.id);
 
     useEffect(() =>{
-        const foundItem = getCartItems.find((items) => items.id != 0);
-        cartItemId.current = foundItem ? foundItem.id : 0;
+        const foundItem = getCartItems.find((items) => items.orderId != 0);
+        cartItemId.current = foundItem ? foundItem.orderId : 0;
     }, [getCartItems])
 
     setTimeout(() =>{
@@ -40,13 +39,16 @@ export default function ShoppingCart(){
     }
 
     async function placeAnOrder(){
-        const cartItems = getCartItems.filter((items) => items.id != 0);
+        const cartItems : Icart[] = getCartItems.filter((items) => items.orderId != 0);
         const userId = localStorage.getItem("userId")?.toString();
         console.log({userId: userId, cart: cartItems});
         
-        const response = await HttpClientRequests.postOrder("auth/orders", userId || "", {cart: cartItems}, 4);
+        const response = await HttpClientRequests.postOrder("auth/orders", userId || "",  cartItems, 4, cartItemsFullPrice);
+        console.log(response);
+        
         if(response){
             alert(response);
+            getCartItems.map((items) => dispatch(removeFromCart(items.orderId)));
         }
     
     }   
@@ -80,16 +82,16 @@ export default function ShoppingCart(){
                                 <>
                                     
                                     {getCartItems.map((items) =>(
-                                    items.id != 0 ?
-                                    <td className={classes["shopping-cart-td"]} key={items.id}>
+                                    items.orderId != 0 ?
+                                    <td className={classes["shopping-cart-td"]} key={items.orderId}>
                                             <div className={classes["shopping-cart-items-first-column"]}>{items.productName}{`(${items.unit})`}</div>
                                             <div className={classes["shopping-cart-items-button"]}> 
-                                                <button onClick={() => minusButton(items.id) } type="button" className={classes["shopping-cart-button-left"]}>-</button> 
+                                                <button onClick={() => minusButton(items.orderId) } type="button" className={classes["shopping-cart-button-left"]}>-</button> 
                                                     {items.quantity} {t("cart.quantity")}
-                                                <button onClick={() => plusButton(items.id) } type="button" className={classes["shopping-cart-button-right"]}>+</button>
+                                                <button onClick={() => plusButton(items.orderId) } type="button" className={classes["shopping-cart-button-right"]}>+</button>
                                             </div>
                                             <div className={classes["shopping-cart-items"]}>{items.price} Ft</div>
-                                            <div className={classes["shopping-cart-items"]}><ButtonInput onClick={() => removeButton(items.id)} hoverColor='lightgray' buttonText={t("cart.removeButton")} type="button"></ButtonInput></div>     
+                                            <div className={classes["shopping-cart-items"]}><ButtonInput onClick={() => removeButton(items.orderId)} hoverColor='lightgray' buttonText={t("cart.removeButton")} type="button"></ButtonInput></div>     
                                     </td>
                                     :
                                     ""

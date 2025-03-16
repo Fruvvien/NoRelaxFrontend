@@ -64,6 +64,7 @@ export const MenuItem = () => {
         switch(name){
           case name = t("leftSideBar.logout"):
             localStorage.removeItem("authToken");
+            localStorage.removeItem("userId");
             window.location.reload();
           break  
         }
