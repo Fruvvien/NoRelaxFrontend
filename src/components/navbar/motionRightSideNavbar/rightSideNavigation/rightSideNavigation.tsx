@@ -1,7 +1,9 @@
 import { motion } from "framer-motion"
 import { MenuItem } from "../rightSideMenuItems/rightSideMenuItems"
 import classes from "./rightSideNavigation.module.css"
-
+type navigation = {
+    isOpenFromVariant: () => void
+ }
 const navVariants = {
     open: {
         display:"block",
@@ -13,10 +15,10 @@ const navVariants = {
     },
 }
 
-export const Navigation = () => (
+export const Navigation: React.FC<navigation> = ({isOpenFromVariant}) => (
     <motion.ul className={classes.list} variants={navVariants}>
         
-            <MenuItem />
+            <MenuItem isOpenNavigation={isOpenFromVariant}/>
         
     </motion.ul>
 )

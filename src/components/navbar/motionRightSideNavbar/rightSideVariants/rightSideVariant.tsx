@@ -20,7 +20,7 @@ export default function Variants() {
                 className={classes.nav}
             >
                 <motion.div className={classes.background} variants={sidebarVariants} />
-                    <Navigation />
+                    <Navigation isOpenFromVariant={() => setIsOpen(!isOpen)}/>
                 <MenuToggle toggle={() => setIsOpen(!isOpen)} />
             </motion.nav>
         )

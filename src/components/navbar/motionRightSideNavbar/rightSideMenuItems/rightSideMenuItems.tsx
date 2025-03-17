@@ -7,6 +7,9 @@ import { useTranslation } from "react-i18next";
 import { useAppSelector } from "../../../../hooks/app.hooks";
 import { IUsersTokenData } from "../../../../models/stateTypeUser";
 
+type menuItems = {
+    isOpenNavigation: () => void
+}
 
 
 const itemVariants = {
@@ -46,7 +49,7 @@ const textPlaceholder: React.CSSProperties = {
 }
 
 
-export const MenuItem = () => {
+export const MenuItem : React.FC<menuItems> = ({ isOpenNavigation })=> {
     const {t} = useTranslation();
     const text: string[] = [];
     const img: string[] = [];
@@ -60,11 +63,12 @@ export const MenuItem = () => {
         )
     }
 
-    function menuItemsEvents(name: string, t: (key: string) => string): void {
+    function menuItemsEvents(name: string,isOpenNavigation : ()=> void, t: (key: string) => string): void {
         switch(name){
           case name = t("leftSideBar.logout"):
             localStorage.removeItem("authToken");
             localStorage.removeItem("userId");
+            isOpenNavigation()
             window.location.reload();
           break  
         }
@@ -83,7 +87,7 @@ export const MenuItem = () => {
                         <img src={image} style={{ width: "100%", height: "100%" }} />
                     </div>
                     <div style={{ ...textPlaceholder, color: "white", fontSize: "24px" }}>
-                        <a  onClick={() => menuItemsEvents(text[i],t)} >{text[i]}</a>
+                        <a  onClick={() => menuItemsEvents(text[i],isOpenNavigation,t)} >{text[i]}</a>
                     </div>
                   
                 </motion.li>

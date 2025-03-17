@@ -14,7 +14,7 @@ import { IUsersTokenData } from "../../../../models/stateTypeUser";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 type menuItems = {
-    isOpenNavigation: boolean
+    isOpenNavigation: () => void
 }
 
 const itemVariants = {
@@ -98,14 +98,14 @@ export const MenuItem : React.FC<menuItems> = ({ isOpenNavigation }) => {
     }
 
 
-    function menuItemsEvents(name: string,  isOpen : boolean, t: (key: string) => string): void {
+    function menuItemsEvents(name: string, isOpenNavigation : ()=> void,  t: (key: string) => string): void {
     
         switch (name) {
             case t("leftSideBar.menu"):
-                isOpen = false;
+                isOpenNavigation()
                 break;
             case t("leftSideBar.home"):
-                isOpen = false;
+                isOpenNavigation()
                 break;
         }
     }

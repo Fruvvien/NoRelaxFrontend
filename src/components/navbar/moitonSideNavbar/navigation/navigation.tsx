@@ -3,7 +3,7 @@ import { MenuItem } from "../menuitems/menuitem"
 import classes from "./navigation.module.css"
 
 type navigation = {
-   isOpenFromVariant: boolean
+   isOpenFromVariant: () => void
 }
 
 const navVariants = {
