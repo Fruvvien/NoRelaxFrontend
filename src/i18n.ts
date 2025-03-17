@@ -32,6 +32,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 button: "Submit",
                 textNextToLoginLink : "Already have an account?",
                 linkToLogin: "Login",
+                successRegistration: "Successful registration!"
             },
             error:{
                 invalidEmail: "Invalid email address.",
@@ -121,6 +122,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             button: "Regisztráció",
             textNextToLoginLink : "Van már fiókod?",
             linkToLogin: "Jelentkezz be",
+            successRegistration: "Sikeres regisztráció!"
           },
           error:{
             invalidEmail: "Hibás email cím.",

@@ -45,20 +45,17 @@ function Login(){
         }
         const result = await HttpClientRequests.postData(user, "auth/login");
         console.log(result);
-        
+       
         if(result){
             
             dispatch(getToken());
             dispatch(getUserId(result.userId))
             setErrors([])
+            setSuccess(true);
             setTimeout(() => {
-                setSuccess(true);
                 navigate("/home");
-            }, 1000)
+            }, 2000)
             
-            
-                
-           
             
         }
         else{
@@ -76,15 +73,12 @@ function Login(){
             if(errors.length > 0){
                 return {errors};
             }
-            alert("invalid email or password")
             return {errors: null}
         }
     }
     return(
         <>
-            
-                
-                <form  className={classes["login-page"]} onSubmit={handleSubmit}>
+            <form  className={classes["login-page"]} onSubmit={handleSubmit}>
                 <div className={classes.background}>
                             <span><img className={classes["corner_img1"]} src={cornerImgLeftBottom} alt="" /></span>
                             <span><img className={classes["corner_img2"]} src={cornerImg} alt="" /></span>
@@ -109,9 +103,9 @@ function Login(){
                     </div>
                     <React.Fragment>
                         <Dialog open={success} onClose={() => setSuccess(false)}>
-                            <DialogContent>
-                                <DialogContentText>
-                                    <img src={cheersImg} alt="" />
+                            <DialogContent style={{display:"flex", flexDirection:"column", alignItems:"center", backgroundColor:"black", border:"2px solid white"}}>
+                                <DialogContentText style={{ backgroundColor:"black", color:"white"}}>
+                                    <img style={{width:"300px", backgroundColor:"black"}} src={cheersImg} alt="" />
                                     {t("login.success")}
                                 </DialogContentText>
                             </DialogContent>
@@ -119,11 +113,6 @@ function Login(){
                     </React.Fragment>
                 </div>
             </form>
-            
-       
-            
-       
-            
         </>
     )
 }

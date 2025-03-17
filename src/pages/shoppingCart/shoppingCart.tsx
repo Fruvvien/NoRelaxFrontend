@@ -50,8 +50,7 @@ export default function ShoppingCart(){
             alert(response);
             getCartItems.map((items) => dispatch(removeFromCart(items.orderId)));
         }
-    
-    }   
+    }
 
     return(
         <>

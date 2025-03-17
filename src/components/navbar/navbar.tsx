@@ -17,7 +17,6 @@ function Navbar() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   dispatch(getToken());
-  const [loading, setLoading] = useState<boolean>(true);
   const getAuthToken = useAppSelector((state: {auth: IUsersTokenData, cart: Icart[]}) => state.auth.token);
   const cartQuantity = useAppSelector((state: {cart: Icart[]}) => state.cart ? state.cart.reduce((acc, item) => acc + item.quantity, 0) : 0);
   

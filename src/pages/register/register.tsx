@@ -10,10 +10,13 @@ import { useTranslation } from 'react-i18next';
 import img from "../../assets/loginImages/lockIcon.png"
 import cornerImg from "../../assets/pageImages/CornerCut.png"
 import cornerImgLeftBottom from "../../assets/pageImages/DownLeftCorner2.png";
+import { Dialog, DialogContent, DialogContentText } from "@mui/material";
+import cheersImg from "../../assets/loginImages/cheersIcon.png";
 
 function Register(){
-     const navigate = useNavigate();
+    const navigate = useNavigate();
     const {t} = useTranslation();
+    const [success, setSuccess] = useState(false);
     const [formState, setFromState] = useState<User>({
         firstName: '',
         lastName: '',
@@ -42,8 +45,11 @@ function Register(){
             const result = await HttpClientRequests.postData(user, "user");
             if(result){
                 setErrors([]);
-                alert("Success create!");
-                navigate("/login")
+                setSuccess(true);
+                setTimeout(() => {
+                    navigate("/login")
+                }, 2000)
+                
             }
             else{
                  const newErrors: string[] = [];
@@ -108,6 +114,16 @@ function Register(){
                         <ButtonInput hoverColor="lightgray"  buttonText={t("register.button")} type="submit"></ButtonInput>
                         <span style={{zIndex:501}}>{t("register.textNextToLoginLink")}<Link className={classes["link-to-login"]} to="/login" > {t("register.linkToLogin")}</Link></span>
                     </div>
+                    <React.Fragment>
+                        <Dialog open={success} onClose={() => setSuccess(false)}>
+                            <DialogContent style={{display:"flex", flexDirection:"column", alignItems:"center", backgroundColor:"black", border:"2px solid white"}}>
+                                <DialogContentText style={{ backgroundColor:"black", color:"white"}}>
+                                    <img style={{width:"300px", backgroundColor:"black"}} src={cheersImg} alt="" />
+                                    {t("register.successRegistration")}
+                                </DialogContentText>
+                            </DialogContent>
+                        </Dialog>
+                    </React.Fragment>
                     
                 </div>
                 

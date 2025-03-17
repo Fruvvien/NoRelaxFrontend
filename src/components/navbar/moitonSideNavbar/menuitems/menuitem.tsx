@@ -13,6 +13,10 @@ import { useAppSelector } from "../../../../hooks/app.hooks";
 import { IUsersTokenData } from "../../../../models/stateTypeUser";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
+type menuItems = {
+    isOpenNavigation: boolean
+}
+
 const itemVariants = {
     open: {
         y: 0,
@@ -50,8 +54,10 @@ const textPlaceholder: React.CSSProperties = {
 }
 
 
-export const MenuItem = () => {
+export const MenuItem : React.FC<menuItems> = ({ isOpenNavigation }) => {
    
+    
+
     const { t } = useTranslation();
     const endPoints: string[] = [];
     const text: string[] = [];
@@ -92,12 +98,15 @@ export const MenuItem = () => {
     }
 
 
-    function menuItemsEvents(name: string, t: (key: string) => string): void {
+    function menuItemsEvents(name: string,  isOpen : boolean, t: (key: string) => string): void {
     
         switch (name) {
             case t("leftSideBar.menu"):
+                isOpen = false;
                 break;
             case t("leftSideBar.home"):
+                isOpen = false;
+                break;
         }
     }
 
@@ -115,7 +124,7 @@ export const MenuItem = () => {
                         <img src={image} style={{ width: "100%", height: "100%" }} />
                     </div>
                     <div style={{ ...textPlaceholder, color: "white", fontSize: "24px" }}>
-                        <Link style={{color:"white", textDecoration:"none"}} to={endPoints[i]} onClick={() => menuItemsEvents(text[i], t)}>{text[i]}</Link>
+                        <Link style={{color:"white", textDecoration:"none"}} to={endPoints[i]} onClick={() => menuItemsEvents(text[i],isOpenNavigation, t)}>{text[i]}</Link>
                     </div>
                 </motion.li>
             ))}
