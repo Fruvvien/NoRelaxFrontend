@@ -106,7 +106,7 @@ export default function ShoppingCart(){
                         <div className={classes["shopping-cart-footer"]}>
                             <span className={classes["shopping-cart-final-price-button"]} style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
                                 {t("cart.finalPrice")} {cartItemsFullPrice} Ft
-                                <ButtonInput onClick={() => placeAnOrder()} buttonText={t("cart.orderButton")} type="button" hoverColor="lightgray"></ButtonInput>    
+                                <ButtonInput disabled={getCartItems.length === 0 } onClick={() => placeAnOrder()} buttonText={t("cart.orderButton")} type="button"  hoverColor="lightgray"></ButtonInput>    
                             </span>
                             
                         </div>

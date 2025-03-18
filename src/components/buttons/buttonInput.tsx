@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import classes from "./buttonInput.module.css"
 import { style } from 'framer-motion/client';
 
-function ButtonInput(props: {hoverColor?:string, buttonText: string, style?: "string", type: "button" | "submit" | "reset", onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void}) {
+function ButtonInput(props: {disabled?: boolean, hoverColor?:string, buttonText: string, style?: "string", type: "button" | "submit" | "reset", onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void}) {
     const [isHovered, setIsHovered] = useState(false);
 
     const handleMouseEnter = () => {
@@ -33,7 +33,12 @@ function ButtonInput(props: {hoverColor?:string, buttonText: string, style?: "st
                 onClick={props.onClick} 
                 onMouseEnter={handleMouseEnter} 
                 onMouseLeave={handleMouseLeave}  
-                type={props.type}>{props.buttonText}
+                type={props.type}
+                disabled={props.disabled}
+                >
+                    
+                    {props.buttonText}
+                
             </Button>
         </Stack>
     )

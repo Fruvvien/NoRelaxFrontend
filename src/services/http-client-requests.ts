@@ -64,7 +64,7 @@ export class HttpClientRequests {
             body: JSON.stringify({ userId, order,reservationId,fullPrice})
         });
         if(!response.ok){
-            console.log(new Error(response+""));
+            console.log(new Error(JSON.stringify(response)));
         }
         const result = response.json();
         console.log(result);
