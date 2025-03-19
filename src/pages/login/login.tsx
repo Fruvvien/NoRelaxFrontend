@@ -104,8 +104,8 @@ function Login(){
                     <React.Fragment>
                         <Dialog open={success} onClose={() => setSuccess(false)}>
                             <DialogContent style={{display:"flex", flexDirection:"column", alignItems:"center", backgroundColor:"black", border:"2px solid white"}}>
-                                <DialogContentText style={{ backgroundColor:"black", color:"white"}}>
-                                    <img style={{width:"300px", backgroundColor:"black"}} src={cheersImg} alt="" />
+                                <DialogContentText style={{ width:"100%", maxWidth:'200px',backgroundColor:"black", color:"white"}}>
+                                    <img style={{width:"100%", maxWidth:'200px', backgroundColor:"black"}} src={cheersImg} alt="" />
                                     {t("login.success")}
                                 </DialogContentText>
                             </DialogContent>
