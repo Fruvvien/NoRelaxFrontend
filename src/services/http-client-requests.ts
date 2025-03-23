@@ -53,6 +53,23 @@ export class HttpClientRequests {
         return result;
     }
 
+    static async getUser(endPoint: string, id: string){
+        const response = await fetch(enviroment.LOCAL_API_URL + endPoint + `/${id}`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+                }
+            });
+            if(!response.ok){
+                localStorage.removeItem("authToken");
+                localStorage.removeItem("userId");
+                window.location.reload();
+            }
+    }
+
     static async postOrder(endPoint: string,userId: string, order: Icart[], reservationId: number, fullPrice: number){
         const response = await fetch(enviroment.LOCAL_API_URL + endPoint, {
             method: 'POST',

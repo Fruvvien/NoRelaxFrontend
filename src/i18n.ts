@@ -95,6 +95,9 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               quantity: "pcs",
               finalPrice: "Final Price",
               orderButton: "Place an order"
+            },
+            reservation: {
+              tableText: ""
             }
             
 
@@ -186,6 +189,20 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             quantity: "adag",
             finalPrice:"Végösszeg",
             orderButton: "Rendelés leadása"
+          },
+          reservation: {
+            tableTitleOne:"Asztal foglalás",
+            tableTitleTwo:"Dátum választás",
+            tableTitleThree:"Időhossz választás",
+            tableTextOne: "4 fős asztal",
+            tableTextTwo: "4 fős asztal",
+            tableTextThree: "5 fős asztal",
+            tableTextFour: "6 fős asztal",
+            tableTextFive: "8 fős asztal",
+
+            stageOne: "Asztal",
+            stageTwo: "Dátum",
+            stageThree: "Időhossz"
           }
 
         },

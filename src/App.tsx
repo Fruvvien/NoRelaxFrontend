@@ -1,5 +1,5 @@
 import './App.css'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Login from './pages/login/login'
 import Register from './pages/register/register'
 import {
@@ -20,8 +20,22 @@ import AboutUs from './pages/aboutUs/aboutUs';
 import { MainLayout } from './util/mainLayout';
 import Navbar from './components/navbar/navbar';
 import FoodsOrderList from './pages/drinksFoodsOrderList/foods/foodsOrderList';
+import { HttpClientRequests } from './services/http-client-requests';
+import Reservation from './pages/reservation/reservation';
 
 function App() {
+  useEffect(() => {
+    async function isUserLoggedIn() {
+      const userId = localStorage.getItem("userId");
+      if (userId) {
+        await HttpClientRequests.getUser("user", userId);
+      }
+    }
+
+    isUserLoggedIn();
+  }, []);
+
+
   const dispatch = useAppDispatch();
   dispatch(getToken());
   return(
@@ -35,7 +49,7 @@ function App() {
             <Route path="/openingHours" element={<><OpeningHours/><Variants/><Navbar/></>} />
             <Route path="/openingHoursWithAccount" element={<PrivateRoute childrenComp={<MainLayout><OpeningHours/></MainLayout>} />}/> 
             <Route path="/shoppingCart" element={<PrivateRoute childrenComp ={<MainLayout><ShoppingCart/></MainLayout>}></PrivateRoute>} />
-            <Route path="/aboutUs" element={<PrivateRoute childrenComp={<MainLayout><AboutUs/></MainLayout>} />}/> 
+            <Route path="/reserve" element={<PrivateRoute childrenComp={<MainLayout><Reservation></Reservation></MainLayout>}></PrivateRoute>}/>
             <Route path="*" element={<PrivateRoute childrenComp={<MainLayout><Landing/></MainLayout>} />} />
           </Routes>
       </Router>

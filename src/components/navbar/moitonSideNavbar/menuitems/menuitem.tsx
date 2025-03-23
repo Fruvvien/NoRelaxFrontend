@@ -80,13 +80,12 @@ export const MenuItem : React.FC<menuItems> = ({ isOpenNavigation }) => {
         )
     }
     if (getAuthToken) {
-        img.push(img1, img2, img3, img4, img5);
+        img.push(img1, img2, img3, img4);
         text.push(
             t("leftSideBar.home"),
             t("leftSideBar.reserve"),
             t("leftSideBar.openingHours"),
             t("leftSideBar.menu"),
-            t("leftSideBar.aboutUs")
         );
         endPoints.push(
             "/",

@@ -1,0 +1,12 @@
+.react-calendar{
+    width: 100% ;
+    max-width: 1000px ;
+    background: rgb(0, 0, 0) ;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+}
+.react-calendar__navigation__label, span, button{
+    color: white;
+}
+.react-calendar__viewContainer, span, button{
+    color: white;
+}
