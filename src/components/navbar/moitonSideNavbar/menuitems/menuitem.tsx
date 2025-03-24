@@ -109,6 +109,9 @@ export const MenuItem : React.FC<menuItems> = ({ isOpenNavigation }) => {
             case t("leftSideBar.openingHours"):
                 isOpenNavigation()
                 break;
+            case t("leftSideBar.reserve"):
+                isOpenNavigation()
+                break;    
         }
     }
 

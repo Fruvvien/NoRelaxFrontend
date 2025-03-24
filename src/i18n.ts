@@ -191,9 +191,10 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             orderButton: "Rendelés leadása"
           },
           reservation: {
-            tableTitleOne:"Asztal foglalás",
-            tableTitleTwo:"Dátum választás",
-            tableTitleThree:"Időhossz választás",
+            tableTitleOne:"Dátum választás",
+            tableTitleTwo:"Asztal foglalás",
+            
+            tableTitleThree:"Időpont választás",
             tableTextOne: "4 fős asztal",
             tableTextTwo: "4 fős asztal",
             tableTextThree: "5 fős asztal",
@@ -202,7 +203,14 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
 
             stageOne: "Asztal",
             stageTwo: "Dátum",
-            stageThree: "Időhossz"
+            stageThree: "Időpont",
+
+            ruleTitle: "A foglalást érintő szabályok",
+            ruleOne: "A foglalás csak az érkezési időpontot rögzíti.",
+            ruleTwo: "Az asztalok legkorábban 18:00-tól foglalhatók.",
+            ruleThree: `Nincs időkorlát - hosszú ott tartózkodás esetén "minimális fogyasztás elvárt".`,
+
+            submitReservation: "Foglalás leadása"
           }
 
         },
