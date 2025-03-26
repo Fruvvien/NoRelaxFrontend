@@ -2,6 +2,8 @@ import { error } from "console";
 import { enviroment } from "../environments/environment";
 import { Drinks } from "../models/drinks";
 import { Icart } from "../models/stateCart";
+import { Foods } from "../models/foods";
+import { Products } from "../models/products";
 
 
 interface IauthDatas{
@@ -36,7 +38,27 @@ export class HttpClientRequests {
         return result
     }
 
-    static async getDrinks(endPoint: string){
+    static async getProducts(endPoint: string, productGroupName: string){
+        const response  = await fetch(enviroment.LOCAL_API_URL + endPoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+            },
+            body: JSON.stringify({productGroupName})
+        });
+        if(!response.ok){
+            console.log(new Error(response+""));
+        }
+        const result: Products[] = await response.json();
+        console.log(response);
+        
+        console.log("Succesful get request");
+        
+        return result;
+    }
+    static async getFoods(endPoint: string){
         const response  = await fetch(enviroment.LOCAL_API_URL + endPoint, {
             method: 'GET',
             headers: {
@@ -47,7 +69,7 @@ export class HttpClientRequests {
         if(!response.ok){
             console.log(new Error(response+""));
         }
-        const result: Drinks[] = await response.json();
+        const result: Foods[] = await response.json();
         console.log("Succesful get request");
         
         return result;

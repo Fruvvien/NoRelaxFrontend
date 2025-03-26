@@ -17,7 +17,7 @@ export const cartSlice = createSlice({
 
     reducers: {
         addProduct: (state, action: PayloadAction<Icart>) => {
-            const existingItem = state.find((item) => item.orderId === action.payload.orderId);
+            const existingItem = state.find((item) => item.orderId === action.payload.orderId && item.productName === action.payload.productName);
             if(existingItem){
                 existingItem.quantity++;
                 

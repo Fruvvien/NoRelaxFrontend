@@ -19,7 +19,7 @@ import ShoppingCart from './pages/shoppingCart/shoppingCart';
 import AboutUs from './pages/aboutUs/aboutUs';
 import { MainLayout } from './util/mainLayout';
 import Navbar from './components/navbar/navbar';
-import FoodsOrderList from './pages/drinksFoodsOrderList/foods/foodsOrderList';
+import FoodsOrderList from './pages/drinksFoodsOrderList/foodsOrder/foodsOrderList';
 import { HttpClientRequests } from './services/http-client-requests';
 import Reservation from './pages/reservation/reservation';
 

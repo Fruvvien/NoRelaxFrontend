@@ -1,0 +1,121 @@
+
+.drink_list_title{
+    text-decoration: none;
+    color: white;
+}
+.menu_list_page{
+    display:flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    align-content: center;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.food_list_border{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    background-color: black;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 5px 5px 30px 5px gray;
+    padding: 35px;
+}
+
+.food_list{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    max-width: 800px;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 15px;
+    border: 2px solid gray;
+    
+}
+.food_list_elements{
+    display: flex;
+    justify-content: space-between;
+    padding: 7px;
+    align-content: center;
+    align-items: center;
+    color: white;
+    
+}
+.food_list_element{
+    text-align: center;
+    width: 60px;
+}
+
+.dots_div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.corner_img1{
+    position: absolute;
+    left: 0;
+    bottom: -26px;
+    width: 150px;
+}
+.corner_img2{
+    transform: rotate(90deg);
+    position: absolute;
+    left: -12px;
+    top: 12px;
+    width: 150px;
+}
+.corner_img3{
+    transform: rotate(270deg);
+    position: absolute;
+    right: -12px;
+    bottom: 11px;
+    width: 150px;
+}
+.corner_img4{
+    transform: rotate(180deg);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+}
+
+.food_list_title_element{
+}
+.food_list_title_elements{
+    display: flex;
+    justify-content: space-between;
+    padding: 7px;
+    align-content: center;
+    align-items: center;
+    color: white;
+    border-bottom: 3px solid gray;
+    
+}
+
+.food_list_titles{
+    position: relative;
+    display: flex;
+    padding-bottom: 10px;
+    z-index: 501;
+    gap: 100px;
+}
+.food_list_title{
+    color: white;
+    text-decoration: none;
+}
+
+.food_list_title:hover{
+    color: rgba(211, 211, 211, 0.808);
+}

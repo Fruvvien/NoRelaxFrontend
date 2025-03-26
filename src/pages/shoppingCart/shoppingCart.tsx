@@ -19,7 +19,9 @@ export default function ShoppingCart(){
     useEffect(() =>{
         const foundItem = getCartItems.find((items) => items.orderId != 0);
         cartItemId.current = foundItem ? foundItem.orderId : 0;
-    }, [getCartItems])
+        console.log("getCartItems:", getCartItems);
+        
+    }, [])
 
     setTimeout(() =>{
         setLoading(false);

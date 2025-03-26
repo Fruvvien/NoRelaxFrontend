@@ -10,19 +10,23 @@ import cornerImgLeftBottom from "../../../assets/pageImages/DownLeftCorner.png";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../../hooks/app.hooks";
 import { addProduct } from "../../../redux/store/cartReduxState/cartSlice";
+import { Products } from "../../../models/products";
 
 export default function DrinksOrderList(){
     const dispatch = useAppDispatch();
     const {t} = useTranslation();
-    const [drinks, setDrinks] = useState<Drinks[]>([]);
+    const [drinks, setDrinks] = useState<Products[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const currentEndpoint = window.location.pathname;
     const lastEndPoint = currentEndpoint.split("/");
     const getDrinks = async () =>{
         try{
             setTimeout( async() =>{
-                const response =  await HttpClientRequests.getDrinks("auth/drinks")
+                const response =  await HttpClientRequests.getProducts("auth/foodDrinkProducts","drink")
+                console.log(response);
+                
                 setDrinks(response);
+                
                 setLoading(false);
                 
             }, 1000)
@@ -38,13 +42,15 @@ export default function DrinksOrderList(){
     useEffect(()=>{
          
         getDrinks();
+        
+        
          
     }, [])
 
     function addItem(id:number,productName: string, unit: string, price:number){
-            const datas = {orderId: id, productName, unit, price, quantity: 1 };
-            dispatch(addProduct(datas))
-        }
+        const datas = {orderId: id, productName, unit, price, quantity: 1 };
+        dispatch(addProduct(datas))
+    }
 
     
     return(
@@ -74,10 +80,10 @@ export default function DrinksOrderList(){
                                     <h3 className={classes["drink_list_title_element"]}>{t("menuOrderDrink.price")}</h3>
                                     <h3 className={classes["drink_list_title_element"]}>{t("menuOrderDrink.order")}</h3>
                                 </th>
-                                {drinks.map((drink: Drinks) => (
+                                {drinks.map((drink: Products) => (
                                 <td className={classes["drink_list_elements"]} key={drink.id}>
                                     <div className={classes["drink_list_element"]}>
-                                        {drink.drinkName}
+                                        {drink.productName}
                                     </div>
                                     <div className={classes["drink_list_element"]}>
                                         {drink.unit}
@@ -86,7 +92,7 @@ export default function DrinksOrderList(){
                                         {drink.price+ " Ft"}
                                     </div>
                                     <div className={classes["drink_list_element"]}>
-                                        <ButtonInput hoverColor='lightgray' onClick={() => addItem(drink.id,drink.drinkName, drink.unit, drink.price)} buttonText={t("menuOrderDrink.addToCart")} type="button" ></ButtonInput>
+                                        <ButtonInput hoverColor='lightgray' onClick={() => addItem(drink.id,drink.productName, drink.unit, drink.price)} buttonText={t("menuOrderDrink.addToCart")} type="button" ></ButtonInput>
                                     </div>
                                 </td> 
                                 
@@ -109,7 +115,6 @@ export default function DrinksOrderList(){
                     </>
                 )
 
-                
                     }
                
 

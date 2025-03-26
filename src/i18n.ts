@@ -158,6 +158,15 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             price:"Ár",
             order: "Rendelés"
           },
+          menuOrderFood:{
+            addToCart: "Kosárba",
+            title1:"Itallap",
+            title2:"Étlap",
+            drinkFood: "Ital Neve",
+            amount: "Mennyiség",
+            price:"Ár",
+            order: "Rendelés"
+          },
           openingHours:{
             title: "Nyitvatartás",
             monday: "Hétfő: Zárva",
