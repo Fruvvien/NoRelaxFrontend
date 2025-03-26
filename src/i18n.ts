@@ -162,7 +162,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             addToCart: "Kosárba",
             title1:"Itallap",
             title2:"Étlap",
-            drinkFood: "Ital Neve",
+            foodName: "Étel Neve",
             amount: "Mennyiség",
             price:"Ár",
             order: "Rendelés"
