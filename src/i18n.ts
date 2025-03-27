@@ -65,6 +65,15 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               order:"Order"
 
             },
+            menuOrderFood:{
+              addToCart: "Add",
+              title1:"Drinks List",
+              title2:"Étlap",
+              foodName: "Food Name",
+              amount: "Amount",
+              price:"Price",
+              order: "Order"
+            },
             openingHours:{
               title: "Opening Hours",
               monday: "Monday: Closed",

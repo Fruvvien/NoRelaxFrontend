@@ -4,6 +4,7 @@ import { Drinks } from "../models/drinks";
 import { Icart } from "../models/stateCart";
 import { Foods } from "../models/foods";
 import { Products } from "../models/products";
+import { IReservation } from "../models/reservation";
 
 
 interface IauthDatas{
@@ -52,27 +53,28 @@ export class HttpClientRequests {
             console.log(new Error(response+""));
         }
         const result: Products[] = await response.json();
-        console.log(response);
         
         console.log("Succesful get request");
         
         return result;
     }
-    static async getFoods(endPoint: string){
-        const response  = await fetch(enviroment.LOCAL_API_URL + endPoint, {
-            method: 'GET',
-            headers: {
+
+    static async getReservation(endPoint: string){
+        const response = await fetch(enviroment.LOCAL_API_URL + endPoint, {
+            method: "GET",
+            headers:{
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('authToken')
             }
         });
+        const result: IReservation[] = await response.json();
         if(!response.ok){
             console.log(new Error(response+""));
         }
-        const result: Foods[] = await response.json();
-        console.log("Succesful get request");
-        
-        return result;
+
+        return result
+
     }
 
     static async getUser(endPoint: string, id: string){

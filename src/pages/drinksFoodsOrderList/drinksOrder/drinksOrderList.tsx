@@ -23,7 +23,6 @@ export default function DrinksOrderList(){
         try{
             setTimeout( async() =>{
                 const response =  await HttpClientRequests.getProducts("auth/foodDrinkProducts","drinks")
-                console.log(response);
                 
                 setDrinks(response);
                 
