@@ -1,6 +1,6 @@
 export  interface IReservation{
-    id: number,
+    id?: number,
     isReserved: boolean,
-    reservationDate: Date,
-    userId: number
+    reservationDate: Date | null,
+    userId: string | null
 }

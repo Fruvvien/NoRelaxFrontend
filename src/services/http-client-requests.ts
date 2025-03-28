@@ -1,8 +1,5 @@
-import { error } from "console";
 import { enviroment } from "../environments/environment";
-import { Drinks } from "../models/drinks";
 import { Icart } from "../models/stateCart";
-import { Foods } from "../models/foods";
 import { Products } from "../models/products";
 import { IReservation } from "../models/reservation";
 
@@ -75,6 +72,29 @@ export class HttpClientRequests {
 
         return result
 
+    }
+
+    static async postReservation(endPoint: string, data: IReservation, id: number | undefined){
+        const response = await fetch(enviroment.LOCAL_API_URL + endPoint + `/${id}`,
+            {
+                method: "PUT",
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+                },
+                body: JSON.stringify(data)
+
+            }
+            
+        )
+
+        const result = response.json()
+        if(!response.ok){
+            
+            console.log(response);
+        }
+        return result;
     }
 
     static async getUser(endPoint: string, id: string){

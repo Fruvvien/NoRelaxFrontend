@@ -5,11 +5,9 @@ import ButtonInput from "../../../components/buttons/buttonInput";
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "../../../hooks/app.hooks";
 import { HttpClientRequests } from "../../../services/http-client-requests";
-import { Drinks } from "../../../models/drinks";
 import cornerImg from "../../../assets/pageImages/CornerCut.png"
 import cornerImgLeftBottom from "../../../assets/pageImages/DownLeftCorner.png";
 import { addProduct } from "../../../redux/store/cartReduxState/cartSlice";
-import { Foods } from "../../../models/foods";
 import { Products } from "../../../models/products";
 
 export default function FoodsOrderList(){
