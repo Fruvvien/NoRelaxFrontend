@@ -1,6 +1,7 @@
 export  interface IReservation{
     id?: number,
     isReserved: boolean,
-    reservationDate: Date | null,
-    userId: string | null
+    reservationDate:string | undefined,
+    userId: string | null,
+    tableNumber: number | undefined
 }

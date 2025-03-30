@@ -1,12 +1,11 @@
 import './App.css'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import Login from './pages/login/login'
 import Register from './pages/register/register'
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
 } from "react-router-dom";
 import PrivateRoute from './util/privateRoute';
 import Landing from './pages/landing/landing';

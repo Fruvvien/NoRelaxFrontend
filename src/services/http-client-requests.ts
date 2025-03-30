@@ -74,10 +74,10 @@ export class HttpClientRequests {
 
     }
 
-    static async postReservation(endPoint: string, data: IReservation, id: number | undefined){
-        const response = await fetch(enviroment.LOCAL_API_URL + endPoint + `/${id}`,
+    static async postReservation(endPoint: string, data: IReservation){
+        const response = await fetch(enviroment.LOCAL_API_URL + endPoint,
             {
-                method: "PUT",
+                method: "POST",
                 headers:{
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',

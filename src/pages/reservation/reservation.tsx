@@ -3,11 +3,15 @@ import { useTranslation } from "react-i18next";
 import classes from "./reservation.module.css"
 import ButtonInput from "../../components/buttons/buttonInput";
 import  {HttpClientRequests}  from "../../services/http-client-requests";
-
+import cheersImg from "../../assets/loginImages/cheersIcon.png";
 import 'react-calendar/dist/Calendar.css';
 
 import Calendar from 'react-calendar';
 import { IReservation } from "../../models/reservation";
+import React from "react";
+import { Dialog, DialogContent, DialogContentText } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { style } from "framer-motion/client";
 
 type ValuePiece = Date | null;
 
@@ -19,11 +23,13 @@ export default function Reservation(){
     const reservationTitle:string[] = [t("reservation.tableTitleOne"),t("reservation.tableTitleTwo"),t("reservation.tableTitleThree")];
     const [locale, setLocale] = useState('hu-HU');
     const [reservation, setReservation] = useState<IReservation[]>([])
-
+    const [success, setSuccess] = useState(false);
     const [date, onChange] = useState<Date | null>(new Date());
     const [seats, setSeats] = useState<number | undefined>(0);
     const [time, setTime] = useState<string>()
     const [dateTime, setDateTime] = useState<Date | null>(null);
+    const navigate = useNavigate();
+
     useEffect(() =>{
         getReservations();
         
@@ -41,6 +47,8 @@ export default function Reservation(){
         if (date && time) {
             const [hours, minutes] = time.split(":").map(Number); 
             const newDateTime = new Date(date);
+            console.log(newDateTime);
+            
             newDateTime.setHours(hours, minutes, 0, 0); 
             setDateTime(newDateTime);
             console.log(newDateTime);
@@ -48,12 +56,20 @@ export default function Reservation(){
         }
     }, [date, time]);
 
-    function checkDate(index: number){
-        if(reservation[index].reservationDate == date && reservation[index].isReserved){
-            return true
-        }
-        return false
+    function checkDate(tableNumber: number){
         
+        return reservation.find((reserve) => {
+            if(tableNumber === reserve.tableNumber){
+                const parseDateTime = reserve.reservationDate ? new Date(reserve.reservationDate) : null;
+                if (reserve.isReserved && parseDateTime?.getDate() === date?.getDate()) {
+                    return true
+                }
+            }
+           
+            return false;
+            
+        });
+      
     }
 
     function stageChane(stageNumber: number){
@@ -68,13 +84,23 @@ export default function Reservation(){
         const id : number | undefined = seats
 
         const userId: string | null = localStorage.getItem("userId");
-        const data: IReservation = {userId,isReserved: true, reservationDate: dateTime}
+        const newDateTime = new Date(dateTime!.getTime() + 2 * 60 * 60 * 1000)
+
+        const data: IReservation = {
+            userId,
+            isReserved: true, 
+            reservationDate: newDateTime?.toISOString(),
+            tableNumber: seats
+        }
         console.log(data);
         
         
         const response = await HttpClientRequests.postReservation("reservation", data, id);
         if(response){
-            console.log("success");
+            setSuccess(true);
+            setTimeout(() => {
+                navigate("/home");
+            }, 2000)
             
         }
         console.log(response);
@@ -127,23 +153,63 @@ export default function Reservation(){
                         }
                         {
                             stage === 1 ?
+                           
                             <>
-                                <button onClick={() => {tableChoose(2,reservation[0].id) }}  className={classes["reservation_table"]}>
-                                    <span style={!checkDate(0) ? {backgroundColor:"green"} : {backgroundColor:"red"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextOne")}</span>
-                                </button>
-                                <button onClick={() => {tableChoose(2,reservation[1].id)}}  className={classes["reservation_table"]}>
-                                    <span style={!checkDate(1) ? {backgroundColor:"green"} : {backgroundColor:"red"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextTwo")}</span>
-                                </button>
-                                <button onClick={() => {tableChoose(2,reservation[2].id)}}  className={classes["reservation_table"]}>
-                                    <span style={!checkDate(2) ? {backgroundColor:"green"} : {backgroundColor:"red"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextThree")}</span>
-                                </button>
-                                <button onClick={() => {tableChoose(2,reservation[3].id)}}  className={classes["reservation_table"]}>
-                                    <span style={!checkDate(3) ? {backgroundColor:"green"} : {backgroundColor:"red"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextFour")}</span>
-                                </button>
-                                <button onClick={() => {tableChoose(2,reservation[4].id)}}  className={classes["reservation_table"]}>
-                                    <span style={!checkDate(4) ? {backgroundColor:"green"} : {backgroundColor:"red"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextFive")}</span>
-                                </button>
-                            </>
+                                    {!checkDate(1) ?
+                                    <button onClick={() => {tableChoose(2,1) }}  className={classes["reservation_table"]}>
+                                            <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextOne")} </span> 
+                                    </button>
+                                    : 
+                                    
+                                    <button disabled className={classes["reserved_table"]}> 
+                                        <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextOne")}</span>
+                                    </button>
+                                    }
+                                
+                                    {!checkDate(2) ?
+                                    <button onClick={() => {tableChoose(2,2)}}  className={classes["reservation_table"]}>
+                                            <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextTwo")} </span> 
+                                    </button>
+                                    : 
+                                    
+                                    <button disabled className={classes["reserved_table"]}> 
+                                        <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextTwo")}</span>
+                                    </button>
+                                    }
+                                    
+                                    
+                                    {!checkDate(3) ?
+                                    <button onClick={() => {tableChoose(2,3)}}  className={classes["reservation_table"]}>
+                                            <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextThree")} </span> 
+                                    </button>
+                                    : 
+                                    
+                                    <button disabled className={classes["reserved_table"]}> 
+                                        <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextThree")}</span>
+                                    </button>
+                                    }
+                                    {!checkDate(4) ?
+                                    <button onClick={() => {tableChoose(2,4)}}  className={classes["reservation_table"]}>
+                                            <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextFour")} </span> 
+                                    </button>
+                                    : 
+                                    
+                                    <button disabled className={classes["reserved_table"]}> 
+                                        <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextFour")}</span>
+                                    </button>
+                                    }
+
+                                    {!checkDate(5) ?
+                                    <button onClick={() => {tableChoose(2,5)}}  className={classes["reservation_table"]}>
+                                            <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextFive")} </span> 
+                                    </button>
+                                    : 
+                                    
+                                    <button disabled className={classes["reserved_table"]}> 
+                                        <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextFive")}</span>
+                                    </button>
+                                    }
+                                 </>
                             :
                             ""
                         }
@@ -227,6 +293,19 @@ export default function Reservation(){
                        
                     </div>
                 </div>
+                <>
+                <React.Fragment>
+                    <Dialog open={success} onClose={() => setSuccess(false)}>
+                        <DialogContent style={{display:"flex", flexDirection:"column", alignItems:"center", backgroundColor:"black", border:"2px solid white"}}>
+                            <DialogContentText style={{ width:"100%", maxWidth:'200px',backgroundColor:"black", color:"white"}}>
+                                <img style={{width:"100%", maxWidth:'200px', backgroundColor:"black"}} src={cheersImg} alt="" />
+                                {t("reservation.successReservation")}
+                            </DialogContentText>
+                        </DialogContent>
+                    </Dialog>
+                </React.Fragment>
+                </>
+                
         </div>
         </>
     )

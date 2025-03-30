@@ -228,7 +228,9 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             ruleTwo: "Az asztalok legkorábban 18:00-tól foglalhatók.",
             ruleThree: `Nincs időkorlát - hosszú ott tartózkodás esetén "minimális fogyasztás elvárt".`,
 
-            submitReservation: "Foglalás leadása"
+            submitReservation: "Foglalás leadása",
+
+            successReservation: "Sikeres foglalás"
           }
 
         },
