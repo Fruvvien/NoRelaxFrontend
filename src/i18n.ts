@@ -49,7 +49,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               openingHours: "Opening Hours",
               menu: "Menu",
               aboutUs: "About Us",
-              logout: "Logout"
+              logout: "Logout",
             },
             rightSideBar:{
               profile: "Profile",
@@ -151,7 +151,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             openingHours: "Nyitvatartás",
             menu: "Menü",
             aboutUs: "Rólunk",
-            logout: "Kijelentkezés"
+            logout: "Kijelentkezés",
+            drinkList: "Ital Lista",
             
           },
           rightSideBar:{

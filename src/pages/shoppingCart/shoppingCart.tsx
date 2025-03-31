@@ -44,8 +44,9 @@ export default function ShoppingCart(){
         const cartItems : Icart[] = getCartItems.filter((items) => items.orderId != 0);
         const userId = localStorage.getItem("userId")?.toString();
         console.log({userId: userId, cart: cartItems});
-        
-        const response = await HttpClientRequests.postOrder("auth/orders", userId || "",  cartItems, 4, cartItemsFullPrice);
+        const userDatas = await HttpClientRequests.getUser("user", userId);
+
+        const response = await HttpClientRequests.postOrder("auth/orders", userId || "",  cartItems, userDatas.reservationId || null, cartItemsFullPrice);
         console.log(response);
         
         if(response){

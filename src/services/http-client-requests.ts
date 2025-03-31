@@ -2,6 +2,7 @@ import { enviroment } from "../environments/environment";
 import { Icart } from "../models/stateCart";
 import { Products } from "../models/products";
 import { IReservation } from "../models/reservation";
+import { IGetUser } from "../models/IgetUser";
 
 
 interface IauthDatas{
@@ -97,7 +98,7 @@ export class HttpClientRequests {
         return result;
     }
 
-    static async getUser(endPoint: string, id: string){
+    static async getUser(endPoint: string, id: string | undefined){
         const response = await fetch(enviroment.LOCAL_API_URL + endPoint + `/${id}`,
             {
                 method: 'GET',
@@ -107,14 +108,18 @@ export class HttpClientRequests {
                     'Authorization': 'Bearer ' + localStorage.getItem('authToken')
                 }
             });
+
+            const result: IGetUser = await response.json();
             if(!response.ok){
                 localStorage.removeItem("authToken");
                 localStorage.removeItem("userId");
                 window.location.reload();
             }
+
+            return result
     }
 
-    static async postOrder(endPoint: string,userId: string, order: Icart[], reservationId: number, fullPrice: number){
+    static async postOrder(endPoint: string,userId: string, order: Icart[], reservationId: number | null, fullPrice: number){
         const response = await fetch(enviroment.LOCAL_API_URL + endPoint, {
             method: 'POST',
             headers: {

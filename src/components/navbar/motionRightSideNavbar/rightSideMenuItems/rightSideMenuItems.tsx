@@ -6,6 +6,7 @@ import img2 from "../../../../assets/navbarImages/logoutIcon.png";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "../../../../hooks/app.hooks";
 import { IUsersTokenData } from "../../../../models/stateTypeUser";
+import { Link } from "react-router-dom";
 
 type menuItems = {
     isOpenNavigation: () => void
@@ -54,12 +55,17 @@ export const MenuItem : React.FC<menuItems> = ({ isOpenNavigation })=> {
     const text: string[] = [];
     const img: string[] = [];
     const getAuthToken = useAppSelector((state: {auth: IUsersTokenData}) => state.auth.token);
-    
+    const endPoints: string[] = [];
+
     if(getAuthToken){
         img.push (img1, img2 );
         text.push (
             t("rightSideBar.profile"), 
             t("leftSideBar.logout")
+        )
+        endPoints.push(
+            "/profile",
+            ""
         )
     }
 
@@ -70,7 +76,10 @@ export const MenuItem : React.FC<menuItems> = ({ isOpenNavigation })=> {
             localStorage.removeItem("userId");
             isOpenNavigation()
             window.location.reload();
-          break  
+            break;
+          case name = t("rightSideBar.profile"):
+            isOpenNavigation();
+            break;
         }
     }
     return(
@@ -87,7 +96,7 @@ export const MenuItem : React.FC<menuItems> = ({ isOpenNavigation })=> {
                         <img src={image} style={{ width: "100%", height: "100%" }} />
                     </div>
                     <div style={{ ...textPlaceholder, color: "white", fontSize: "24px" }}>
-                        <a  onClick={() => menuItemsEvents(text[i],isOpenNavigation,t)} >{text[i]}</a>
+                        <Link style={{color:"white", textDecoration:"none"}} to={endPoints[i]} onClick={() => menuItemsEvents(text[i],isOpenNavigation, t)}>{text[i]}</Link>
                     </div>
                   
                 </motion.li>

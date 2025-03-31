@@ -21,6 +21,9 @@ import Navbar from './components/navbar/navbar';
 import FoodsOrderList from './pages/drinksFoodsOrderList/foodsOrder/foodsOrderList';
 import { HttpClientRequests } from './services/http-client-requests';
 import Reservation from './pages/reservation/reservation';
+import Profile from './pages/profile/profile';
+import Drinks from './pages/drinksFoodsList/drinks/drinks';
+import Foods from './pages/drinksFoodsList/foods/foods';
 
 function App() {
   useEffect(() => {
@@ -49,6 +52,9 @@ function App() {
             <Route path="/openingHoursWithAccount" element={<PrivateRoute childrenComp={<MainLayout><OpeningHours/></MainLayout>} />}/> 
             <Route path="/shoppingCart" element={<PrivateRoute childrenComp ={<MainLayout><ShoppingCart/></MainLayout>}></PrivateRoute>} />
             <Route path="/reserve" element={<PrivateRoute childrenComp={<MainLayout><Reservation></Reservation></MainLayout>}></PrivateRoute>}/>
+            <Route path="/profile" element={<PrivateRoute childrenComp={<MainLayout><Profile></Profile></MainLayout>}></PrivateRoute>}/>
+            <Route path="/drinks" element={<><Drinks /><Variants/><Navbar/></>} />
+            <Route path="/foods" element={<><Foods /><Variants/><Navbar/></>} />
             <Route path="*" element={<PrivateRoute childrenComp={<MainLayout><Landing/></MainLayout>} />} />
           </Routes>
       </Router>

@@ -65,18 +65,18 @@ export const MenuItem : React.FC<menuItems> = ({ isOpenNavigation }) => {
     const getAuthToken = useAppSelector((state: { auth: IUsersTokenData }) => state.auth.token);
 
     if (!getAuthToken) {
-        img.push(loginKeyIcon, registerLock,img3, img5);
+        img.push(loginKeyIcon, registerLock,img3,img4);
         text.push(
             t("leftSideBar.login"),
             t("leftSideBar.register"),
             t("leftSideBar.openingHours"),
-            t("leftSideBar.aboutUs")
+            t("leftSideBar.menu"),
         );
         endPoints.push(
             "/login",
             "/register",
             "/openingHours",
-            "/aboutUs"
+            "/drinks",
         )
     }
     if (getAuthToken) {
@@ -112,6 +112,12 @@ export const MenuItem : React.FC<menuItems> = ({ isOpenNavigation }) => {
             case t("leftSideBar.reserve"):
                 isOpenNavigation()
                 break;    
+            case t("leftSideBar.login"):
+                isOpenNavigation()
+                break;  
+            case t("leftSideBar.register"):
+                isOpenNavigation()
+                break;
         }
     }
 

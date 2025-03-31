@@ -1,15 +1,17 @@
-.landing-page-div{
+.profile_page{
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 20px;
     padding-bottom: 20px;
-    color: white;
+
 }
 
 .container{
     height: 100%;
     width: 100%;
     min-height: 800px;
+    background-color: black;
+    box-shadow: 5px 5px 30px 5px gray;
 }

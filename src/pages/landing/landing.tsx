@@ -4,7 +4,9 @@ function Landing(){
     return(
         <>
         <div className={classes["landing-page-div"]}>
-            <div>asd</div>
+            <div className={classes.container}>
+                asd
+            </div>
         </div>
       
         </>
