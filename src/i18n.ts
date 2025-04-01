@@ -232,6 +232,10 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             submitReservation: "Foglalás leadása",
 
             successReservation: "Sikeres foglalás"
+          },
+          profile:{
+            profileTitle: "Profil",
+            profileImgUploadText: "Kép feltöltés",
           }
 
         },
