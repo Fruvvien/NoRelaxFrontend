@@ -12,6 +12,7 @@ import React from "react";
 import { Dialog, DialogContent, DialogContentText } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { style } from "framer-motion/client";
+import { red } from "@mui/material/colors";
 
 type ValuePiece = Date | null;
 
@@ -29,10 +30,12 @@ export default function Reservation(){
     const [time, setTime] = useState<string>()
     const [dateTime, setDateTime] = useState<Date | null>(null);
     const navigate = useNavigate();
+    const [error, setError] = useState<string>("");
+    const [currentDate, setCurrentDate] = useState<Date>(new Date())
 
     useEffect(() =>{
         getReservations();
-        
+        setCurrentDate(new Date())
         const currentLanguage = i18n.language
         if(currentLanguage === "HU"){
             setLocale('hu-HU')
@@ -47,11 +50,9 @@ export default function Reservation(){
         if (date && time) {
             const [hours, minutes] = time.split(":").map(Number); 
             const newDateTime = new Date(date);
-            console.log(newDateTime);
             
             newDateTime.setHours(hours, minutes, 0, 0); 
             setDateTime(newDateTime);
-            console.log(newDateTime);
             
         }
     }, [date, time]);
@@ -61,7 +62,7 @@ export default function Reservation(){
         return reservation.find((reserve) => {
             if(tableNumber === reserve.tableNumber){
                 const parseDateTime = reserve.reservationDate ? new Date(reserve.reservationDate) : null;
-                if (reserve.isReserved && parseDateTime?.getDate() === date?.getDate()) {
+                if (reserve.isReserved && parseDateTime!.getFullYear() === date!.getFullYear() &&  parseDateTime!.getMonth() === date!.getMonth() && parseDateTime!.getDay() === date!.getDay()) {
                     return true
                 }
             }
@@ -81,29 +82,38 @@ export default function Reservation(){
         setStage(stageNumber);
     }
     async function submitReservation(){
-        const id : number | undefined = seats
-
+        if(seats !== 0 ){
         const userId: string | null = localStorage.getItem("userId");
         const newDateTime = new Date(dateTime!.getTime() + 2 * 60 * 60 * 1000)
 
-        const data: IReservation = {
-            userId,
-            isReserved: true, 
-            reservationDate: newDateTime?.toISOString(),
-            tableNumber: seats
+        
+            const data: IReservation = {
+                userId,
+                isReserved: true, 
+                reservationDate: newDateTime?.toISOString(),
+                tableNumber: seats
+            }
+            const response = await HttpClientRequests.postReservation("reservation", data);
+            if(response){
+                setSuccess(true);
+                setTimeout(() => {
+                    navigate("/home");
+                }, 2000)
+            }
+            else{
+                console.log(response);
+                
+            }
         }
-        console.log(data);
+        else{
+            setError(t("reservation.badRequest"))
+            console.log(error);
+        }
         
         
-        const response = await HttpClientRequests.postReservation("reservation", data, id);
-        if(response){
-            setSuccess(true);
-            setTimeout(() => {
-                navigate("/home");
-            }, 2000)
-            
-        }
-        console.log(response);
+        
+        
+        
         
     }
 
@@ -151,69 +161,80 @@ export default function Reservation(){
                             :
                             ""
                         }
-                        {
-                            stage === 1 ?
-                           
+                        {stage === 1 ?
                             <>
-                                    {!checkDate(1) ?
-                                    <button onClick={() => {tableChoose(2,1) }}  className={classes["reservation_table"]}>
-                                            <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextOne")} </span> 
-                                    </button>
-                                    : 
+                                {currentDate.getFullYear() <= date!.getFullYear() &&  currentDate.getMonth() <= date!.getMonth() && currentDate.getDay() <= date!.getDay() ? 
                                     
-                                    <button disabled className={classes["reserved_table"]}> 
-                                        <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextOne")}</span>
-                                    </button>
-                                    }
-                                
-                                    {!checkDate(2) ?
-                                    <button onClick={() => {tableChoose(2,2)}}  className={classes["reservation_table"]}>
-                                            <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextTwo")} </span> 
-                                    </button>
-                                    : 
+                                    (
+                                        <>
+                                        {!checkDate(1) ?
+                                        <button onClick={() => {tableChoose(2,1) }}  className={classes["reservation_table"]}>
+                                                <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextOne")} </span> 
+                                        </button>
+                                        : 
+                                        
+                                        <button disabled className={classes["reserved_table"]}> 
+                                            <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextOne")}</span>
+                                        </button>
+                                        }
                                     
-                                    <button disabled className={classes["reserved_table"]}> 
-                                        <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextTwo")}</span>
-                                    </button>
-                                    }
-                                    
-                                    
-                                    {!checkDate(3) ?
-                                    <button onClick={() => {tableChoose(2,3)}}  className={classes["reservation_table"]}>
-                                            <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextThree")} </span> 
-                                    </button>
-                                    : 
-                                    
-                                    <button disabled className={classes["reserved_table"]}> 
-                                        <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextThree")}</span>
-                                    </button>
-                                    }
-                                    {!checkDate(4) ?
-                                    <button onClick={() => {tableChoose(2,4)}}  className={classes["reservation_table"]}>
-                                            <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextFour")} </span> 
-                                    </button>
-                                    : 
-                                    
-                                    <button disabled className={classes["reserved_table"]}> 
-                                        <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextFour")}</span>
-                                    </button>
-                                    }
+                                        {!checkDate(2) ?
+                                        <button onClick={() => {tableChoose(2,2)}}  className={classes["reservation_table"]}>
+                                                <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextTwo")} </span> 
+                                        </button>
+                                        : 
+                                        
+                                        <button disabled className={classes["reserved_table"]}> 
+                                            <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextTwo")}</span>
+                                        </button>
+                                        }
+                                        
+                                        
+                                        {!checkDate(3) ?
+                                        <button onClick={() => {tableChoose(2,3)}}  className={classes["reservation_table"]}>
+                                                <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextThree")} </span> 
+                                        </button>
+                                        : 
+                                        
+                                        <button disabled className={classes["reserved_table"]}> 
+                                            <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextThree")}</span>
+                                        </button>
+                                        }
+                                        {!checkDate(4) ?
+                                        <button onClick={() => {tableChoose(2,4)}}  className={classes["reservation_table"]}>
+                                                <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextFour")} </span> 
+                                        </button>
+                                        : 
+                                        
+                                        <button disabled className={classes["reserved_table"]}> 
+                                            <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextFour")}</span>
+                                        </button>
+                                        }
 
-                                    {!checkDate(5) ?
-                                    <button onClick={() => {tableChoose(2,5)}}  className={classes["reservation_table"]}>
-                                            <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextFive")} </span> 
-                                    </button>
-                                    : 
-                                    
-                                    <button disabled className={classes["reserved_table"]}> 
-                                        <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextFive")}</span>
-                                    </button>
-                                    }
-                                 </>
+                                        {!checkDate(5) ?
+                                        <button onClick={() => {tableChoose(2,5)}}  className={classes["reservation_table"]}>
+                                                <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextFive")} </span> 
+                                        </button>
+                                        : 
+                                        
+                                        <button disabled className={classes["reserved_table"]}> 
+                                            <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextFive")}</span>
+                                        </button>
+                                        }
+                                        </>
+                                    )
+                                    :
+                                    <>
+                                    <p style={{color:"white"}}>{t("reservation.badDateTime")}</p>
+                                    </>
+                                }
+                            </>
+                                
                             :
                             ""
+                            
                         }
-                                                {
+                        {
                             stage === 2 ?
                             <div className={classes["reservation_time"]}>
                                 <div className={classes["reservation_rules_text"]}>
@@ -236,6 +257,9 @@ export default function Reservation(){
                                         </span>
                                     </div>
                                 </div>
+                                {
+                                    error.length > 0 ? <p style={{color:"red"}}>{error}</p> : ""
+                                } 
                                 <div className={classes["reservation_time_select"]}>
                                     <select onChange={(item) => {setTime(item.target.value);}} className={classes["reservation_select"]}>
                                         <option value="18:00">18:00</option>
@@ -246,7 +270,8 @@ export default function Reservation(){
                                         <option value="20:30">20:30</option>
                                         <option value="21:00">21:00</option>
                                         <option value="21:30">21:30</option>
-                                    </select>   
+                                    </select>  
+                                   
                                 </div>
                                 <div style={{display:"flex", justifyContent:"center",  width:"100%"}}>
                                     <ButtonInput onClick={() => {submitReservation()}} type="button" buttonText={t("reservation.submitReservation")}></ButtonInput>

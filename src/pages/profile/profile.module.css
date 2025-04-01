@@ -1,30 +1,35 @@
 .profile_page{
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 20px;
     padding-bottom: 20px;
-    flex-direction: column;
+    flex-direction: row;
     gap: 20px;
 
 }
 
 .container1{
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
-    max-width: 1000px;
-    min-height: 300px;
+    height: 100%;
+    max-width: 400px;
+    max-height: 800px;
     background-color: black;
     box-shadow: 5px 5px 30px 5px gray;
     border-radius: 15px;
 }
 
 .container2{
-    height: 100%;
+    
     width: 100%;
-    max-width: 1000px;
-    min-height: 500px;
+    height: 100%;
+    max-width: 800px;
+    max-height: 800px;
     background-color: black;
     box-shadow: 5px 5px 30px 5px gray;
     border-radius: 15px;
@@ -32,16 +37,219 @@
 }
 
 .profile_header{
+    padding: 30px 20px 30px 75px;
+    display: flex;
+    justify-content: space-between;
     color: white;
+    height: 30px;
 }
 
 .profile_body{
+    display: flex;
     color: white;
+    justify-content: space-around;
+    height: 600px;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-right: 30px;
+    font-size: larger;
 }
 .profile_avatar{
     vertical-align: middle;
     width: 150px;
     height: 150px;
-    border-radius: 50%;
-    
+    border-radius: 50%;   
 }
+.profile_img_div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profile_user_datas{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    justify-content: center;
+}
+.profile_delete_link{
+    color: rgb(175, 1, 1);
+    text-decoration: none;
+}
+.profile_delete_link:hover{
+    color: red;
+}
+.profile_img_upload_link{
+    color: rgba(68, 201, 253, 0.651);
+    text-decoration: none;
+}
+.profile_img_upload_link:hover{
+    color: rgb(68, 201, 253);;
+}
+
+@media (max-width: 600px){
+    .profile_page{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        flex-direction: column;
+        gap: 20px;
+    
+    }
+    .container1{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        max-width: 400px;
+        max-height: 400px;
+        background-color: black;
+        box-shadow: 5px 5px 30px 5px gray;
+        border-radius: 15px;
+    }
+    .container2{
+        width: 100%;
+        height: 100%;
+        max-width: 400px;
+        max-height: 400px;
+        background-color: black;
+        box-shadow: 5px 5px 30px 5px gray;
+        border-radius: 15px;
+    
+    }
+    .profile_body{
+        display: flex;
+        flex-direction: row;
+        color: white;
+        justify-content: space-between;
+        font-size: larger;
+    }
+    .profile_header{
+        display: flex;
+        justify-content: space-between;
+        color: white;
+    }
+}
+
+@media (max-width: 595px){
+    .profile_page{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        flex-direction: column;
+        gap: 20px;
+    
+    }
+    .container1{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        max-width: 400px;
+        max-height: 400px;
+        background-color: black;
+        box-shadow: 5px 5px 30px 5px gray;
+        border-radius: 15px;
+    }
+    .profile_body{
+        display: flex;
+        color: white;
+        justify-content: space-around;
+        font-size: larger;
+    }
+    .profile_header{
+        display: flex;
+        justify-content: space-between;
+        color: white;
+    }
+}
+
+@media (max-width: 375px){
+    .profile_page{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        flex-direction: column;
+        gap: 20px;
+    
+    }
+    .container1{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        max-width: 400px;
+        max-height: 400px;
+        background-color: black;
+        box-shadow: 5px 5px 30px 5px gray;
+        border-radius: 15px;
+    }
+    .profile_body{
+        display: flex;
+        color: white;
+        font-size: small;
+    }
+    .profile_header{
+        display: flex;
+        justify-content: space-between;
+        color: white;
+    }
+}
+
+@media (max-width: 320px){
+    .profile_page{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        flex-direction: column;
+        gap: 20px;
+    
+    }
+    .container1{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        max-width: 400px;
+        max-height: 400px;
+        background-color: black;
+        box-shadow: 5px 5px 30px 5px gray;
+        border-radius: 15px;
+    }
+    .profile_body{
+        display: flex;
+        color: white;
+        font-size: small;
+    }
+    .profile_header{
+        display: flex;
+        justify-content: space-between;
+        color: white;
+    }
+}
+
+
+
+/*
+    Reservation css
+*/
+
+
+.reservation_header{
+    display: flex;
+    width: 100%;
+    color: white;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+

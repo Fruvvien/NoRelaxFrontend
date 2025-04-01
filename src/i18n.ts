@@ -141,6 +141,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             invalidPassword: "Legalább hat karakterből álló jelszót kell megadnod",
             invalidLastAndFirstName: "Kérlek add meg mindkét neved",
             invalidEmptyField: "Nem lehet üres mező",
+            invalidPhoneNumber:"Kérlek add meg a megfelelő telefonszámod",
+            invalidBirthDay: "Kérlek add meg a születési dátumod",
             emailIsExist: "Ez az email cím már létezik",
           },
           leftSideBar: {
@@ -220,6 +222,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             tableTextFour: "6 fős asztal",
             tableTextFive: "8 fős asztal",
 
+            badDateTime: "Nem lehet a múltba foglalni",
+
             stageOne: "Asztal",
             stageTwo: "Dátum",
             stageThree: "Időpont",
@@ -231,11 +235,18 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
 
             submitReservation: "Foglalás leadása",
 
-            successReservation: "Sikeres foglalás"
+            successReservation: "Sikeres foglalás",
+
+            badRequest: "Sikertelen foglalás, mindent szekicót ki kell tölteni"
           },
           profile:{
             profileTitle: "Profil",
             profileImgUploadText: "Kép feltöltés",
+            profileDelete: "Felhasználó törlése",
+            profileName: "Név:",
+            profileEmail: "Email:",
+            profilePhoneNumber: "Telefonszám:",
+            reservationTitle: "Foglalás Részletei"
           }
 
         },

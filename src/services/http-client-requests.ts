@@ -76,6 +76,7 @@ export class HttpClientRequests {
     }
 
     static async postReservation(endPoint: string, data: IReservation){
+
         const response = await fetch(enviroment.LOCAL_API_URL + endPoint,
             {
                 method: "POST",
@@ -92,8 +93,7 @@ export class HttpClientRequests {
 
         const result = response.json()
         if(!response.ok){
-            
-            console.log(response);
+            return response
         }
         return result;
     }

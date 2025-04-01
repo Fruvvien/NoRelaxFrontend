@@ -6,5 +6,7 @@ export interface IGetUser{
     accountType: boolean,
     createdAt: string,
     accountIsActive: boolean,
-    reservationId: number
+    reservationId: number,
+    birthDay: string,
+    phoneNumber: string,
 }
