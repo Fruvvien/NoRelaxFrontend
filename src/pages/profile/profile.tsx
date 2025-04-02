@@ -5,11 +5,11 @@ import { useEffect, useState } from "react"
 import { HttpClientRequests } from "../../services/http-client-requests"
 import { IGetUser } from "../../models/IgetUser"
 import { IReservation } from "../../models/reservation"
+import ButtonInput from "../../components/buttons/buttonInput"
 
 export default function Profile(){
     const [user, setUser] = useState<IGetUser>()
     const [reservation, setReservation] = useState<IReservation[]>([])
-    const [reservationDate, setReservationDate] = useState<string>();
     const {t} = useTranslation()
     const userId = localStorage.getItem("userId")?.toString()
     useEffect(() =>{
@@ -26,9 +26,21 @@ export default function Profile(){
     async function getReservationDatas(){
         const response = await HttpClientRequests.getReservationWithId("reservation", userId!)
         setReservation(response);
-
-        
     }   
+    async function reservationDelete(reserveId: number){
+        const response = await HttpClientRequests.deleteReservation("reservation",reserveId!.toString(), userId!);
+        if(response){
+            await getReservationDatas()
+        }
+        
+    }
+    /* async function profileDelete(){
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("userId");
+        const response = await HttpClientRequests.deleteProfile("user",userId!);
+        window.location.reload();
+        
+    } */
 
     return(
         <>
@@ -41,7 +53,7 @@ export default function Profile(){
                     </div>
                     <div>
                         <div>
-                        <a className={classes["profile_delete_link"]} href="">{t("profile.profileDelete")}</a>
+                        <a /* onClick={profileDelete} */ className={classes["profile_delete_link"]} href="">{t("profile.profileDelete")}</a>
                         </div>
                    
                     </div>
@@ -70,31 +82,55 @@ export default function Profile(){
                 </div>
             </div>
             <div className={classes.container2}>
-                <div className={classes["reservation_header"]}>
-                    <h1>{t("profile.reservationTitle")}</h1>
+                <div>
+                    <h1 className={classes["reservation_header"]}>{t("profile.reservationTitle")}</h1>
                 </div>
                 {
-                   
-                    reservation.map((reserve) => (
+                   reservation.length > 0 ? 
+                    reservation.map((reserve, index) => (
                     <div className={classes["reservation_body"]}>
-                        <div key={reserve.id}>
-                            <div>
-                                {`date: ${new Date(reserve.reservationDate!).getFullYear()} ${new Date(reserve.reservationDate!).getMonth()} ${new Date(reserve.reservationDate!).getDay() - 2}\ntime:${new Date(reserve.reservationDate!).getHours()} ${new Date(reserve.reservationDate!).getMinutes()}`}
-                            </div>
-                            <div>
-                                {reserve.tableNumber}
-                            </div>
-                            
-                            
+                        <div className={classes["reservation_elements"]} key={reserve.id}>
+                                <div className={classes["reservation_box_title"]}>
+                                        <h1 className={classes["reservation_title"]}>
+                                            {t("profile.reservationBoxTitle")} {index+1} 
+                                        </h1>
+                                        <hr className={classes["reservation_hr"]} style={{width:"70%"}}/>
+                                </div>
+                                <div>
+                                    <div className={classes["reservation_top_side"]}>
+                                        <div >
+                                            <span>{t("profile.reservationTableNumber")}</span> <span style={{fontSize:"40px"}}>{reserve.tableNumber}</span>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                {`Dátum: ${new Date(reserve.reservationDate!).getFullYear()}-${new Date(reserve.reservationDate!).getMonth()+ 1}-${new Date(reserve.reservationDate!).getDate()}`}
+                                            </div>
+                                            <div>
+                                                {`Érkezési idő: ${new Date(reserve.reservationDate!).getHours()-2}:${new Date(reserve.reservationDate!).getMinutes() == 0 ? `${new Date(reserve.reservationDate!).getMinutes()}0`: new Date(reserve.reservationDate!).getMinutes()}`}
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div className={classes["reservation_bottom_side"]}>
+                                        <div>
+                                            <span>{t("profile.reservationTableNumber")}</span><span style={{fontSize:"40px"}}>{reserve.seats}</span>
+                                        </div>
+                                        <div>
+                                            <ButtonInput onClick={() => reservationDelete(reserve.id!)} type="button" buttonText={t("profile.reservationDelete")}></ButtonInput>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                </div>
+                                
                         </div>
 
                     </div>
                     ))
                    
-                    /* :
+                    :
                     <div className={classes["reservation_body_empty"]}>
                         <p>{t("profile.emptyReservation")}</p>
-                    </div> */
+                    </div>
                 }
                 
             </div>

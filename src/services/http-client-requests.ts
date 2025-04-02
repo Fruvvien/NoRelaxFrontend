@@ -94,6 +94,49 @@ export class HttpClientRequests {
 
     }
 
+    static async deleteReservation(endPoint: string,reserveId:string, userId: string){
+        const response = await fetch(enviroment.LOCAL_API_URL + endPoint + `/${reserveId}?userId=${userId}`,
+            {
+                method: "DELETE",
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+                }
+            }
+            
+        )
+
+        const result = response.json()
+        console.log(result);
+        
+        if(!response.ok){
+            return response
+        }
+        return result;
+    }
+    static async deleteProfile(endPoint: string,userId: string){
+        const response = await fetch(enviroment.LOCAL_API_URL + endPoint + `/${userId}`,
+            {
+                method: "DELETE",
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+                }
+            }
+            
+        )
+
+        const result = response.json()
+        console.log(result);
+        
+        if(!response.ok){
+            return response
+        }
+        return result;
+    }
+
     static async postReservation(endPoint: string, data: IReservation){
 
         const response = await fetch(enviroment.LOCAL_API_URL + endPoint,

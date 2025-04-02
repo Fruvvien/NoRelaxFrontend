@@ -247,7 +247,10 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             profileEmail: "Email:",
             profilePhoneNumber: "Telefonszám:",
             reservationTitle: "Foglalás Részletei",
-            emptyReservation: "Nincs foglalás"
+            emptyReservation: "Nincs foglalás",
+            reservationBoxTitle: "Foglalás",
+            reservationTableNumber: "Asztal száma:",
+            reservationDelete: "Foglalás visszavonás",
           }
 
         },

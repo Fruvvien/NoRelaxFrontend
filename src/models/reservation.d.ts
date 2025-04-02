@@ -3,5 +3,6 @@ export  interface IReservation{
     isReserved: boolean,
     reservationDate:string | undefined,
     userId: string | null,
-    tableNumber: number | undefined
+    tableNumber: number | undefined,
+    seats: number | undefined
 }

@@ -25,9 +25,10 @@
 }
 
 .container2{
-    
-    width: 100%;
     height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
     max-width: 800px;
     max-height: 800px;
     background-color: black;
@@ -87,14 +88,70 @@
     color: rgb(68, 201, 253);;
 }
 
+/*
+    Reservation css
+*/
+
+
+.reservation_header{
+    display: flex;
+    width: 100%;
+    color: white;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.reservation_body_empty{
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+.reservation_body{
+    color: white;
+}
+.reservation_box_title {
+    display: flex;
+    align-items: stretch; 
+    justify-content: center;
+    gap: 10px;
+}
+
+.reservation_title {
+    margin: 0; 
+    white-space: nowrap; 
+}
+
+.reservation_hr {
+    flex-grow: 1; 
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+.reservation_elements{
+    margin-left: 20px;
+    margin-right: 10px;
+}
+.reservation_top_side{
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.reservation_bottom_side{
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
 @media (max-width: 600px){
     .profile_page{
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 20px;
-        padding-bottom: 20px;
         flex-direction: column;
         gap: 20px;
     
@@ -104,14 +161,13 @@
         width: 100%;
         height: 100%;
         max-width: 400px;
-        max-height: 400px;
+        max-height: 300px;
         background-color: black;
         box-shadow: 5px 5px 30px 5px gray;
         border-radius: 15px;
     }
     .container2{
         width: 100%;
-        height: 100%;
         max-width: 400px;
         max-height: 400px;
         background-color: black;
@@ -130,6 +186,29 @@
         display: flex;
         justify-content: space-between;
         color: white;
+    }
+    .reservation_header{
+        font-size: 15px;
+        display: flex;
+        width: 100%;
+        color: white;
+        padding: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+    .reservation_top_side{
+        font-size: 15px;
+        margin-left: 20px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .reservation_bottom_side{
+        font-size: 15px;
+        margin-left: 20px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: space-between;
     }
 }
 
@@ -155,6 +234,15 @@
         box-shadow: 5px 5px 30px 5px gray;
         border-radius: 15px;
     }
+    
+    .container2{
+        width: 100%;
+        max-width: 400px;
+        max-height: 400px;
+        background-color: black;
+        box-shadow: 5px 5px 30px 5px gray;
+        border-radius: 15px;
+    }
     .profile_body{
         display: flex;
         color: white;
@@ -165,6 +253,20 @@
         display: flex;
         justify-content: space-between;
         color: white;
+    }
+    .reservation_top_side{
+        font-size: 15px;
+        margin-left: 20px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .reservation_bottom_side{
+        font-size: 15px;
+        margin-left: 20px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: space-between;
     }
 }
 
@@ -190,6 +292,14 @@
         box-shadow: 5px 5px 30px 5px gray;
         border-radius: 15px;
     }
+    .container2{
+        width: 100%;
+        max-width: 400px;
+        max-height: 400px;
+        background-color: black;
+        box-shadow: 5px 5px 30px 5px gray;
+        border-radius: 15px;
+    }
     .profile_body{
         display: flex;
         color: white;
@@ -199,6 +309,20 @@
         display: flex;
         justify-content: space-between;
         color: white;
+    }
+    .reservation_top_side{
+        font-size: 15px;
+        margin-left: 20px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .reservation_bottom_side{
+        font-size: 15px;
+        margin-left: 20px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: space-between;
     }
 }
 
@@ -219,10 +343,19 @@
         width: 100%;
         height: 100%;
         max-width: 400px;
+        max-height: 300px;
+        background-color: black;
+        box-shadow: 5px 5px 30px 5px gray;
+        border-radius: 15px;
+    }
+    .container2{
+        width: 100%;
+        max-width: 400px;
         max-height: 400px;
         background-color: black;
         box-shadow: 5px 5px 30px 5px gray;
         border-radius: 15px;
+    
     }
     .profile_body{
         display: flex;
@@ -234,30 +367,21 @@
         justify-content: space-between;
         color: white;
     }
+    .reservation_top_side{
+        font-size: 15px;
+        margin-left: 20px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .reservation_bottom_side{
+        font-size: 15px;
+        margin-left: 20px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
-
-
-/*
-    Reservation css
-*/
-
-
-.reservation_header{
-    display: flex;
-    width: 100%;
-    color: white;
-    padding: 10px;
-    align-items: center;
-    justify-content: center;
-}
-.reservation_body_empty{
-    display: flex;
-    justify-content: center;
-    color: white;
-}
-.reservation_body{
-    color: white;
-}
 
 

@@ -11,8 +11,6 @@ import { IReservation } from "../../models/reservation";
 import React from "react";
 import { Dialog, DialogContent, DialogContentText } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { style } from "framer-motion/client";
-import { red } from "@mui/material/colors";
 
 type ValuePiece = Date | null;
 
@@ -26,9 +24,10 @@ export default function Reservation(){
     const [reservation, setReservation] = useState<IReservation[]>([])
     const [success, setSuccess] = useState(false);
     const [date, onChange] = useState<Date | null>(new Date());
-    const [seats, setSeats] = useState<number | undefined>(0);
+    const [tableNumber, setableNumber] = useState<number | undefined>(0);
     const [time, setTime] = useState<string>()
     const [dateTime, setDateTime] = useState<Date | null>(null);
+    const [seats, setSeats] = useState<number | undefined>(0);
     const navigate = useNavigate();
     const [error, setError] = useState<string>("");
     const [currentDate, setCurrentDate] = useState<Date>(new Date())
@@ -77,12 +76,13 @@ export default function Reservation(){
         setStage(stageNumber)
     }
 
-    function tableChoose(stageNumber: number, tableSeats: number | undefined){
-        setSeats(tableSeats);
+    function tableChoose(stageNumber: number, tableSeats: number | undefined, seats: number |undefined){
+        setableNumber(tableSeats);
         setStage(stageNumber);
+        setSeats(seats);
     }
     async function submitReservation(){
-        if(seats !== 0 ){
+        if(tableNumber !== 0 ){
         const userId: string | null = localStorage.getItem("userId");
         const newDateTime = new Date(dateTime!.getTime() + 2 * 60 * 60 * 1000)
 
@@ -91,7 +91,8 @@ export default function Reservation(){
                 userId,
                 isReserved: true, 
                 reservationDate: newDateTime?.toISOString(),
-                tableNumber: seats
+                tableNumber: tableNumber,
+                seats: seats
             }
             const response = await HttpClientRequests.postReservation("reservation", data);
             if(response){
@@ -168,7 +169,7 @@ export default function Reservation(){
                                     (
                                         <>
                                         {!checkDate(1) ?
-                                        <button onClick={() => {tableChoose(2,1) }}  className={classes["reservation_table"]}>
+                                        <button onClick={() => {tableChoose(2,1,4) }}  className={classes["reservation_table"]}>
                                                 <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextOne")} </span> 
                                         </button>
                                         : 
@@ -179,7 +180,7 @@ export default function Reservation(){
                                         }
                                     
                                         {!checkDate(2) ?
-                                        <button onClick={() => {tableChoose(2,2)}}  className={classes["reservation_table"]}>
+                                        <button onClick={() => {tableChoose(2,2,4)}}  className={classes["reservation_table"]}>
                                                 <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextTwo")} </span> 
                                         </button>
                                         : 
@@ -191,7 +192,7 @@ export default function Reservation(){
                                         
                                         
                                         {!checkDate(3) ?
-                                        <button onClick={() => {tableChoose(2,3)}}  className={classes["reservation_table"]}>
+                                        <button onClick={() => {tableChoose(2,3,5)}}  className={classes["reservation_table"]}>
                                                 <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextThree")} </span> 
                                         </button>
                                         : 
@@ -201,7 +202,7 @@ export default function Reservation(){
                                         </button>
                                         }
                                         {!checkDate(4) ?
-                                        <button onClick={() => {tableChoose(2,4)}}  className={classes["reservation_table"]}>
+                                        <button onClick={() => {tableChoose(2,4,6)}}  className={classes["reservation_table"]}>
                                                 <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextFour")} </span> 
                                         </button>
                                         : 
@@ -212,7 +213,7 @@ export default function Reservation(){
                                         }
 
                                         {!checkDate(5) ?
-                                        <button onClick={() => {tableChoose(2,5)}}  className={classes["reservation_table"]}>
+                                        <button onClick={() => {tableChoose(2,5,8)}}  className={classes["reservation_table"]}>
                                                 <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextFive")} </span> 
                                         </button>
                                         : 
