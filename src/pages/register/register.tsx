@@ -118,7 +118,7 @@ function Register(){
                             <Input labelText={t("register.inputPassword")} type="password" value={formState.password}  name="password" onChange={(event) => setValues('password', event)}></Input>
                         </div>
                         <div className={classes["name-inputs"]}>
-                            <Input  labelText={"+36 30 333 4455"} type="text" value={formState.phoneNumber} name="phoneNumber" onChange={(event) => setValues('phoneNumber', event)}></Input>
+                            <Input  labelText={"06303334455"} type="tel" value={formState.phoneNumber} name="phoneNumber" onChange={(event) => setValues('phoneNumber', event)}></Input>
                             <Input  labelText={""} type="date" value={formState.birthDay} name="birthDay" onChange={(event) => setValues('birthDay', event)}></Input>
 
                         </div>

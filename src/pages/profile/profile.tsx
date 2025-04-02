@@ -4,23 +4,31 @@ import img from "../../assets/NoRelaxLogo.png"
 import { useEffect, useState } from "react"
 import { HttpClientRequests } from "../../services/http-client-requests"
 import { IGetUser } from "../../models/IgetUser"
+import { IReservation } from "../../models/reservation"
 
 export default function Profile(){
     const [user, setUser] = useState<IGetUser>()
+    const [reservation, setReservation] = useState<IReservation[]>([])
+    const [reservationDate, setReservationDate] = useState<string>();
     const {t} = useTranslation()
+    const userId = localStorage.getItem("userId")?.toString()
     useEffect(() =>{
-        getUserDatas()
+        getUserDatas();
+        getReservationDatas();
     }, [])
 
     async function getUserDatas(){
-        const userId = localStorage.getItem("userId")?.toString()
         const response = await HttpClientRequests.getUser("user", userId)
         setUser(response)
+
     }
 
     async function getReservationDatas(){
+        const response = await HttpClientRequests.getReservationWithId("reservation", userId!)
+        setReservation(response);
 
-    }
+        
+    }   
 
     return(
         <>
@@ -50,7 +58,7 @@ export default function Profile(){
                     </div>
                     <div className={classes["profile_user_datas"]}>
                         <div>
-                            <p>{t("profile.profileName")} {user?.firstName} {user?.lastName}</p>
+                            <p>{t("profile.profileName")} {user?.lastName} {user?.firstName}</p>
                         </div>
                         <div>
                             <p>{t("profile.profileEmail")} {user?.email}</p>
@@ -65,6 +73,30 @@ export default function Profile(){
                 <div className={classes["reservation_header"]}>
                     <h1>{t("profile.reservationTitle")}</h1>
                 </div>
+                {
+                   
+                    reservation.map((reserve) => (
+                    <div className={classes["reservation_body"]}>
+                        <div key={reserve.id}>
+                            <div>
+                                {`date: ${new Date(reserve.reservationDate!).getFullYear()} ${new Date(reserve.reservationDate!).getMonth()} ${new Date(reserve.reservationDate!).getDay() - 2}\ntime:${new Date(reserve.reservationDate!).getHours()} ${new Date(reserve.reservationDate!).getMinutes()}`}
+                            </div>
+                            <div>
+                                {reserve.tableNumber}
+                            </div>
+                            
+                            
+                        </div>
+
+                    </div>
+                    ))
+                   
+                    /* :
+                    <div className={classes["reservation_body_empty"]}>
+                        <p>{t("profile.emptyReservation")}</p>
+                    </div> */
+                }
+                
             </div>
         </div>
         </>

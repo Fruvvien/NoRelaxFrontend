@@ -251,5 +251,13 @@
     align-items: center;
     justify-content: center;
 }
+.reservation_body_empty{
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+.reservation_body{
+    color: white;
+}
 
 

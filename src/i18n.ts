@@ -246,7 +246,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             profileName: "Név:",
             profileEmail: "Email:",
             profilePhoneNumber: "Telefonszám:",
-            reservationTitle: "Foglalás Részletei"
+            reservationTitle: "Foglalás Részletei",
+            emptyReservation: "Nincs foglalás"
           }
 
         },

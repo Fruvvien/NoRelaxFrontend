@@ -74,6 +74,25 @@ export class HttpClientRequests {
         return result
 
     }
+    static async getReservationWithId(endPoint: string, userId: string){
+        const response = await fetch(enviroment.LOCAL_API_URL + endPoint + `/${userId}`, {
+            method: "GET",
+            headers:{
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('authToken')
+            }
+        });
+        const result: IReservation[] = await response.json();
+        console.log(result);
+        
+        if(!response.ok){
+            console.log(new Error(response+""));
+        }
+
+        return result
+
+    }
 
     static async postReservation(endPoint: string, data: IReservation){
 
