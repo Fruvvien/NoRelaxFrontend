@@ -38,14 +38,13 @@ export class HttpClientRequests {
     }
 
     static async getProducts(endPoint: string, productGroupName: string){
-        const response  = await fetch(enviroment.LOCAL_API_URL + endPoint, {
-            method: 'POST',
+        const response  = await fetch(enviroment.LOCAL_API_URL + endPoint+`/${productGroupName}`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
                 'Authorization': 'Bearer ' + localStorage.getItem('authToken')
-            },
-            body: JSON.stringify({productGroupName})
+            }
         });
         if(!response.ok){
             console.log(new Error(response+""));
