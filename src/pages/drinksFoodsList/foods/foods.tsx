@@ -15,7 +15,7 @@ export default function Foods(){
 
     const getDrinks = async () =>{
         try{
-            const response =  await HttpClientRequests.getProducts("auth/foodDrinkProducts", "foods")
+            const response =  await HttpClientRequests.getProducts("foodDrinkProducts", "foods")
             setFoods(response);
         }catch (error: unknown){
             console.log(error);

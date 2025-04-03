@@ -46,7 +46,7 @@ export default function ShoppingCart(){
         console.log({userId: userId, cart: cartItems});
         const userDatas = await HttpClientRequests.getUser("user", userId);
 
-        const response = await HttpClientRequests.postOrder("auth/orders", userId || "",  cartItems, userDatas.reservationId || null, cartItemsFullPrice);
+        const response = await HttpClientRequests.postOrder("orders", userId || "",  cartItems, userDatas.reservationId || null, cartItemsFullPrice);
         console.log(response);
         
         if(response){
