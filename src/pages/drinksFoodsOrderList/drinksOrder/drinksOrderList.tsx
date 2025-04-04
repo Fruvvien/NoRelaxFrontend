@@ -1,6 +1,5 @@
 import { HttpClientRequests } from "../../../services/http-client-requests";
 import { useEffect, useState } from "react";
-import { Drinks } from "../../../models/drinks";
 import classes from "./drinksOrderList.module.css"
 import ButtonInput from "../../../components/buttons/buttonInput";
 import { useTranslation } from 'react-i18next';
