@@ -40,6 +40,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 invalidLastAndFirstName: "Please provide both your first and last name",
                 invalidEmptyField: "Cannot be an empty field",
                 emailIsExist: "This email address already exists",
+                invalidLogin:"Invalid login",
             },
             leftSideBar:{
               login: "Login",
@@ -144,6 +145,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             invalidPhoneNumber:"Kérlek add meg a megfelelő telefonszámod",
             invalidBirthDay: "Kérlek add meg a születési dátumod",
             emailIsExist: "Ez az email cím már létezik",
+            invalidLogin:"Hibás bejelentkezés",
           },
           leftSideBar: {
             login: "Bejelentkezés",

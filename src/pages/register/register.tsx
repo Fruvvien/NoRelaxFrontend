@@ -10,8 +10,8 @@ import { useTranslation } from 'react-i18next';
 import img from "../../assets/loginImages/lockIcon.png"
 import cornerImg from "../../assets/pageImages/CornerCut.png"
 import cornerImgLeftBottom from "../../assets/pageImages/DownLeftCorner2.png";
-import { Dialog, DialogContent, DialogContentText } from "@mui/material";
-import cheersImg from "../../assets/loginImages/cheersIcon.png";
+import CustomDialog from "../../components/dialog/dialog";
+
 
 function Register(){
     const navigate = useNavigate();
@@ -107,25 +107,16 @@ function Register(){
                     <div className={classes["register-img-div"]}>
                         <img className={classes["register-img"]} src={img} alt="" />
                     </div>
-                    <div className={classes["register-inputs"]}>
-                        
-                        <div className={classes["name-inputs"]}>
-                            <Input labelText={t("register.inputFirstName")} type="text" value={formState.firstName}  name="firstName" onChange={(event) => setValues('firstName', event)} ></Input>
-                            <Input labelText={t("register.inputLastName")} type="text" value={formState.lastName}  name="lastName" onChange={(event) => setValues('lastName', event)}></Input>
-                        </div>
-                        <div className={classes["name-inputs"]}>
-                            <Input labelText={t("register.inputEmail")} type="email" value={formState.email}  name="email" onChange={(event) => setValues('email', event)}></Input>
-                            <Input labelText={t("register.inputPassword")} type="password" value={formState.password}  name="password" onChange={(event) => setValues('password', event)}></Input>
-                        </div>
-                        <div className={classes["name-inputs"]}>
-                            <Input  labelText={"06303334455"} type="tel" value={formState.phoneNumber} name="phoneNumber" onChange={(event) => setValues('phoneNumber', event)}></Input>
-                            <Input  labelText={""} type="date" value={formState.birthDay} name="birthDay" onChange={(event) => setValues('birthDay', event)}></Input>
-
-                        </div>
-                      
-                        
-                        
-                    </div>  
+                    
+                    <Input labelText={t("register.inputFirstName")} type="text" value={formState.firstName}  name="firstName" onChange={(event) => setValues('firstName', event)} ></Input>
+                    <Input labelText={t("register.inputLastName")} type="text" value={formState.lastName}  name="lastName" onChange={(event) => setValues('lastName', event)}></Input>
+                
+                    <Input labelText={t("register.inputEmail")} type="email" value={formState.email}  name="email" onChange={(event) => setValues('email', event)}></Input>
+                    <Input labelText={t("register.inputPassword")} type="password" value={formState.password}  name="password" onChange={(event) => setValues('password', event)}></Input>
+            
+                    <Input  labelText={"06303334455"} type="tel" value={formState.phoneNumber} name="phoneNumber" onChange={(event) => setValues('phoneNumber', event)}></Input>
+                    <Input  labelText={""} type="date" value={formState.birthDay} name="birthDay" onChange={(event) => setValues('birthDay', event)}></Input>
+            
                     <ul className={classes.errors}>
                             {errors.map((error) => (
                                 <li key={error}>{error}</li>
@@ -133,18 +124,9 @@ function Register(){
                         </ul>
                     <div className={classes["button-and-link-to-login"]}>
                         <ButtonInput hoverColor="lightgray"  buttonText={t("register.button")} type="submit"></ButtonInput>
-                        <span style={{zIndex:501}}>{t("register.textNextToLoginLink")}<Link className={classes["link-to-login"]} to="/login" > {t("register.linkToLogin")}</Link></span>
+                        <span  style={{zIndex:501, paddingBottom:10}}>{t("register.textNextToLoginLink")}<Link className={classes["link-to-login"]} to="/login" > {t("register.linkToLogin")}</Link></span>
                     </div>
-                    <React.Fragment>
-                        <Dialog open={success} onClose={() => setSuccess(false)}>
-                            <DialogContent style={{display:"flex", flexDirection:"column", alignItems:"center", backgroundColor:"black", border:"2px solid white"}}>
-                                <DialogContentText style={{width:"100%", maxWidth:'200px', backgroundColor:"black", color:"white"}}>
-                                    <img style={{width:"100%", maxWidth:'200px', backgroundColor:"black"}} src={cheersImg} alt="" />
-                                    {t("register.successRegistration")}
-                                </DialogContentText>
-                            </DialogContent>
-                        </Dialog>
-                    </React.Fragment>
+                    <CustomDialog text={t("register.successRegistration")} open={success}></CustomDialog>
                     
                 </div>
                 

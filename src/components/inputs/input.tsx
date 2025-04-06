@@ -17,9 +17,7 @@ const Input: React.FC<Input> = ({labelText, type, style, name, onChange}) =>{
     
     return (
         <input  className={classes.container} type={type} placeholder={labelText} style={style} name={name} onChange={onChange} />
-
     )
-
 }
 
  {/* <Box

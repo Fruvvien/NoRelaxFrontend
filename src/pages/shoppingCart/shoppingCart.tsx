@@ -7,6 +7,7 @@ import ButtonInput from "../../components/buttons/buttonInput";
 import { useDispatch } from "react-redux";
 import { quantityMinus, quantityPlus, removeFromCart } from "../../redux/store/cartReduxState/cartSlice";
 import { HttpClientRequests } from "../../services/http-client-requests";
+import CustomDialog from "../../components/dialog/dialog";
 
 export default function ShoppingCart(){
     const {t} = useTranslation();
@@ -15,6 +16,7 @@ export default function ShoppingCart(){
     const cartItemId = useRef(0);
     const dispatch = useDispatch();
     const cartItemsFullPrice = useAppSelector((item) => item.cart.reduce((acc, item) => acc + item.price * item.quantity, 0));
+    const [success, setSuccess] = useState(false);
 
     useEffect(() =>{
         const foundItem = getCartItems.find((items) => items.orderId != 0);
@@ -50,7 +52,11 @@ export default function ShoppingCart(){
         console.log(response);
         
         if(response){
-            alert(response);
+            setSuccess(true);
+            setTimeout(() => {
+                setSuccess(false);
+            }, 1000);
+
             getCartItems.map((items) => dispatch(removeFromCart(items.orderId)));
         }
     }
@@ -115,6 +121,7 @@ export default function ShoppingCart(){
                         </div>
                     </tfoot>
                 </table>
+                <CustomDialog text={t("reservation.successReservation")} open={success}></CustomDialog>
                 
             </div>
           

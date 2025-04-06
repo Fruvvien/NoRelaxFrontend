@@ -3,14 +3,12 @@ import { useTranslation } from "react-i18next";
 import classes from "./reservation.module.css"
 import ButtonInput from "../../components/buttons/buttonInput";
 import  {HttpClientRequests}  from "../../services/http-client-requests";
-import cheersImg from "../../assets/loginImages/cheersIcon.png";
 import 'react-calendar/dist/Calendar.css';
 
 import Calendar from 'react-calendar';
 import { IReservation } from "../../models/reservation";
-import React from "react";
-import { Dialog, DialogContent, DialogContentText } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import CustomDialog from "../../components/dialog/dialog";
 
 type ValuePiece = Date | null;
 
@@ -31,6 +29,8 @@ export default function Reservation(){
     const navigate = useNavigate();
     const [error, setError] = useState<string>("");
     const [currentDate, setCurrentDate] = useState<Date>(new Date())
+    const [loading, setLoading] = useState<boolean>(true);
+
 
     useEffect(() =>{
         getReservations();
@@ -44,6 +44,10 @@ export default function Reservation(){
         }
         
     }, [i18n.language])
+
+    setTimeout(() =>{
+        setLoading(false);
+    }, 1000)
 
     useEffect(() => {
         if (date && time) {
@@ -127,212 +131,197 @@ export default function Reservation(){
 
     return(
         <>
+       
         <div className={classes["reservation_page"]}>
+        {!loading ?
+            <>
             <div className={classes["reservation_container"]}>
-                    <div className={classes["reservation_header"]}>
-                        <div>
-                            <h1>{reservationTitle[stage]}</h1>
+                        <div className={classes["reservation_header"]}>
+                            <div>
+                                <h1>{reservationTitle[stage]}</h1>
+                            </div>
+                        </div>
+                        <div className={classes["reservation_body"]}>
+                            {stage === 0 ?
+                                <>
+                                    <div className={classes["reservation_calendar_body"]}>
+                                        <div>
+                                            <Calendar
+
+                                                className={classes["react-calendar"]}
+                                                onChange={(value) => onChange(value as Date)}
+                                                value={date}
+                                                locale={locale}
+                                                formatShortWeekday={(locale, date) => date.toLocaleDateString(locale, { weekday: 'short' })}
+                                                formatMonth={(locale, date) => date.toLocaleDateString(locale, { month: 'long' })} />
+                                        </div>
+                                        <div>
+                                            <ButtonInput onClick={() => { setStage(1); } } type="button" buttonText="Tovább"></ButtonInput>
+                                        </div>
+                                    </div>
+
+
+                                </>
+                                :
+                                ""}
+                            {stage === 1 ?
+                                <>
+                                    {currentDate.getFullYear() <= date!.getFullYear() && currentDate.getMonth() <= date!.getMonth() && currentDate.getDay() <= date!.getDay() ?
+
+                                        (
+                                            <>
+                                                {!checkDate(1) ?
+                                                    <button onClick={() => { tableChoose(2, 1, 4); } } className={classes["reservation_table"]}>
+                                                        <span style={{ backgroundColor: "green" }} className={classes["reservation_table_text"]}>{t("reservation.tableTextOne")} </span>
+                                                    </button>
+                                                    :
+
+                                                    <button disabled className={classes["reserved_table"]}>
+                                                        <span style={{ backgroundColor: "red" }} className={classes["reservation_table_text"]}>{t("reservation.tableTextOne")}</span>
+                                                    </button>}
+
+                                                {!checkDate(2) ?
+                                                    <button onClick={() => { tableChoose(2, 2, 4); } } className={classes["reservation_table"]}>
+                                                        <span style={{ backgroundColor: "green" }} className={classes["reservation_table_text"]}>{t("reservation.tableTextTwo")} </span>
+                                                    </button>
+                                                    :
+
+                                                    <button disabled className={classes["reserved_table"]}>
+                                                        <span style={{ backgroundColor: "red" }} className={classes["reservation_table_text"]}>{t("reservation.tableTextTwo")}</span>
+                                                    </button>}
+
+
+                                                {!checkDate(3) ?
+                                                    <button onClick={() => { tableChoose(2, 3, 5); } } className={classes["reservation_table"]}>
+                                                        <span style={{ backgroundColor: "green" }} className={classes["reservation_table_text"]}>{t("reservation.tableTextThree")} </span>
+                                                    </button>
+                                                    :
+
+                                                    <button disabled className={classes["reserved_table"]}>
+                                                        <span style={{ backgroundColor: "red" }} className={classes["reservation_table_text"]}>{t("reservation.tableTextThree")}</span>
+                                                    </button>}
+                                                {!checkDate(4) ?
+                                                    <button onClick={() => { tableChoose(2, 4, 6); } } className={classes["reservation_table"]}>
+                                                        <span style={{ backgroundColor: "green" }} className={classes["reservation_table_text"]}>{t("reservation.tableTextFour")} </span>
+                                                    </button>
+                                                    :
+
+                                                    <button disabled className={classes["reserved_table"]}>
+                                                        <span style={{ backgroundColor: "red" }} className={classes["reservation_table_text"]}>{t("reservation.tableTextFour")}</span>
+                                                    </button>}
+
+                                                {!checkDate(5) ?
+                                                    <button onClick={() => { tableChoose(2, 5, 8); } } className={classes["reservation_table"]}>
+                                                        <span style={{ backgroundColor: "green" }} className={classes["reservation_table_text"]}>{t("reservation.tableTextFive")} </span>
+                                                    </button>
+                                                    :
+
+                                                    <button disabled className={classes["reserved_table"]}>
+                                                        <span style={{ backgroundColor: "red" }} className={classes["reservation_table_text"]}>{t("reservation.tableTextFive")}</span>
+                                                    </button>}
+                                            </>
+                                        )
+                                        :
+                                        <>
+                                            <p style={{ color: "white" }}>{t("reservation.badDateTime")}</p>
+                                        </>}
+                                </>
+
+                                :
+                                ""}
+                            {stage === 2 ?
+                                <div className={classes["reservation_time"]}>
+                                    <div className={classes["reservation_rules_text"]}>
+                                        <div>
+                                            <h3>{t("reservation.ruleTitle")}</h3>
+                                        </div>
+                                        <div>
+                                            <span>
+                                                {t("reservation.ruleOne")}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span>
+                                                {t("reservation.ruleTwo")}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span>
+                                                {t("reservation.ruleThree")}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    {error.length > 0 ? <p style={{ color: "red" }}>{error}</p> : ""}
+                                    <div className={classes["reservation_time_select"]}>
+                                        <select onChange={(item) => { setTime(item.target.value); } } className={classes["reservation_select"]}>
+                                            <option value="18:00">18:00</option>
+                                            <option value="18:30">18:30</option>
+                                            <option value="19:00">19:00</option>
+                                            <option value="19:30">19:30</option>
+                                            <option value="20:00">20:00</option>
+                                            <option value="20:30">20:30</option>
+                                            <option value="21:00">21:00</option>
+                                            <option value="21:30">21:30</option>
+                                        </select>
+
+                                    </div>
+                                    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                                        <ButtonInput onClick={() => { submitReservation(); } } type="button" buttonText={t("reservation.submitReservation")}></ButtonInput>
+                                    </div>
+                                </div>
+                                :
+                                ""}
+
+
+
+                        </div>
+                        <div className={classes["reservation_footer"]}>
+                            {stage === 0 ? <button className={classes["reservation_footer_text"]} style={{ backgroundColor: "gray", cursor: "default" }} disabled>
+                                <span>{t("reservation.stageTwo")}</span>
+                            </button>
+                                :
+                                <button onClick={() => stageChane(0)} className={classes["reservation_footer_text"]}>
+                                    <span>{t("reservation.stageTwo")}</span>
+                                </button>}
+                            {stage === 1 ? <button className={classes["reservation_footer_text"]} style={{ backgroundColor: "gray", cursor: "default" }} disabled>
+                                <span>{t("reservation.stageOne")}</span>
+                            </button>
+                                :
+                                <button onClick={() => stageChane(1)} className={classes["reservation_footer_text"]}>
+                                    <span>{t("reservation.stageOne")}</span>
+                                </button>}
+
+
+                            {stage === 2 ? <button className={classes["reservation_footer_text"]} style={{ backgroundColor: "gray", cursor: "default" }} disabled>
+                                <span>{t("reservation.stageThree")}</span>
+                            </button>
+                                :
+                                <button onClick={() => stageChane(2)} className={classes["reservation_footer_text"]}>
+                                    <span>{t("reservation.stageThree")}</span>
+                                </button>}
+
+
                         </div>
                     </div>
-                    <div className={classes["reservation_body"]}>
-                        {
-                            stage === 0 ?
-                            <>
-                            <div className={classes["reservation_calendar_body"]}>
-                            <div >
-                                <Calendar 
-                                    
-                                    className={
-                                    classes["react-calendar"]
-                                } 
-                                    onChange={(value) => onChange(value as Date)} 
-                                    value={date}
-                                    locale={locale}
-                                    formatShortWeekday={(locale, date) => date.toLocaleDateString(locale, { weekday: 'short' })}
-                                    formatMonth={(locale, date) => date.toLocaleDateString(locale, { month: 'long' })}
-                                    />
-                                </div>
-                                <div>
-                                    <ButtonInput onClick={() => {setStage(1)}} type="button" buttonText="Tovább"></ButtonInput>
-                                </div>
-                            </div>
-                            
-                                
-                            </>
-                            :
-                            ""
-                        }
-                        {stage === 1 ?
-                            <>
-                                {currentDate.getFullYear() <= date!.getFullYear() &&  currentDate.getMonth() <= date!.getMonth() && currentDate.getDay() <= date!.getDay() ? 
-                                    
-                                    (
-                                        <>
-                                        {!checkDate(1) ?
-                                        <button onClick={() => {tableChoose(2,1,4) }}  className={classes["reservation_table"]}>
-                                                <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextOne")} </span> 
-                                        </button>
-                                        : 
-                                        
-                                        <button disabled className={classes["reserved_table"]}> 
-                                            <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextOne")}</span>
-                                        </button>
-                                        }
-                                    
-                                        {!checkDate(2) ?
-                                        <button onClick={() => {tableChoose(2,2,4)}}  className={classes["reservation_table"]}>
-                                                <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextTwo")} </span> 
-                                        </button>
-                                        : 
-                                        
-                                        <button disabled className={classes["reserved_table"]}> 
-                                            <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextTwo")}</span>
-                                        </button>
-                                        }
-                                        
-                                        
-                                        {!checkDate(3) ?
-                                        <button onClick={() => {tableChoose(2,3,5)}}  className={classes["reservation_table"]}>
-                                                <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextThree")} </span> 
-                                        </button>
-                                        : 
-                                        
-                                        <button disabled className={classes["reserved_table"]}> 
-                                            <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextThree")}</span>
-                                        </button>
-                                        }
-                                        {!checkDate(4) ?
-                                        <button onClick={() => {tableChoose(2,4,6)}}  className={classes["reservation_table"]}>
-                                                <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextFour")} </span> 
-                                        </button>
-                                        : 
-                                        
-                                        <button disabled className={classes["reserved_table"]}> 
-                                            <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextFour")}</span>
-                                        </button>
-                                        }
-
-                                        {!checkDate(5) ?
-                                        <button onClick={() => {tableChoose(2,5,8)}}  className={classes["reservation_table"]}>
-                                                <span  style={{backgroundColor:"green"}} className={classes["reservation_table_text"]}>{t("reservation.tableTextFive")} </span> 
-                                        </button>
-                                        : 
-                                        
-                                        <button disabled className={classes["reserved_table"]}> 
-                                            <span  style={{backgroundColor:"red"}} className={classes["reservation_table_text"]} >{t("reservation.tableTextFive")}</span>
-                                        </button>
-                                        }
-                                        </>
-                                    )
-                                    :
-                                    <>
-                                    <p style={{color:"white"}}>{t("reservation.badDateTime")}</p>
-                                    </>
-                                }
-                            </>
-                                
-                            :
-                            ""
-                            
-                        }
-                        {
-                            stage === 2 ?
-                            <div className={classes["reservation_time"]}>
-                                <div className={classes["reservation_rules_text"]}>
-                                    <div>
-                                        <h3>{t("reservation.ruleTitle")}</h3>
-                                    </div>
-                                    <div>
-                                        <span>
-                                            {t("reservation.ruleOne")}
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <span>
-                                            {t("reservation.ruleTwo")}
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <span>
-                                            {t("reservation.ruleThree")}
-                                        </span>
-                                    </div>
-                                </div>
-                                {
-                                    error.length > 0 ? <p style={{color:"red"}}>{error}</p> : ""
-                                } 
-                                <div className={classes["reservation_time_select"]}>
-                                    <select onChange={(item) => {setTime(item.target.value);}} className={classes["reservation_select"]}>
-                                        <option value="18:00">18:00</option>
-                                        <option value="18:30">18:30</option>
-                                        <option value="19:00">19:00</option>
-                                        <option value="19:30">19:30</option>
-                                        <option value="20:00">20:00</option>
-                                        <option value="20:30">20:30</option>
-                                        <option value="21:00">21:00</option>
-                                        <option value="21:30">21:30</option>
-                                    </select>  
-                                   
-                                </div>
-                                <div style={{display:"flex", justifyContent:"center",  width:"100%"}}>
-                                    <ButtonInput onClick={() => {submitReservation()}} type="button" buttonText={t("reservation.submitReservation")}></ButtonInput>
-                                </div>
-                            </div>
-                            :
-                            ""
-                        }
+                        <>
+                            <CustomDialog text={t("reservation.successReservation")} open={success}></CustomDialog>
+                        </>
                         
-
-                        
-                    </div>
-                    <div className={classes["reservation_footer"]}>
-                        {
-                            stage === 0 ? <button  className={classes["reservation_footer_text"]} style={{backgroundColor: "gray", cursor:"default"}} disabled>
-                                                <span >{t("reservation.stageTwo")}</span>
-                                            </button>
-                                            :
-                                            <button onClick={() => stageChane(0)} className={classes["reservation_footer_text"]} >
-                                                <span >{t("reservation.stageTwo")}</span>
-                                            </button>
-                        }
-                        {
-                            stage === 1 ?   <button className={classes["reservation_footer_text"]} style={{backgroundColor: "gray", cursor:"default"}} disabled>
-                                                 <span >{t("reservation.stageOne")}</span>
-                                            </button>
-                                            :
-                                            <button onClick={() => stageChane(1)} className={classes["reservation_footer_text"]} >
-                                                 <span >{t("reservation.stageOne")}</span>
-                                            </button>
-                        }
-                        
-                       
-                         {
-                            stage === 2 ? <button className={classes["reservation_footer_text"]} style={{backgroundColor: "gray", cursor:"default"}} disabled>
-                                                <span >{t("reservation.stageThree")}</span>
-                                            </button>
-                                            :
-                                            <button onClick={() => stageChane(2)} className={classes["reservation_footer_text"]} >
-                                                <span >{t("reservation.stageThree")}</span>
-                                            </button>
-                        }
-                        
-                       
-                    </div>
+                    </>
+                :
+            <div className={classes["dots_div"]}>
+                <div className="dots">
+                    <div className="dot"></div>
+                    <div className="dot"></div>
+                    <div className="dot"></div>
+                    <div className="dot"></div>
+                    <div className="dot"></div>
                 </div>
-                <>
-                <React.Fragment>
-                    <Dialog open={success} onClose={() => setSuccess(false)}>
-                        <DialogContent style={{display:"flex", flexDirection:"column", alignItems:"center", backgroundColor:"black", border:"2px solid white"}}>
-                            <DialogContentText style={{ width:"100%", maxWidth:'200px',backgroundColor:"black", color:"white"}}>
-                                <img style={{width:"100%", maxWidth:'200px', backgroundColor:"black"}} src={cheersImg} alt="" />
-                                {t("reservation.successReservation")}
-                            </DialogContentText>
-                        </DialogContent>
-                    </Dialog>
-                </React.Fragment>
-                </>
+            </div>
+        }
                 
         </div>
+        
         </>
     )
 }

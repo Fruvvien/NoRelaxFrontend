@@ -117,21 +117,22 @@ export class HttpClientRequests {
     static async deleteProfile(endPoint: string,userId: string){
         const response = await fetch(enviroment.LOCAL_API_URL + endPoint + `/${userId}`,
             {
-                method: "DELETE",
+                method: "PATCH",
                 headers:{
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
                     'Authorization': 'Bearer ' + localStorage.getItem('authToken')
-                }
+                },
+                body: JSON.stringify({accountIsActive: false})
             }
             
         )
 
-        const result = response.json()
+        const result: IGetUser = await response.json()
         console.log(result);
         
         if(!response.ok){
-            return response
+            console.log(response);
         }
         return result;
     }

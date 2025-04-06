@@ -12,10 +12,7 @@ import {  getToken, getUserId } from '../../redux/store/userReduxState/userSlice
 import img from "../../assets/loginImages/loginKeyIcon.png"
 import cornerImg from "../../assets/pageImages/CornerCut.png"
 import cornerImgLeftBottom from "../../assets/pageImages/DownLeftCorner2.png";
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import { DialogContent, DialogContentText } from '@mui/material';
-import cheersImg from "../../assets/loginImages/cheersIcon.png";
+import CustomDialog from '../../components/dialog/dialog';
 
 function Login(){
 
@@ -69,6 +66,9 @@ function Login(){
             if(!isNotEmpty(formState.email) || !isNotEmpty(formState.password)){
                 newErrors.push(t("error.invalidEmptyField"));
             }
+            if(!result){
+                newErrors.push(t("error.invalidLogin"));
+            }
             setErrors(newErrors);
             if(errors.length > 0){
                 return {errors};
@@ -101,16 +101,7 @@ function Login(){
                         <ButtonInput hoverColor='lightgray' buttonText={t("login.button")} type='submit'></ButtonInput>
                         <span style={{zIndex:501}}>{t("login.textNextToRegisterLink")}<Link  className={classes.link} to="/register"> {t("login.linkToRegister")}</Link></span>
                     </div>
-                    <React.Fragment>
-                        <Dialog open={success} onClose={() => setSuccess(false)}>
-                            <DialogContent style={{display:"flex", flexDirection:"column", alignItems:"center", backgroundColor:"black", border:"2px solid white"}}>
-                                <DialogContentText style={{ width:"100%", maxWidth:'200px',backgroundColor:"black", color:"white"}}>
-                                    <img style={{width:"100%", maxWidth:'200px', backgroundColor:"black"}} src={cheersImg} alt="" />
-                                    {t("login.success")}
-                                </DialogContentText>
-                            </DialogContent>
-                        </Dialog>
-                    </React.Fragment>
+                      <CustomDialog text={t("login.success")} open={success}></CustomDialog>
                 </div>
             </form>
         </>
