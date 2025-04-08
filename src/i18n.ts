@@ -104,7 +104,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               orderButton: "Place Order"
             },
             reservation: {
-              tabletitleOne:"Date selection",
+              tableTitleOne:"Date selection",
               tableTitleTwo:"Table reservation",
               tableTitleThree:"Time selection",
 
@@ -120,6 +120,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               stageTwo: "Date",
               stageThree: "Time",
 
+              buttonNext:"Next",
+
               ruleTitle: "Reservation rules",
               ruleOne: "The reservation only records the arrival time.",
               ruleTwo: "Tables can be reserved from 18:00 earliest.",
@@ -127,7 +129,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
 
               submitReservation: "Submit reservation",
               successReservation: "Successful reservation",
-              badRequest: "Unsuccessful reservation, all fields must be filled in"
+              badRequest: "Unsuccessful reservation, all fields must be filled in",
+
             },
             profile:{
               profileTitle: "Profile",
@@ -141,6 +144,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               reservationBoxTitle: "Reservation",
               reservationTableNumber: "Table number:",
               reservationDelete: "Cancel reservation",
+              reservationDate: "Date",
+              reservationArrivalTime: "Arrival time"
             }
             
 
@@ -245,6 +250,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             tableTitleTwo:"Asztal foglalás",
             
             tableTitleThree:"Időpont választás",
+
             tableTextOne: "4 fős asztal",
             tableTextTwo: "4 fős asztal",
             tableTextThree: "5 fős asztal",
@@ -261,6 +267,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             ruleOne: "A foglalás csak az érkezési időpontot rögzíti.",
             ruleTwo: "Az asztalok legkorábban 18:00-tól foglalhatók.",
             ruleThree: `Nincs időkorlát - hosszú ott tartózkodás esetén "minimális fogyasztás elvárt".`,
+            
+            buttonNext:"Tovább",
 
             submitReservation: "Foglalás leadása",
 
@@ -280,6 +288,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             reservationBoxTitle: "Foglalás",
             reservationTableNumber: "Asztal száma:",
             reservationDelete: "Foglalás visszavonása",
+            reservationDate: "Dátum",
+            reservationArrivalTime: "Érkezési idő"
           }
 
         },

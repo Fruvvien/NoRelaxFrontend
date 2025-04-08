@@ -109,10 +109,10 @@ export default function Profile(){
                                                     </div>
                                                     <div>
                                                         <div>
-                                                            {`Dátum: ${new Date(reserve.reservationDate!).getFullYear()}-${new Date(reserve.reservationDate!).getMonth() + 1}-${new Date(reserve.reservationDate!).getDate()}`}
+                                                            {`${t("profile.reservationDate")}: ${new Date(reserve.reservationDate!).getFullYear()}-${new Date(reserve.reservationDate!).getMonth() + 1}-${new Date(reserve.reservationDate!).getDate()}`}
                                                         </div>
                                                         <div>
-                                                            {`Érkezési idő: ${new Date(reserve.reservationDate!).getHours() - 2}:${new Date(reserve.reservationDate!).getMinutes() == 0 ? `${new Date(reserve.reservationDate!).getMinutes()}0` : new Date(reserve.reservationDate!).getMinutes()}`}
+                                                            {`${t("profile.reservationArrivalTime")}: ${new Date(reserve.reservationDate!).getHours() - 2}:${new Date(reserve.reservationDate!).getMinutes() == 0 ? `${new Date(reserve.reservationDate!).getMinutes()}0` : new Date(reserve.reservationDate!).getMinutes()}`}
                                                         </div>
                                                     </div>
 

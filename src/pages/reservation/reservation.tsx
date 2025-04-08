@@ -156,7 +156,7 @@ export default function Reservation(){
                                                 formatMonth={(locale, date) => date.toLocaleDateString(locale, { month: 'long' })} />
                                         </div>
                                         <div>
-                                            <ButtonInput onClick={() => { setStage(1); } } type="button" buttonText="Tovább"></ButtonInput>
+                                            <ButtonInput onClick={() => { setStage(1); } } type="button" buttonText={t("reservation.buttonNext")}></ButtonInput>
                                         </div>
                                     </div>
 
