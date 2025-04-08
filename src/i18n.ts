@@ -101,7 +101,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               removeButton: "Remove",
               quantity: "pcs",
               finalPrice: "Total Price",
-              orderButton: "Place Order"
+              orderButton: "Place Order",
+              successfulOrder:"Successful order"
             },
             reservation: {
               tableTitleOne:"Date selection",
@@ -243,7 +244,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             removeButton: "Eltávolítás",
             quantity: "adag",
             finalPrice:"Végösszeg",
-            orderButton: "Rendelés leadása"
+            orderButton: "Rendelés leadása",
+            successfulOrder: "Sikeres rendelés"
           },
           reservation: {
             tableTitleOne:"Dátum választás",

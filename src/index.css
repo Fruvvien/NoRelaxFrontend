@@ -2,7 +2,7 @@ html, body{
     height: 100%;
     margin: 0;
     background: rgb(255,255,255);
-    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 55%);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 65%);
     background-repeat: no-repeat;
     font-family: "Pirata One", serif;
     font-weight: 400;

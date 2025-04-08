@@ -121,7 +121,7 @@ export default function ShoppingCart(){
                         </div>
                     </tfoot>
                 </table>
-                <CustomDialog text={t("reservation.successReservation")} open={success}></CustomDialog>
+                <CustomDialog text={t("cart.successfulOrder")} open={success}></CustomDialog>
                 
             </div>
           
