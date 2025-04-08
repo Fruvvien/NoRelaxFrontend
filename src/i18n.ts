@@ -3,6 +3,7 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { title } from 'process';
 import { footer } from 'framer-motion/client';
+import { profile, table } from 'console';
 
 i18n.use(LanguageDetector).use(initReactI18next).init({
     debug: true,
@@ -21,7 +22,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 button: "Login",
                 textNextToRegisterLink : "Don't have an account yet?",
                 linkToRegister: "Register",
-                success: "Successful login!",
+                success: "Login Succesful!",
             },
             register: {
                 title: "Register",
@@ -61,7 +62,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               title1:"Drinks List",
               title2:"Foods List",
               drinkName: "Drink Name",
-              amount:"Amount",
+              amount:"Quantity",
               price:"Price",
               order:"Order"
 
@@ -69,7 +70,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             menuOrderFood:{
               addToCart: "Add",
               title1:"Drinks List",
-              title2:"Étlap",
+              title2:"Foods List",
               foodName: "Food Name",
               amount: "Amount",
               price:"Price",
@@ -85,10 +86,6 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               saturday: "Saturday: 17:00 - 03:00",
               sunday: "Sunday: Closed",
             },
-            aboutUs:{
-              title: "About Us",
-              text: "Mother"
-            },
             footer:{
               information: "Information",
               socials: "Follow Us",
@@ -103,11 +100,47 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               cartIsEmpty: "Cart is empty",
               removeButton: "Remove",
               quantity: "pcs",
-              finalPrice: "Final Price",
-              orderButton: "Place an order"
+              finalPrice: "Total Price",
+              orderButton: "Place Order"
             },
             reservation: {
-              tableText: ""
+              tabletitleOne:"Date selection",
+              tableTitleTwo:"Table reservation",
+              tableTitleThree:"Time selection",
+
+              tableTextOne: "4 person table",
+              tableTextTwo: "4 person table",
+              tableTextThree: "5 person table",
+              tableTextFour: "6 person table",
+              tableTextFive: "8 person table",
+
+              badDateTime: "You cannot book a date that is in the past",
+
+              stageOne: "Table",
+              stageTwo: "Date",
+              stageThree: "Time",
+
+              ruleTitle: "Reservation rules",
+              ruleOne: "The reservation only records the arrival time.",
+              ruleTwo: "Tables can be reserved from 18:00 earliest.",
+              ruleThree: `There is no time limit - "minimum consumption expected" in case of long stay.`,
+
+              submitReservation: "Submit reservation",
+              successReservation: "Successful reservation",
+              badRequest: "Unsuccessful reservation, all fields must be filled in"
+            },
+            profile:{
+              profileTitle: "Profile",
+              profileImgUploadText: "Upload image",
+              profileDelete: "Delete account",
+              profileName: "Name:",
+              profileEmail: "Email:",
+              profilePhoneNumber: "Phone number:",
+              reservationTitle: "Reservation Details",
+              emptyReservation: "You do not have active reservations",
+              reservationBoxTitle: "Reservation",
+              reservationTableNumber: "Table number:",
+              reservationDelete: "Cancel reservation",
             }
             
 
@@ -140,10 +173,10 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
           error:{
             invalidEmail: "Hibás email cím.",
             invalidPassword: "Legalább hat karakterből álló jelszót kell megadnod",
-            invalidLastAndFirstName: "Kérlek add meg mindkét neved",
-            invalidEmptyField: "Nem lehet üres mező",
-            invalidPhoneNumber:"Kérlek add meg a megfelelő telefonszámod",
-            invalidBirthDay: "Kérlek add meg a születési dátumod",
+            invalidLastAndFirstName: "Kérjük add meg mindkét neved",
+            invalidEmptyField: "A mező nem lehet üres",
+            invalidPhoneNumber:"Kérjük érvényes telefonszámot adj meg",
+            invalidBirthDay: "Kérjük érvényes születési dátumot adj meg",
             emailIsExist: "Ez az email cím már létezik",
             invalidLogin:"Hibás bejelentkezés",
           },
@@ -154,7 +187,6 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             reserve: "Foglalás",
             openingHours: "Nyitvatartás",
             menu: "Menü",
-            aboutUs: "Rólunk",
             logout: "Kijelentkezés",
             drinkList: "Ital Lista",
             
@@ -190,11 +222,6 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             friday: "Péntek: 17:00 - 03:00",
             saturday: "Szombat: 17:00 - 03:00",
             sunday: "Vasárnap: Zárva",
-          },
-          aboutUs:{
-            title: "Rólunk",
-            text: "A NoRelax bár 2010 március 25-én nyitotta meg kapuit a nagyközönség részére. A XVIII. kerület szívében, a Szarvas Csárda téren a csarnok területén helyezkedik el, ígyhát a hosszú piacozás és bevásárlás után is ideális hely egy kis kikapcsolódásra. A bár különlegessége hogy minden héten más-más fergeteges programmal várják a vendégeket, legyen szó karaoke estről, billiárd darts vagy csocsómérkőzésekről, közös meccsnézésről vagy csak egy jó sör melletti beszélgetős estéről, egyet megígérhetünk: jókedvből nem lesz hiány! Fiatalos környezet, olcsó italok, jó társaság, kedves kiszolgálás, mi kell még? Gyere és igyál velünk te is!"
-
           },
           footer:{
             information: "Információ",
@@ -239,7 +266,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
 
             successReservation: "Sikeres foglalás",
 
-            badRequest: "Sikertelen foglalás, mindent szekicót ki kell tölteni"
+            badRequest: "Sikertelen foglalás, minden szekciót ki kell tölteni"
           },
           profile:{
             profileTitle: "Profil",
@@ -249,10 +276,10 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             profileEmail: "Email:",
             profilePhoneNumber: "Telefonszám:",
             reservationTitle: "Foglalás Részletei",
-            emptyReservation: "Nincs foglalás",
+            emptyReservation: "Jelenleg nincs aktív foglalás",
             reservationBoxTitle: "Foglalás",
             reservationTableNumber: "Asztal száma:",
-            reservationDelete: "Foglalás visszavonás",
+            reservationDelete: "Foglalás visszavonása",
           }
 
         },
