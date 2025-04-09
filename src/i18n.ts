@@ -292,7 +292,11 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             reservationDelete: "Foglalás visszavonása",
             reservationDate: "Dátum",
             reservationArrivalTime: "Érkezési idő"
+          },
+          landing:{
+            adText: "Ne maradj le eseményeinkről!",
           }
+
 
         },
       }

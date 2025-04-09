@@ -20,6 +20,7 @@ export default function Profile(){
     useEffect(() =>{
         getUserDatas();
         getReservationDatas();
+        
     }, [])
 
     async function getUserDatas(){
