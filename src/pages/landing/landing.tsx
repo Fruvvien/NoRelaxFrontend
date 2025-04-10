@@ -7,6 +7,7 @@ import csocso from "../../assets/landingpage/csocso.png"
 import darts from "../../assets/landingpage/darts.png"
 import palinkak from "../../assets/landingpage/palinkak.png"
 import piaKeszlet from "../../assets/landingpage/piaKeszlet.png"
+import norelaxsignature from "../../assets/pageImages/NoRelaxignature.png"
 import { useTranslation } from "react-i18next";
 import cornerImg from "../../assets/pageImages/CornerCut.png"
 import cornerImgLeftBottom from "../../assets/pageImages/DownLeftCorner2.png";
@@ -123,6 +124,11 @@ function Landing(){
                                     <div>
                                         <img onClick={() => imgPopUpHandler(3)} className={classes["landing_img"]} src={piaKeszlet} alt="" />
                                     </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <img style={{width:"150px"}} src={norelaxsignature} alt=""  />
+                                </div>
                             </div>
                         </div>
                         <React.Fragment>
