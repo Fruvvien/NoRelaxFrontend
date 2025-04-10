@@ -46,7 +46,7 @@ const {t} = useTranslation();
                     <h3 >{t("footer.socials")}</h3>
                 </div>
                 <div className={classes["footer-info-content"]}>
-                    <img className={classes["footer-info__icons"]} src={imgfacebook} alt="facebook" />
+                    <img style={{height:"20px", width:"15px", paddingRight:"5px"}} className={classes["footer-info__icons"]} src={imgfacebook} alt="facebook" />
                     <span>NoRelax</span>
                 </div>
                 <div className={classes["footer-info-content"]}>
