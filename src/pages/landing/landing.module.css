@@ -39,7 +39,7 @@
 
 .next_ad_buttons_div{
     display: flex;
-    max-height: 250px;
+    max-height: 350px;
     align-items: center;
 }
 .next_ad_buttons {
@@ -75,7 +75,7 @@
 
 .prev_ad_buttons_div{
     display: flex;
-    max-height: 250px;
+    max-height: 350px;
     align-items: center;
 }
 
@@ -102,7 +102,7 @@
 .adImg{
     width: 100%;
     max-width: 750px;
-    max-height: 250px;
+    max-height: 350px;
     background-repeat: no-repeat;
     border: 3px solid black;
 }
