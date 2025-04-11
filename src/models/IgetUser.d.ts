@@ -1,3 +1,5 @@
+import { IReservation } from "./reservation";
+
 export interface IGetUser{
     id: number,
     firstName: string,
@@ -6,7 +8,7 @@ export interface IGetUser{
     accountType: boolean,
     createdAt: string,
     accountIsActive: boolean,
-    reservationId: number,
+    reservation: IReservation,
     birthDay: string,
     phoneNumber: string,
 }

@@ -47,8 +47,11 @@ export default function ShoppingCart(){
         const userId = localStorage.getItem("userId")?.toString();
         console.log({userId: userId, cart: cartItems});
         const userDatas = await HttpClientRequests.getUser("user", userId);
-
-        const response = await HttpClientRequests.postOrder("orders", userId || "",  cartItems, userDatas.reservationId || null, cartItemsFullPrice);
+        const userReservation = userDatas.reservation.tableNumber;
+        console.log(userReservation);
+        
+        
+        const response = await HttpClientRequests.postOrder("orders", userId || "",  cartItems, userReservation || null, cartItemsFullPrice);
         console.log(response);
         
         if(response){
