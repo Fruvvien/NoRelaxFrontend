@@ -73,9 +73,6 @@ export default function Profile(){
                                 <div>
                                     <img src={img} alt="" className={classes["profile_avatar"]} />
                                 </div>
-                                <div>
-                                    <a className={classes["profile_img_upload_link"]} href="">{t("profile.profileImgUploadText")}</a>
-                                </div>
                             </div>
                             <div className={classes["profile_user_datas"]}>
                                 <div>
