@@ -181,7 +181,7 @@ export class HttpClientRequests {
             return result
     }
 
-    static async postOrder(endPoint: string,userId: string, order: Icart[], reservationId: number | null, fullPrice: number){
+    static async postOrder(endPoint: string,userId: string, order: Icart[], reservationId: number | undefined, fullPrice: number){
         const response = await fetch(enviroment.LOCAL_API_URL + endPoint, {
             method: 'POST',
             headers: {

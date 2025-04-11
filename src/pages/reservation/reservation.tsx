@@ -250,6 +250,11 @@ export default function Reservation(){
                                                 {t("reservation.ruleThree")}
                                             </span>
                                         </div>
+                                        <div>
+                                            <span>
+                                                {t("reservation.ruleFour")}
+                                            </span>
+                                        </div>
                                     </div>
                                     {error.length > 0 ? <p style={{ color: "red" }}>{error}</p> : ""}
                                     <div className={classes["reservation_time_select"]}>

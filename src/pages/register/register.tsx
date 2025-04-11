@@ -36,62 +36,85 @@ function Register(){
 
     async  function handleSubmit (e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
-        const user: User = {
-            firstName: formState?.firstName as string,
-            lastName: formState?.lastName as string,
-            email: formState?.email as string,
-            password: formState?.password as string,
-            phoneNumber: formState?.phoneNumber as string,
-            birthDay : formState.birthDay as string
-        }
+        const currentDate = new Date();
+        console.log("currentDate:", currentDate);
+        
+        const birthDate = new Date(formState.birthDay);
+        console.log("birthDate:", birthDate);
+        let age = currentDate.getFullYear() - birthDate.getFullYear();
+        console.log("age:", age);
 
-        if(user){
-            const result = await HttpClientRequests.postData(user, "user");
-            console.log(formState.birthDay);
+        
+        const monthDiff = currentDate.getMonth() - birthDate.getMonth();
+        console.log("monthDiff:", monthDiff);
+        
+        const dayDiff = currentDate.getDate() - birthDate.getDate();
+        console.log("dayDiff:", dayDiff);
+        
+        if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+            age--;
+            console.log("age2:", age);
             
-            if(result){
-                setErrors([]);
-                setSuccess(true);
-                setTimeout(() => {
-                    navigate("/login")
-                }, 2000)
-                
+        }
+        if(age >= 18){
+            const user: User = {
+                firstName: formState?.firstName as string,
+                lastName: formState?.lastName as string,
+                email: formState?.email as string,
+                password: formState?.password as string,
+                phoneNumber: formState?.phoneNumber as string,
+                birthDay : formState.birthDay as string
             }
-            else{
-                 const newErrors: string[] = [];
-                
-                if(!isEmail(formState.email) && isNotEmpty(formState.email)){
-                    newErrors.push(t("error.invalidEmail"));
-                }
-                if(!isNotEmpty(formState.password) || !hasMinLength(formState.password, 5)){
-                    newErrors.push(t("error.invalidPassword"));
-                }
-                if(!isNotEmpty(formState.firstName) || !isNotEmpty(formState.lastName)){
-                    newErrors.push(t("error.invalidLastAndFirstName"));
-                }
-                if(!isNotEmpty(formState.phoneNumber)){
-                    newErrors.push(t("error.invalidPhoneNumber"));
-                }
-                if(!allIsNotEmpty(formState.firstName, formState.lastName, formState.email, formState.password)){
-                    newErrors.push(t("error.invalidEmptyField"));
-                }
-                if(!notValidPhoneNumber(formState.phoneNumber)){
-                    newErrors.push(t("error.invalidPhoneNumber"));
-                }
-                if(!isValidBirthday(formState.birthDay)){
-                    newErrors.push(t("error.invalidBirthDay"));
-                }
-                if(!result){
-                    newErrors.push(t("error.emailIsExist"));
-                }
-                
-                setErrors(newErrors);
-                if(errors.length > 0){
-                    return {errors};
-                }
-            
-                return {errors: null}
+            if(user){
+                    const result = await HttpClientRequests.postData(user, "user");
+                    console.log(formState.birthDay);
+                    
+                    if(result){
+                        setErrors([]);
+                        setSuccess(true);
+                        setTimeout(() => {
+                            navigate("/login")
+                        }, 2000)
+                        
+                    }
+                    else{
+                        const newErrors: string[] = [];
+                        
+                        if(!isEmail(formState.email) && isNotEmpty(formState.email)){
+                            newErrors.push(t("error.invalidEmail"));
+                        }
+                        if(!isNotEmpty(formState.password) || !hasMinLength(formState.password, 5)){
+                            newErrors.push(t("error.invalidPassword"));
+                        }
+                        if(!isNotEmpty(formState.firstName) || !isNotEmpty(formState.lastName)){
+                            newErrors.push(t("error.invalidLastAndFirstName"));
+                        }
+                        if(!isNotEmpty(formState.phoneNumber)){
+                            newErrors.push(t("error.invalidPhoneNumber"));
+                        }
+                        if(!allIsNotEmpty(formState.firstName, formState.lastName, formState.email, formState.password)){
+                            newErrors.push(t("error.invalidEmptyField"));
+                        }
+                        if(!notValidPhoneNumber(formState.phoneNumber)){
+                            newErrors.push(t("error.invalidPhoneNumber"));
+                        }
+                        if(!isValidBirthday(formState.birthDay)){
+                            newErrors.push(t("error.invalidBirthDay"));
+                        }
+                        if(!result){
+                            newErrors.push(t("error.emailIsExist"));
+                        }
+                        
+                        setErrors(newErrors);
+                        if(errors.length > 0){
+                            return {errors};
+                        }
+                    
+                        return {errors: null}
+                    }
             }
+        }else{
+            setErrors([t("error.invalidAge")]);
         }
     }
 

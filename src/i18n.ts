@@ -42,6 +42,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 invalidEmptyField: "Cannot be an empty field",
                 emailIsExist: "This email address already exists",
                 invalidLogin:"Invalid login",
+                invalidAge: "You must be at least 18 years old",
             },
             leftSideBar:{
               login: "Login",
@@ -127,6 +128,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               ruleOne: "The reservation only records the arrival time.",
               ruleTwo: "Tables can be reserved from 18:00 earliest.",
               ruleThree: `There is no time limit - "minimum consumption expected" in case of long stay.`,
+              ruleFour:"Even if you place an order by booking more than one table, you will only be able to place an order for the first table selected.",
 
               submitReservation: "Submit reservation",
               successReservation: "Successful reservation",
@@ -185,6 +187,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             invalidBirthDay: "Kérjük érvényes születési dátumot adj meg",
             emailIsExist: "Ez az email cím már létezik",
             invalidLogin:"Hibás bejelentkezés",
+            invalidAge:"Legalább 18 évesnek kell lenned",
           },
           leftSideBar: {
             login: "Bejelentkezés",
@@ -269,6 +272,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             ruleOne: "A foglalás csak az érkezési időpontot rögzíti.",
             ruleTwo: "Az asztalok legkorábban 18:00-tól foglalhatók.",
             ruleThree: `Nincs időkorlát - hosszú ott tartózkodás esetén "minimális fogyasztás elvárt".`,
+            ruleFour:"Több asztal foglalás általi rendelés leadása esetén is csak a legelsőnek kiválasztott asztalhoz lesz köthető a rendelés.",
             
             buttonNext:"Tovább",
 
