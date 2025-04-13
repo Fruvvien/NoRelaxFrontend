@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Input from '../../components/inputs/input';
 import ButtonInput from '../../components/buttons/buttonInput';
 import  classes from './login.module.css';
@@ -7,7 +7,7 @@ import {BrowserRouter as Router, Link, } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import {isEmail, isNotEmpty, hasMinLength } from '../../util/validation';
 import { useTranslation } from 'react-i18next';
-import { useAppDispatch, useAppSelector } from '../../hooks/app.hooks';
+import { useAppDispatch } from '../../hooks/app.hooks';
 import {  getToken, getUserId } from '../../redux/store/userReduxState/userSlice';
 import img from "../../assets/loginImages/loginKeyIcon.png"
 import cornerImg from "../../assets/pageImages/CornerCut.png"
