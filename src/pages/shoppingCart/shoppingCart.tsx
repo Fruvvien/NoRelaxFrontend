@@ -50,11 +50,8 @@ export default function ShoppingCart(){
         const userReservation = userDatas.reservation.map((item) => {
             return item.id
         })
-        console.log(userReservation);
-        
-        
+
         const response = await HttpClientRequests.postOrder("orders", userId || "",  cartItems, userReservation[0] || undefined, cartItemsFullPrice);
-        console.log(response);
         
         if(response){
             setSuccess(true);

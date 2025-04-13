@@ -107,7 +107,6 @@ export default function Reservation(){
             }
             else{
                 console.log(response);
-                
             }
         }
         else{

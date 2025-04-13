@@ -37,24 +37,14 @@ function Register(){
     async  function handleSubmit (e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
         const currentDate = new Date();
-        console.log("currentDate:", currentDate);
-        
         const birthDate = new Date(formState.birthDay);
-        console.log("birthDate:", birthDate);
         let age = currentDate.getFullYear() - birthDate.getFullYear();
-        console.log("age:", age);
-
-        
         const monthDiff = currentDate.getMonth() - birthDate.getMonth();
-        console.log("monthDiff:", monthDiff);
         
         const dayDiff = currentDate.getDate() - birthDate.getDate();
-        console.log("dayDiff:", dayDiff);
         
         if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
             age--;
-            console.log("age2:", age);
-            
         }
         if(age >= 18){
             const user: User = {

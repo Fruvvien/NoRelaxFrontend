@@ -41,8 +41,6 @@ function Login(){
             password: formState.password as string,
         }
         const result = await HttpClientRequests.postData(user, "auth/login");
-        console.log(result);
-       
         if(result){
             
             dispatch(getToken());

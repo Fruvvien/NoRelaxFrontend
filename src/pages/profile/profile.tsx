@@ -23,9 +23,6 @@ export default function Profile(){
         getReservationDatas();
         reservation.map((reserve) => {
             const reservationDate = new Date(reserve.reservationDate!);
-            console.log("reservationDate", reservationDate.getFullYear(), reservationDate.getMonth(), reservationDate.getDate())
-            console.log("currentDate", currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate())
-            
             if (reservationDate.getFullYear() <= currentDate.getFullYear() && reservationDate.getMonth() <= currentDate.getMonth() && reservationDate.getDate() < currentDate.getDate()) {
                 reservationDelete(reserve.id!)
             }
