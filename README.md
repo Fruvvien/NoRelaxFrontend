@@ -1,3 +1,4 @@
+# A fejlesztői dokumentáció a github wikin belül lesz megtalálható
 # React + TypeScript + Vite
 
 # Telepítési útmutató
