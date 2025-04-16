@@ -146,6 +146,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               emptyReservation: "You do not have active reservations",
               reservationBoxTitle: "Reservation",
               reservationTableNumber: "Table number:",
+              reservationSpace: "Number of seats:",
               reservationDelete: "Cancel reservation",
               reservationDate: "Date",
               reservationArrivalTime: "Arrival time"
@@ -303,6 +304,7 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             emptyReservation: "Jelenleg nincs aktív foglalás",
             reservationBoxTitle: "Foglalás",
             reservationTableNumber: "Asztal száma:",
+            reservationSpace: "Férőhelyek száma:",
             reservationDelete: "Foglalás visszavonása",
             reservationDate: "Dátum",
             reservationArrivalTime: "Érkezési idő"

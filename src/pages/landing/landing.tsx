@@ -131,7 +131,7 @@ function Landing(){
                             </div>
                             <div>
                                 <div>
-                                    <img style={{width:"150px"}} src={norelaxsignature} alt=""  />
+                                    <img style={{width:"250px"}} src={norelaxsignature} alt=""  />
                                 </div>
                             </div>
                         </div>

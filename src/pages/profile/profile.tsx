@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next"
 import classes from "./profile.module.css"
-import img from "../../assets/NoRelaxLogo.png"
+import img from "../../assets/pageImages/ProfileIconCute.png"
 import { useEffect, useState } from "react"
 import { HttpClientRequests } from "../../services/http-client-requests"
 import { IGetUser } from "../../models/IgetUser"
@@ -126,7 +126,7 @@ export default function Profile(){
                                                 </div>
                                                 <div className={classes["reservation_bottom_side"]}>
                                                     <div>
-                                                        <span>{t("profile.reservationTableNumber")}</span><span style={{ fontSize: "40px" }}>{reserve.seats}</span>
+                                                        <span>{t("profile.reservationSpace")}</span><span style={{ fontSize: "40px" }}>{reserve.seats}</span>
                                                     </div>
                                                     <div>
                                                         <ButtonInput onClick={() => reservationDelete(reserve.id!)} type="button" buttonText={t("profile.reservationDelete")}></ButtonInput>
