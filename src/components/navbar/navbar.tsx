@@ -39,7 +39,7 @@ function Navbar() {
                   <div className={classes["toolbar-end"]} >
                     {
                       getAuthToken ? 
-                      <span><a onClick={() => navigate("/shoppingCart")}><img className={classes["shopping-cart-img"]} src={cartImg} alt="" /></a>
+                      <span ><a onClick={() => navigate("/shoppingCart")}><img className={classes["shopping-cart-img"]} src={cartImg} alt="" /></a>
                       {
                         cartQuantity > 0 ?
                         <span className={classes["cart-quantity"]}>

@@ -14,7 +14,7 @@
 
 .toolbar-middle{
     position: relative;
-    left: -15px;
+    left: -19px;
 
 }
 
@@ -40,7 +40,10 @@
     color: white;
     cursor: pointer;
 }
-
+.cart-quantity{
+    position: absolute;
+    z-index: 1200;
+}
 
 
 
