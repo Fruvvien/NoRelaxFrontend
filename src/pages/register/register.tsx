@@ -110,40 +110,43 @@ function Register(){
 
 
     return (
-        <>
-            <form className={classes["register-page"]} onSubmit={handleSubmit}>
-                <div className={classes.background}>
-                    <span><img className={classes["corner_img1"]} src={cornerImgLeftBottom} alt="" /></span>
-                    <span><img className={classes["corner_img2"]} src={cornerImg} alt="" /></span>
-                    <span><img className={classes["corner_img3"]} src={cornerImg} alt="" /></span>
-                    <span><img className={classes["corner_img4"]} src={cornerImg} alt="" /></span>
-                    <div className={classes["register-img-div"]}>
-                        <img className={classes["register-img"]} src={img} alt="" />
-                    </div>
+        <>  
+            <div className={classes["register-page"]}>
+                <form  className={classes.background} onSubmit={handleSubmit}>
                     
-                    <Input labelText={t("register.inputLastName")} type="text" value={formState.lastName}  name="lastName" onChange={(event) => setValues('lastName', event)}></Input>
-                    <Input labelText={t("register.inputFirstName")} type="text" value={formState.firstName}  name="firstName" onChange={(event) => setValues('firstName', event)} ></Input>
-                
-                    <Input labelText={t("register.inputEmail")} type="email" value={formState.email}  name="email" onChange={(event) => setValues('email', event)}></Input>
-                    <Input labelText={t("register.inputPassword")} type="password" value={formState.password}  name="password" onChange={(event) => setValues('password', event)}></Input>
-            
-                    <Input  labelText={"06303334455"} type="tel" value={formState.phoneNumber} name="phoneNumber" onChange={(event) => setValues('phoneNumber', event)}></Input>
-                    <Input  labelText={""} type="date" value={formState.birthDay} name="birthDay" onChange={(event) => setValues('birthDay', event)}></Input>
-            
-                    <ul className={classes.errors}>
-                            {errors.map((error) => (
-                                <li key={error}>{error}</li>
-                            ))}
-                        </ul>
-                    <div className={classes["button-and-link-to-login"]}>
-                        <ButtonInput hoverColor="lightgray"  buttonText={t("register.button")} type="submit"></ButtonInput>
-                        <span  style={{zIndex:501, paddingBottom:10}}>{t("register.textNextToLoginLink")}<Link className={classes["link-to-login"]} to="/login" > {t("register.linkToLogin")}</Link></span>
-                    </div>
-                    <CustomDialog text={t("register.successRegistration")} open={success}></CustomDialog>
+                        <span><img className={classes["corner_img1"]} src={cornerImgLeftBottom} alt="" /></span>
+                        <span><img className={classes["corner_img2"]} src={cornerImg} alt="" /></span>
+                        <span><img className={classes["corner_img3"]} src={cornerImg} alt="" /></span>
+                        <span><img className={classes["corner_img4"]} src={cornerImg} alt="" /></span>
+                        <div className={classes["register-img-div"]}>
+                            <img className={classes["register-img"]} src={img} alt="" />
+                        </div>
+                        
+                        <Input labelText={t("register.inputLastName")} type="text" value={formState.lastName}  name="lastName" onChange={(event) => setValues('lastName', event)}></Input>
+                        <Input labelText={t("register.inputFirstName")} type="text" value={formState.firstName}  name="firstName" onChange={(event) => setValues('firstName', event)} ></Input>
                     
-                </div>
+                        <Input labelText={t("register.inputEmail")} type="email" value={formState.email}  name="email" onChange={(event) => setValues('email', event)}></Input>
+                        <Input labelText={t("register.inputPassword")} type="password" value={formState.password}  name="password" onChange={(event) => setValues('password', event)}></Input>
                 
-            </form>
+                        <Input  labelText={"06303334455"} type="tel" value={formState.phoneNumber} name="phoneNumber" onChange={(event) => setValues('phoneNumber', event)}></Input>
+                        <Input  labelText={""} type="date" value={formState.birthDay} name="birthDay" onChange={(event) => setValues('birthDay', event)}></Input>
+                
+                        <ul className={classes.errors}>
+                                {errors.map((error) => (
+                                    <li key={error}>{error}</li>
+                                ))}
+                            </ul>
+                        <div className={classes["button-and-link-to-login"]}>
+                            <ButtonInput hoverColor="lightgray"  buttonText={t("register.button")} type="submit"></ButtonInput>
+                            <span  style={{zIndex:501, paddingBottom:10}}>{t("register.textNextToLoginLink")}<Link className={classes["link-to-login"]} to="/login" > {t("register.linkToLogin")}</Link></span>
+                        </div>
+                        <CustomDialog text={t("register.successRegistration")} open={success}></CustomDialog>
+                        
+                    
+                
+                </form>
+            </div>
+            
             
         </>
 
