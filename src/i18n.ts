@@ -149,7 +149,17 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
               reservationDelete: "Cancel reservation",
               reservationDate: "Date",
               reservationArrivalTime: "Arrival time"
-            }
+            },
+            landing: {
+              adText: "Don't miss our events!",
+              aboutUs: "About Us",
+              about1: "NoRelax pub reopened its doors in 2023 in the heart of district XVIII, at Szarvas Csárda square, on the area of Piac csarnok.",
+              about2: "We welcome guests looking for relaxation and entertainment with exciting and varied programs 5 days a week, such as Karaoke nights, Halloween, Christmas, New Year and similar festive parties and match watchings with friends.",
+              about3: "There is a foosball and billiards table, as well as darts in the pub.",
+              about4: "With a wide selection of draft beers, delicious cocktails and short drinks, everyone can find something to their liking to make the evening even better!",
+              about5: "The pub area can also be rented for organizing events, so please contact us with confidence at the phone number or email address provided below!",
+              about6: "We look forward to seeing you!",
+            },
             
 
         },
@@ -299,6 +309,13 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
           },
           landing:{
             adText: "Ne maradj le eseményeinkről!",
+            aboutUs: "Rólunk",
+            about1: "A NoRelax pub 2023-ban nyitotta meg újra kapuit a XVIII. kerület szívében, a Szarvas Csárda téren a Piac csarnok területén.",
+            about2: "Szeretettel várjuk a kikapcsolódásra és szórakozásra vágyó vendégeket a hét 5 napján izgalmas és változatos programokkal, például Karaoke estékkel, Halloweeni, karácsonyi, Újévi és hasonló ünnepi bulikkal és közös meccsnézésekkel is.",
+            about3: "A kocsma területén található csocsó és biliárdasztal, illetve darts is.",
+            about4: "A csapolt sörök, finom koktélok és a rövid italok széles választékából mindenki talál valami kedvére valót, hogy az este garantáltan még jobban teljen!",
+            about5: "A kocsma területe rendezvények szervezésére is bérelhető, ennek kapcsán keressetek minket bizalommal az alább megadott telefonszámon vagy e-mail címen!",
+            about6: "Várunk titeket szeretettel!",
           }
 
 

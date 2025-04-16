@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import classes from "./landing.module.css"
-import adImg1 from "../../assets/pageImages/NewsPic1.jpg"
-import adImg2 from "../../assets/pageImages/NewsPic2.jpg"
-import adImg3 from "../../assets/pageImages/NewsPic3.jpg"
+import adImg1 from "../../assets/landingpage/Karaoke.png"
+import adImg2 from "../../assets/landingpage/SummerParty.png"
+import adImg3 from "../../assets/landingpage/Halloween.png"
 import csocso from "../../assets/landingpage/csocso.png"
 import darts from "../../assets/landingpage/darts.png"
 import palinkak from "../../assets/landingpage/palinkak.png"
@@ -93,7 +93,7 @@ function Landing(){
                         <div className={classes["ad_text_container"]}>
                             <div  >
                                 <h4> 
-                                    Rólunk
+                                    {t("landing.aboutUs")}
                                 </h4>
                             </div >
                             <span><img className={classes["corner_img1"]} src={cornerImgLeftBottom} alt="" /></span>
@@ -103,12 +103,16 @@ function Landing(){
                             <div className={classes["ad_text_div"]}>
                                
                                 <div className={classes["ad_text"]}>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt accusamus et </p>
-                                    <p>laborum harum ipsum excepturi mollitia voluptate eaque aliquam deserunt exercitationem animi nobis, beatae maiores voluptatem ipsa amet? Perferendis, eveniet?</p>
+                                    <p>{t("landing.about1")}</p>
+                                    <p>{t("landing.about2")}</p>
                                 </div>
                                 <div className={classes["ad_text"]}>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt accusamus et </p>
-                                    <p>laborum harum ipsum excepturi mollitia voluptate eaque aliquam deserunt exercitationem animi nobis, beatae maiores voluptatem ipsa amet? Perferendis, eveniet?</p>
+                                    <p>{t("landing.about3")}</p>
+                                    <p>{t("landing.about4")}</p>
+                                    <p>{t("landing.about5")}</p>
+                                </div>
+                                <div className={classes["ad_text"]}>
+                                    <p>{t("landing.about6")}</p>
                                 </div>
                             </div>
                             <div className={classes["norelax_img_container"]}>
