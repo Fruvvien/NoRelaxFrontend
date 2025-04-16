@@ -313,15 +313,18 @@ export default function Reservation(){
                         
                     </>
                 :
-            <div className={classes["dots_div"]}>
-                <div className="dots">
-                    <div className="dot"></div>
-                    <div className="dot"></div>
-                    <div className="dot"></div>
-                    <div className="dot"></div>
-                    <div className="dot"></div>
+            <div className={classes["loading_div"]}>
+                 <div className={classes["dots_div"]}>
+                    <div className="dots">
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                    </div>
                 </div>
             </div>
+           
         }
                 
         </div>
