@@ -84,19 +84,14 @@
     align-items: center;
 }
 
-@media (-height: 1020px){
-    .register-page{
-        display:flex;
-        height: 40rem;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        align-content: center;
-        background-size:cover;
-        background: rgb(255,255,255);
-        background: radial-gradient(circle, rgba(255,255,255,1) 5%, rgba(0,0,0,1) 77%);
-        padding: 0 1rem 0 1rem;
 
+.register-page {
+    height: 100%;
+}
+
+@media (max-width: 800px), (max-height: 1024px) {
+    .register-page {
+        height: 40rem;
     }
 }
 

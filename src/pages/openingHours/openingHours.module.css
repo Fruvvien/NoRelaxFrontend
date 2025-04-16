@@ -11,12 +11,13 @@
 .background {
     position: relative;
     border-radius: 30px ;
-    height: 400px;
+    height: 500px;
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     padding: 1rem;
     background-color: black;
     display: flex;
+    font-size: large;
     align-items: center;
     flex-direction: column;
     justify-content: center;
