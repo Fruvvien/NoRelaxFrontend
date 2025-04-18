@@ -20,7 +20,6 @@ export default function Drinks(){
             }catch (error: unknown){
                 console.log(error);
             }
-           
         }
         useEffect(()=>{
             getDrinks();
