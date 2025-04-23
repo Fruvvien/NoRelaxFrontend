@@ -1,5 +1,7 @@
+
 .register-page{
     display:flex;
+    height: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -65,10 +67,10 @@
 .background{
     position: relative;
     border-radius: 30px ;
-    min-height: 400px;
+    min-height: 300px;
     width: 100%;
-    max-width: 600px;
-    padding: 1rem;
+    max-width: 500px;
+    padding: 3rem;
     background-color: black;
     display: flex;
     align-items: center;
@@ -85,18 +87,18 @@
 }
 
 
-.register-page {
-    height: 100%;
-}
 
-@media (max-width: 800px), (max-height: 1024px) {
+
+/* @media (max-width: 800px), (max-height: 1024px) {
     .register-page {
         height: 40rem;
     }
-}
+} */
 
-@media (max-width: 320px) {
-    .register-page{
+  
+
+@media (max-width: 1400px) {
+    .register-page{ 
         display:flex;
         height: 40rem;
         flex-direction: column;
@@ -123,3 +125,4 @@
     
     }
 }
+
