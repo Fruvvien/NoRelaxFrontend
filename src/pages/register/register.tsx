@@ -88,9 +88,6 @@ function Register(){
                         if(!notValidPhoneNumber(formState.phoneNumber)){
                             newErrors.push(t("error.invalidPhoneNumber"));
                         }
-                        if(!isValidBirthday(formState.birthDay)){
-                            newErrors.push(t("error.invalidBirthDay"));
-                        }
                         if(!result){
                             newErrors.push(t("error.emailIsExist"));
                         }
