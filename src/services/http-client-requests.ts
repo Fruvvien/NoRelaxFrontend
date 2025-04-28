@@ -181,7 +181,7 @@ export class HttpClientRequests {
             return result
     }
 
-    static async postOrder(endPoint: string,userId: string, order: Icart[], reservationId: number | undefined, fullPrice: number){
+    static async postOrder(endPoint: string,userId: string, order: Icart[], reservationId: number | null, fullPrice: number){
         const response = await fetch(enviroment.LOCAL_API_URL + endPoint, {
             method: 'POST',
             headers: {
@@ -194,7 +194,7 @@ export class HttpClientRequests {
         if(!response.ok){
             console.log(new Error(JSON.stringify(response)));
         }
-        const result = response.json();
+        const result = await response.json();
         console.log(result);
         
         return result; 

@@ -51,7 +51,7 @@ export default function ShoppingCart(){
             return item.id
         })
 
-        const response = await HttpClientRequests.postOrder("orders", userId || "",  cartItems, userReservation[0] || undefined, cartItemsFullPrice);
+        const response = await HttpClientRequests.postOrder("orders", userId || "",  cartItems, userReservation[0] || null, cartItemsFullPrice);
         
         if(response){
             setSuccess(true);

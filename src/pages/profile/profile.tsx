@@ -13,22 +13,14 @@ export default function Profile(){
     const {t} = useTranslation()
     const userId = localStorage.getItem("userId")?.toString()
     const [loading, setLoading] = useState<boolean>(true);
-    const [currentDate, setCurrentDate] = useState<Date>(new Date())
+   
     setTimeout(() =>{
         setLoading(false);
     }, 1000)
 
     useEffect(() =>{
-        setCurrentDate(new Date())
         getUserDatas();
         getReservationDatas();
-        reservation.map((reserve) => {
-            const reservationDate = new Date(reserve.reservationDate!);
-            if (reservationDate.getFullYear() <= currentDate.getFullYear() && reservationDate.getMonth() <= currentDate.getMonth() && reservationDate.getDate() < currentDate.getDate()) {
-                reservationDelete(reserve.id!)
-            }
-        })
-        
     }, [])
 
    

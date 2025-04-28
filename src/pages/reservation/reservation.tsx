@@ -23,7 +23,7 @@ export default function Reservation(){
     const [success, setSuccess] = useState(false);
     const [date, onChange] = useState<Date | null>(new Date());
     const [tableNumber, setableNumber] = useState<number | undefined>(0);
-    const [time, setTime] = useState<string>()
+    const [time, setTime] = useState<string>("18:00")
     const [dateTime, setDateTime] = useState<Date | null>(null);
     const [seats, setSeats] = useState<number | undefined>(0);
     const navigate = useNavigate();
