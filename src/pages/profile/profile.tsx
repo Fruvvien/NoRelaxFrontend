@@ -19,6 +19,7 @@ export default function Profile(){
     }, 1000)
 
     useEffect(() =>{
+        setCurrentDate(new Date())
         getUserDatas();
         getReservationDatas();
         reservation.map((reserve) => {

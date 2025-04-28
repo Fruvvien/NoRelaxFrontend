@@ -100,7 +100,7 @@
 @media (max-width: 1400px) {
     .register-page{ 
         display:flex;
-        height: 40rem;
+        height: 100vh;
         flex-direction: column;
         justify-content: center;
         align-items: center;
